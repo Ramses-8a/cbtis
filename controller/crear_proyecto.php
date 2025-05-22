@@ -1,6 +1,5 @@
 <?php
 require_once('conexion.php');
-header('Content-Type: application/json');
 
 // Verifica si todos los datos existen
 if (
@@ -49,7 +48,7 @@ $stmt->bindParam(':nom_proyecto', $nom_proyecto);
 $stmt->bindParam(':descripcion', $descripcion);
 $stmt->bindParam(':detalles', $detalles);
 $stmt->bindParam(':estatus', $estatus, PDO::PARAM_INT);
-$stmt->bindParam(':img_proyecto', $img_nombre); // o '../img/' . $img_nombre si quieres guardar la ruta completa
+$stmt->bindParam(':img_proyecto', $img_nombre ); // o '../img/' . $img_nombre si quieres guardar la ruta completa
 
 try {
     $stmt->execute();
@@ -60,7 +59,7 @@ try {
             "nombre" => $nom_proyecto,
             "imagen" => $img_nombre, // puedes devolver también la URL completa si quieres
             "estatus" => $estatus,
-            "url_imagen" => "http://localhost/img/" . $img_nombre
+            "url_imagen" => $img_nombre
         ]
     ]);
 } catch (PDOException $e) {
