@@ -34,7 +34,7 @@
     <body>
        <nav class="navbar navbar-expand-lg border-bottom border-body">
     <div class="container-fluid">
-        <!-- Logo + Texto a la izquierda -->
+       
         <a class="navbar-brand d-flex align-items-center" href="index.php">
             <img src="./img/logo_cbtis.png" alt="logo" width="90" height="90" style="border-radius: 50%;">
             <span class="ms-2 text-white fw-bold">CBTis No.152</span>
@@ -44,7 +44,7 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!-- Menú a la derecha -->
+    
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link text-white fw-bold" href="proyectos.php">Proyectos</a></li>
