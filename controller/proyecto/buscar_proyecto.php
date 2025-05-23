@@ -1,5 +1,5 @@
 <?php
-require_once('../conexion.php');
+require_once(__DIR__ . '/../conexion.php');
 
 // Verificar si se recibió el ID
 if (empty($_GET['pk_proyecto'])) {

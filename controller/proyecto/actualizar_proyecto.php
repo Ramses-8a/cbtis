@@ -1,5 +1,5 @@
 <?php
-require_once('../conexion.php');
+require_once(__DIR__ . '/../conexion.php');
 
 // Verificar que se reciban los datos necesarios
 if (!isset($_POST['pk_proyecto']) || !isset($_POST['nom_proyecto']) || !isset($_POST['descripcion']) || 
