@@ -1,0 +1,25 @@
+# Environment files
+.env
+
+# Composer dependencies
+/vendor/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Uploaded files and images (optional, según tus necesidades)
+img/
+!/img/.gitkeep
+
+# Cache files
+*.cache
+
+# System files
+.DS_Store
+Thumbs.db

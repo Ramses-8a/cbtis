@@ -1,6 +1,5 @@
 <?php
-require_once('../conexion.php');
-// ... existing code ...
+require_once(__DIR__ . '/../conexion.php');
 
 if (
     empty($_POST['nom_proyecto']) ||
@@ -24,11 +23,11 @@ $estatus = 1; // Se establece en el backend
 // Procesar imagen
 $img = $_FILES['img_proyecto'];
 $img_nombre = uniqid() . "_" . basename($img['name']);
-$img_ruta = "../img/" . $img_nombre; // Ajustado
+$img_ruta = "../../img/" . $img_nombre; // Ajustado
 
 // Asegurarse de que la carpeta exista
-if (!is_dir("../img")) {
-    mkdir("../img", 0777, true);
+if (!is_dir("../../img")) {
+    mkdir("../../img", 0777, true);
 }
 
 if (!move_uploaded_file($img['tmp_name'], $img_ruta)) {
