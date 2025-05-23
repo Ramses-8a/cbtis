@@ -1,7 +1,7 @@
 <?php
-require_once('conexion.php');
+require_once('../conexion.php');
+// ... existing code ...
 
-// Verifica si todos los datos existen
 if (
     empty($_POST['nom_proyecto']) ||
     empty($_POST['descripcion']) ||
