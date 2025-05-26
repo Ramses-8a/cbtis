@@ -41,7 +41,7 @@
         </a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
-            <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon" style="color: white; filter: invert(100%);"></span>
         </button>
 
     
