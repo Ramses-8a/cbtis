@@ -1,0 +1,21 @@
+# Environment files
+.env
+
+# Composer dependencies
+/vendor/
+
+# IDE and editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Cache files
+*.cache
+
+# System files
+.DS_Store
+Thumbs.db
