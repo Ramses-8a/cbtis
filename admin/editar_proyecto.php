@@ -25,6 +25,11 @@ if (!isset($_GET['pk_proyecto'])) {
         <label>Detalles:</label>
         <textarea name="detalles" required><?= $proyecto['detalles'] ?></textarea>
     </div>
+
+    <div>
+        <label>Url:</label>
+        <textarea name="url" required><?= $proyecto['url'] ?></textarea>
+    </div>
     
     <div>
         <label>Imagen Principal:</label>
