@@ -19,6 +19,11 @@ include_once('header.php');
     </div>
 
     <div>
+        <label for="url">Url:</label>
+        <textarea id="url" name="url" ></textarea>
+    </div>
+
+    <div>
         <label for="img_proyecto">Imagen Principal del Proyecto:</label>
         <input type="file" id="img_proyecto" name="img_proyecto" accept="image/*" >
         <div id="preview_principal" style="max-width: 200px; max-height: 200px; margin-top: 10px;"></div>
