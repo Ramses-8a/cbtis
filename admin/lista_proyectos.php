@@ -9,6 +9,7 @@ include_once('header.php');
         <th>Nombre</th>
         <th>Descripción</th>
         <th>Detalles</th>
+        <th>Url</th>
         <th>Acciones</th>
     </tr>
     <?php foreach ($proyectos as $proyecto): ?>
@@ -17,6 +18,8 @@ include_once('header.php');
         <td><?= $proyecto['nom_proyecto'] ?></td>
         <td><?= $proyecto['descripcion'] ?></td>
         <td><?= $proyecto['detalles'] ?></td>
+        <td><?= $proyecto['detalles'] ?></td>
+        <td><?= $proyecto['url'] ?></td>
         <td>
             <a href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Editar</a>
             <a href="" onclick="if(confirm('¿Dar de baja este proyecto?')) window.location='baja_proyecto.php?id=<?= $proyecto['pk_proyecto'] ?>'">Dar de baja</a>

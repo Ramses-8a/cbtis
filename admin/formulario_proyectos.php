@@ -2,6 +2,13 @@
 include_once('header.php');
 ?>
 
+ <div class="con_volver">
+        <a href="index.php" class="volver">
+            <img src="../img/volver.webp" alt="Volver">
+        </a>
+        <h3>Proyectos</h3>
+        </div>
+
 <form id="formProyecto" enctype="multipart/form-data">
     <div>
         <label for="nom_proyecto">Nombre del Proyecto:</label>
@@ -200,3 +207,27 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<style>
+    /* contenedor para volver */
+.con_volver {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background-color: white;
+}
+
+.con_volver .volver img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.con_volver h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+</style>
