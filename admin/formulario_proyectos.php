@@ -1,7 +1,10 @@
 <?php 
 include_once('header.php');
 ?>
-
+<head>
+     <link rel="stylesheet" href="../css/form_proyecto.css">
+    <title>Subir proyectos</title>
+</head>
  <div class="con_volver">
         <a href="index.php" class="volver">
             <img src="../img/volver.webp" alt="Volver">
@@ -27,7 +30,7 @@ include_once('header.php');
 
     <div>
         <label for="url">Url:</label>
-        <textarea id="url" name="url" ></textarea>
+       <input type="text" id="url" name="nom_proyecto" >
     </div>
 
     <div>

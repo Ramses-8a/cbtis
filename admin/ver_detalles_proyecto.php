@@ -1,5 +1,5 @@
 <?php
-require_once 'controller/conexion.php';
+require_once '../controller/conexion.php';
 require_once 'header.php';
 
 if (!isset($_GET['pk_proyecto'])) {
@@ -25,16 +25,16 @@ $imagenes = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-     <link rel="stylesheet" href="css/ver_proyecto.css">
+     <link rel="stylesheet" href="../css/ver_proyecto.css">
     <title><?= $proyecto['nom_proyecto'] ?></title>
 </head>
 <body>
 
     <div class="con_volver">
         <a href="mostrar_proyectos.php" class="volver">
-            <img src="img/volver.webp" alt="Volver">
+            <img src="../img/volver.webp" alt="Volver">
         </a>
-        <h3><?=$proyecto['nom_proyecto']?></h3>
+        <h3><?= $proyecto['nom_proyecto'] ?></h3>
     </div>
 
     <main class="detalle-proyecto">
@@ -46,7 +46,7 @@ $imagenes = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
                 <?php 
                 $primera_imagen = true;
                 foreach ($imagenes as $img): ?>
-                    <img src="img/<?= $img['img'] ?>" 
+                    <img src="../img/<?= $img['img'] ?>" 
                          alt="Imagen del proyecto" 
                          class="imagen-proyecto <?= $primera_imagen ? 'imagen-destacada' : '' ?>">
                     <?php $primera_imagen = false; ?>
@@ -67,7 +67,7 @@ $imagenes = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
 </html>
 
 <style>
-    /* estilo del contenedor para volver */
+    /* contenedor para volver */
 .con_volver {
   display: flex;
   align-items: center;
@@ -77,7 +77,7 @@ $imagenes = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
 }
 
 .con_volver .volver img {
-  width: 30px;
+  width: 28px;
   height: 28px;
   object-fit: contain;
   cursor: pointer;

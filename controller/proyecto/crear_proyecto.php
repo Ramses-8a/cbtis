@@ -5,6 +5,7 @@ if (
     empty($_POST['nom_proyecto']) ||
     empty($_POST['descripcion']) ||
     empty($_POST['detalles']) ||
+    empty($_POST['url']) ||
     !isset($_FILES['img_proyecto'])
 ) {
     http_response_code(400);
@@ -16,7 +17,7 @@ if (
 }
 
 // Validación de longitud de campos
-if (strlen($_POST['nom_proyecto']) > 100 || strlen($_POST['descripcion']) > 255 || strlen($_POST['detalles']) > 1000) {
+if (strlen($_POST['nom_proyecto']) > 100 || strlen($_POST['descripcion']) > 255 || strlen($_POST['detalles']) > 1000 || strlen($_POST['url']) > 255) {
     http_response_code(400);
     echo json_encode([
         "status" => "error",
@@ -28,6 +29,7 @@ if (strlen($_POST['nom_proyecto']) > 100 || strlen($_POST['descripcion']) > 255 
 $nom_proyecto = trim($_POST['nom_proyecto']);
 $descripcion = trim($_POST['descripcion']);
 $detalles = trim($_POST['detalles']);
+$url = trim($_POST['url']);
 $estatus = 1;
 
 // Validación de imagen principal
@@ -77,14 +79,15 @@ $connect->beginTransaction();
 
 try {
     // Insertar proyecto principal
-    $stmt = $connect->prepare("INSERT INTO proyectos (nom_proyecto, descripcion, detalles, estatus, img_proyecto)
-                             VALUES (:nom_proyecto, :descripcion, :detalles, :estatus, :img_proyecto)");
+    $stmt = $connect->prepare("INSERT INTO proyectos (nom_proyecto, descripcion, detalles, estatus, img_proyecto,url)
+                             VALUES (:nom_proyecto, :descripcion, :detalles, :estatus, :img_proyecto,:url)");
 
     $stmt->bindParam(':nom_proyecto', $nom_proyecto);
     $stmt->bindParam(':descripcion', $descripcion);
     $stmt->bindParam(':detalles', $detalles);
     $stmt->bindParam(':estatus', $estatus, PDO::PARAM_INT);
     $stmt->bindParam(':img_proyecto', $img_nombre);
+    $stmt->bindParam(':url', $url);
     $stmt->execute();
     
     $proyecto_id = $connect->lastInsertId();

@@ -11,11 +11,12 @@ try {
     $nom_proyecto = $_POST['nom_proyecto'];
     $descripcion = $_POST['descripcion'];
     $detalles = $_POST['detalles'];
+    $url = $_POST['url'];
 
     // Actualizar datos básicos del proyecto
-    $sql = "UPDATE proyectos SET nom_proyecto = ?, descripcion = ?, detalles = ? WHERE pk_proyecto = ?";
+    $sql = "UPDATE proyectos SET nom_proyecto = ?, descripcion = ?, detalles = ?, url = ? WHERE pk_proyecto = ?";
     $stmt = $connect->prepare($sql);
-    $stmt->execute([$nom_proyecto, $descripcion, $detalles, $pk_proyecto]);
+    $stmt->execute([$nom_proyecto, $descripcion, $detalles, $url, $pk_proyecto]);
     
     if ($stmt->rowCount() === 0) {
         echo json_encode([

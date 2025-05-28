@@ -2,7 +2,6 @@
 include('../controller/proyecto/mostrar_proyecto.php');
 include_once('header.php'); 
 ?>
-
 <table>
     <tr>
         <th>Imagen</th>
@@ -17,7 +16,6 @@ include_once('header.php');
         <td><img src="../img/<?= $proyecto['img_proyecto'] ?>" width="50px"></td>
         <td><?= $proyecto['nom_proyecto'] ?></td>
         <td><?= $proyecto['descripcion'] ?></td>
-        <td><?= $proyecto['detalles'] ?></td>
         <td><?= $proyecto['detalles'] ?></td>
         <td><?= $proyecto['url'] ?></td>
         <td>

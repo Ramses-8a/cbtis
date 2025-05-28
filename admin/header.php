@@ -58,19 +58,28 @@
     
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link text-white fw-bold" href="mostrar_proyectos.php">Proyectos</a></li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white fw-bold" href="mostrar_proyectos.php" role="button" data-bs-toggle="dropdown">Proyectos</a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item"  href="mostrar_proyectos.php">Ver Proyectos</a></li>
+                        <li><a class="dropdown-item" href="formulario_proyectos.php">Agregar Proyecto</a></li>
+                    </ul>
+                </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Torneos</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item"  href="torneo1">Software</a></li>
-                        <li><a class="dropdown-item" href="torneo2">Videojuegos</a></li>
+                        <li><a class="dropdown-item"  href="torneo1">Ver Torneos</a></li>
+                        <li><a class="dropdown-item" href="torneo2">Agregar Torneos</a></li>
                     </ul>
                 </li>
+
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Recursos Tecnológicos</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="1">Tecnológicos</a></li>
-                        <li><a class="dropdown-item" href="2">Cursos</a></li>
+                        <li><a class="dropdown-item" href="2">Ver Recursos</a></li>
+                        <li><a class="dropdown-item" href="1">Agrgar Recurso</a></li>
                     </ul>
                 </li>
             </ul>
