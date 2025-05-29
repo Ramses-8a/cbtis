@@ -6,6 +6,11 @@ if (!isset($_GET['pk_proyecto'])) {
     header('Location: lista_proyectos.php');
     exit;
 }
+
+$stmt = $connect->prepare("SELECT COUNT(*) FROM img_proyectos WHERE fk_proyecto = ?");
+$stmt->execute([$proyecto['pk_proyecto']]);
+$num_imagenes = $stmt->fetchColumn();
+
 ?>
 
 <form id="formEditar" enctype="multipart/form-data">
@@ -54,6 +59,8 @@ if (!isset($_GET['pk_proyecto'])) {
         </div>
     </div>
     
+    <a href="formulario_fotos.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Agregar nuevas fotos</a>
+
     <button type="submit">Guardar Cambios</button>
 </form>
 
