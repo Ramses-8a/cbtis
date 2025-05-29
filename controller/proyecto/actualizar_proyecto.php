@@ -13,6 +13,7 @@ try {
     $detalles = $_POST['detalles'];
     $url = $_POST['url'];
 
+
     // Verificar si se ha proporcionado una nueva imagen principal
     $img_proyecto = null;
     if (isset($_FILES['img_proyecto']) && $_FILES['img_proyecto']['error'] === UPLOAD_ERR_OK) {
@@ -53,6 +54,7 @@ try {
         $img_proyecto === null) {
         
         $connect->commit();
+
         echo json_encode([
             'status' => 'warning',
             'message' => 'No se detectaron cambios en el proyecto'

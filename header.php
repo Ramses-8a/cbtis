@@ -17,6 +17,16 @@
                 
             }
 
+            .navbar-toggler {
+            padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
+            color: #ffffff !important;
+            font-size: var(--bs-navbar-toggler-font-size);
+            line-height: 1;
+            border: var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);
+            border-radius: var(--bs-navbar-toggler-border-radius);
+            transition: var(--bs-navbar-toggler-transition);
+            }
+
             .dropdown-menu {
                 background-color: #9d0707;
                 border: none;
@@ -28,7 +38,7 @@
 
             .dropdown-item:hover {
                 background-color: #7a0505;
-                color: #fff;
+                color: #ffff;
             }
         </style>
     </head>

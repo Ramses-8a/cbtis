@@ -1,6 +1,16 @@
 <?php 
 include_once('header.php');
 ?>
+<head>
+     <link rel="stylesheet" href="../css/form_proyecto.css">
+    <title>Subir proyectos</title>
+</head>
+ <div class="con_volver">
+        <a href="index.php" class="volver">
+            <img src="../img/volver.webp" alt="Volver">
+        </a>
+        <h3>Proyectos</h3>
+        </div>
 
 <form id="formProyecto" enctype="multipart/form-data">
     <div>
@@ -20,7 +30,7 @@ include_once('header.php');
 
     <div>
         <label for="url">Url:</label>
-        <textarea id="url" name="url" ></textarea>
+       <input type="text" id="url" name="nom_proyecto" >
     </div>
 
     <div>
@@ -205,3 +215,27 @@ $(document).ready(function() {
     });
 });
 </script>
+
+<style>
+    /* contenedor para volver */
+.con_volver {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background-color: white;
+}
+
+.con_volver .volver img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.con_volver h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+</style>
