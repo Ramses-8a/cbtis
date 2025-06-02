@@ -6,6 +6,11 @@ if (!isset($_GET['pk_proyecto'])) {
     header('Location: lista_proyectos.php');
     exit;
 }
+
+$stmt = $connect->prepare("SELECT COUNT(*) FROM img_proyectos WHERE fk_proyecto = ?");
+$stmt->execute([$proyecto['pk_proyecto']]);
+$num_imagenes = $stmt->fetchColumn();
+
 ?>
 
 <form id="formEditar" enctype="multipart/form-data">
@@ -33,7 +38,7 @@ if (!isset($_GET['pk_proyecto'])) {
     
     <div>
         <label>Imagen Principal:</label>
-        <img src="../img/<?= $proyecto['img_proyecto'] ?>" style="max-width: 200px; max-height: 200px; object-fit: contain;">
+        <img id="img-preview" src="../img/<?= $proyecto['img_proyecto'] ?>" style="max-width: 200px; max-height: 200px; object-fit: contain;">
         <input type="file" name="img_proyecto" accept="image/*">
         <small>Dejar vacío para mantener la imagen actual</small>
     </div>
@@ -53,105 +58,29 @@ if (!isset($_GET['pk_proyecto'])) {
             <?php endif; ?>
         </div>
     </div>
-
-    <div>
-        <label>Agregar Nuevas Imágenes (Máximo 10 en total):</label>
-        <input type="file" id="img_adicionales" name="img_adicionales[]" accept="image/*" multiple>
-        <span id="contador_imagenes">0/10 imágenes seleccionadas</span>
-        <div id="preview_adicionales" style="margin-top: 10px;"></div>
-    </div>
     
+    <a href="formulario_fotos.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Agregar nuevas fotos</a>
+
     <button type="submit">Guardar Cambios</button>
 </form>
 
 <script>
 $(document).ready(function() {
-    let imagenesSeleccionadas = new Array();
-    const maxImagenes = 10;
-    const imagenesActuales = <?= json_encode($proyecto['imagenes_adicionales'] ?? []) ?>;
-
-    function actualizarContador() {
-        const total = imagenesActuales.length + imagenesSeleccionadas.length;
-        $('#contador_imagenes').text(`${total}/10 imágenes seleccionadas`);
-    }
-
     // Previsualización de imagen principal
     $('input[name="img_proyecto"]').on('change', function() {
         const file = this.files[0];
+        const imgPreview = $('#img-preview');
+
         if (file) {
             const reader = new FileReader();
             reader.onload = function(e) {
-                $('img[src*="' + $proyecto['img_proyecto'] + '"]').attr('src', e.target.result);
+                imgPreview.attr('src', e.target.result);
+                imgPreview.show();
             };
             reader.readAsDataURL(file);
+        } else {
+            imgPreview.attr('src', '../img/' + '<?= $proyecto["img_proyecto"] ?>');
         }
-    });
-
-    // Previsualización de imágenes adicionales
-    $('#img_adicionales').on('change', function() {
-        const files = Array.from(this.files);
-        const espacioDisponible = maxImagenes - imagenesActuales.length - imagenesSeleccionadas.length;
-
-        if (files.length > espacioDisponible) {
-            Swal.fire({
-                icon: 'error',
-                title: 'Error',
-                text: `Solo puedes agregar ${espacioDisponible} imagen(es) más. Ya tienes ${imagenesActuales.length + imagenesSeleccionadas.length} seleccionada(s)`
-            });
-            this.value = '';
-            return;
-        }
-
-        files.forEach(file => {
-            if (imagenesSeleccionadas.length < maxImagenes) {
-                const imgContainer = document.createElement('div');
-                imgContainer.style.display = 'inline-block';
-                imgContainer.style.margin = '5px';
-                imgContainer.style.position = 'relative';
-
-                const img = document.createElement('img');
-                img.style.width = '150px';
-                img.style.height = '150px';
-                img.style.objectFit = 'contain';
-
-                const deleteBtn = document.createElement('button');
-                deleteBtn.textContent = 'X';
-                deleteBtn.style.position = 'absolute';
-                deleteBtn.style.top = '0';
-                deleteBtn.style.right = '0';
-                deleteBtn.style.background = 'red';
-                deleteBtn.style.color = 'white';
-                deleteBtn.style.border = 'none';
-                deleteBtn.style.cursor = 'pointer';
-                deleteBtn.style.padding = '2px 6px';
-                deleteBtn.style.borderRadius = '3px';
-
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    img.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-
-                imgContainer.appendChild(img);
-                imgContainer.appendChild(deleteBtn);
-                document.getElementById('preview_adicionales').appendChild(imgContainer);
-
-                imagenesSeleccionadas.push({
-                    container: imgContainer,
-                    file: file
-                });
-
-                deleteBtn.onclick = function(e) {
-                    e.preventDefault();
-                    imgContainer.remove();
-                    imagenesSeleccionadas = imagenesSeleccionadas.filter(img => img.container !== imgContainer);
-                    actualizarContador();
-                };
-            }
-        });
-
-        actualizarContador();
-        this.value = '';
     });
 
     // Eliminar imagen existente
@@ -177,11 +106,6 @@ $(document).ready(function() {
                     success: function(response) {
                         if (response.status === 'success') {
                             imgContainer.remove();
-                            const index = imagenesActuales.findIndex(img => img.pk_img_proyectos === imgId);
-                            if (index > -1) {
-                                imagenesActuales.splice(index, 1);
-                            }
-                            actualizarContador();
                             Swal.fire('¡Eliminada!', 'La imagen ha sido eliminada.', 'success');
                         } else {
                             Swal.fire('Error', response.message, 'error');
@@ -198,6 +122,7 @@ $(document).ready(function() {
     // Envío del formulario
     $('#formEditar').on('submit', function(e) {
         e.preventDefault();
+        
         const formData = new FormData(this);
 
         $.ajax({
@@ -211,29 +136,32 @@ $(document).ready(function() {
                     Swal.fire({
                         icon: 'success',
                         title: '¡Éxito!',
-                        text: 'Proyecto actualizado correctamente',
-                        showConfirmButton: false,
-                        timer: 1500
+                        text: response.message
                     }).then(() => {
                         window.location.reload();
                     });
-                } else if (response.status === 'info') {
+                } else if (response.status === 'warning') {
                     Swal.fire({
                         icon: 'info',
-                        title: 'Información',
+                        title: 'Aviso',
                         text: response.message
                     });
                 } else {
-                    Swal.fire('Error', response.message, 'error');
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: response.message
+                    });
                 }
             },
             error: function() {
-                Swal.fire('Error', 'Hubo un error al actualizar el proyecto', 'error');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Hubo un error al actualizar el proyecto'
+                });
             }
         });
     });
-
-    // Inicializar contador
-    actualizarContador();
 });
 </script>
