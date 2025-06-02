@@ -7,9 +7,7 @@ if (!isset($_GET['pk_proyecto'])) {
     exit;
 }
 
-$stmt = $connect->prepare("SELECT COUNT(*) FROM img_proyectos WHERE fk_proyecto = ?");
-$stmt->execute([$proyecto['pk_proyecto']]);
-$num_imagenes = $stmt->fetchColumn();
+$num_imagenes = count($proyecto['imagenes_adicionales']);
 
 ?>
 

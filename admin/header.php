@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="shortcut icon" href="../img/logo_cbtis.png">
+        <link rel="shortcut icon" href="../img/logo_sf.png">
         <!-- cdn de bootstrap NO BORRAR -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     
@@ -62,15 +62,15 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white fw-bold" href="mostrar_proyectos.php" role="button" data-bs-toggle="dropdown">Proyectos</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item"  href="mostrar_proyectos.php">Ver Proyectos</a></li>
                         <li><a class="dropdown-item" href="formulario_proyectos.php">Agregar Proyecto</a></li>
+                        <li><a class="dropdown-item" href="lista_proyectos.php">Editar Proyecto</a></li>
                     </ul>
                 </li>
 
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Torneos</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item"  href="torneo1">Ver Torneos</a></li>
+                        <li><a class="dropdown-item"  href="lista_torneos.php">Ver Torneos</a></li>
                         <li><a class="dropdown-item" href="torneo2">Agregar Torneos</a></li>
                     </ul>
                 </li>

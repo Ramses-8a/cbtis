@@ -17,7 +17,7 @@
 
 <footer class="footer">
   <p>© 2025 CBTis No.152 </p>
-  <p>Desarrollado para el Departamento de Programación</p>
+  <p>Desarrollado Para el Departamento de Programación</p>
   
   <div class="redes-sociales">
     <a href="#" target="_blank" aria-label="Facebook">
