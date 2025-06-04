@@ -1,15 +1,12 @@
 <?php
-include('../controller/torneos/mostrar_proyecto.php');
+include('../controller/torneo/buscar_torneo.php');
 include_once('header.php'); 
 
-// Obtener el ID del torneo de la URL
-$pk_torneo = isset($_GET['pk_torneo']) ? $_GET['pk_torneo'] : null;
-
-// Verificar si se recibió un ID válido
-if (!$pk_torneo) {
-    echo "Error: No se especificó un torneo para editar";
+if (!isset($_GET['pk_torneo'])) {
+    header('Location: lista_torneos.php');
     exit;
 }
+
 ?>
 
 <form action="../controller/torneo/actualizar_torneo.php" method="POST" enctype="multipart/form-data">
@@ -35,6 +32,7 @@ if (!$pk_torneo) {
         <input type="file" id="img" name="img">
         <?php if(!empty($torneo['img'])): ?>
             <img src="../img/<?php echo $torneo['img']; ?>" width="100">
+            <input type="hidden" name="current_img" value="<?php echo $torneo['img']; ?>">
         <?php endif; ?>
     </div>
 
@@ -50,3 +48,46 @@ if (!$pk_torneo) {
 
     <button type="submit">Actualizar Torneo</button>
 </form>
+
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const formData = new FormData(this); // Get form data
+
+        fetch(this.action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+.then(text => {
+    console.log(text); // 👈 Aquí verás el HTML o el error real del servidor
+
+    try {
+        const data = JSON.parse(text); // Intentamos parsear manualmente
+        if (data.success) {
+            Swal.fire({
+                icon: 'success',
+                title: '¡Éxito!',
+                text: data.message
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.message
+            });
+        }
+    } catch (e) {
+        // Si no se pudo parsear, mostramos el error en crudo
+        Swal.fire({
+            icon: 'error',
+            title: 'Error crítico',
+            html: `<pre>${text}</pre>`
+        });
+    }
+})
+
+
+    });
+</script>

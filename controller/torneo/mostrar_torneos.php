@@ -16,11 +16,11 @@ try {
 
     $torneos = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-    // json_encode([
-    //     "status" => "success",
-    //     "message" => "Se encontraron proyectos",
-    //     "proyectos" => $sql->fetchAll(PDO::FETCH_ASSOC)
-    // ]);
+    json_encode([
+        "status" => "success",
+        "message" => "Se encontraron proyectos",
+        "proyectos" => $sql->fetchAll(PDO::FETCH_ASSOC)
+    ]);
 
     return $torneos;
 
