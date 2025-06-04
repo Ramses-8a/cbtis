@@ -20,7 +20,7 @@ include_once('header.php');
         <td><?= $proyecto['url'] ?></td>
         <td>
             <a href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Editar</a>
-            <a href="" onclick="if(confirm('¿Dar de baja este proyecto?')) window.location='baja_proyecto.php?id=<?= $proyecto['pk_proyecto'] ?>'">Dar de baja</a>
+            <a href="baja_proyecto.php?id=<?= $proyecto['pk_proyecto'] ?>" onclick="return confirm('¿Dar de baja este proyecto?')">Dar de baja</a>
         </td>
     </tr>
     <?php endforeach; ?>
