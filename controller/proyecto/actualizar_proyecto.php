@@ -1,6 +1,7 @@
 <?php
 header('Content-Type: application/json');
-require_once('../conexion.php');
+require_once(__DIR__ . '/../conexion.php');
+
 
 try {
     if (!isset($_POST['pk_proyecto'])) {
