@@ -7,41 +7,54 @@ if (!isset($_GET['pk_proyecto'])) {
     exit;
 }
 
-$num_imagenes = count($proyecto['imagenes_adicionales']);
+$stmt = $connect->prepare("SELECT COUNT(*) FROM img_proyectos WHERE fk_proyecto = ?");
+$stmt->execute([$proyecto['pk_proyecto']]);
+$num_imagenes = $stmt->fetchColumn();
 
 ?>
 
-<form id="formEditar" enctype="multipart/form-data">
+<head>
+    <link rel="stylesheet" href="../css/form_editar.css">
+</head>
+
+<div class="con_volver">
+        <a href="lista_proyectos.php" class="volver">
+            <img src="../img/volver.webp" alt="Volver">
+        </a>
+        <h3>Proyectos</h3>
+        </div>
+
+<form id="formEditar" enctype="multipart/form-data" class="form-editar">
     <input type="hidden" name="pk_proyecto" value="<?= $proyecto['pk_proyecto'] ?>">
     
-    <div>
+    <div class="nom-proyecto">
         <label>Nombre del Proyecto:</label>
         <input type="text" name="nom_proyecto" value="<?= $proyecto['nom_proyecto'] ?>" required>
     </div>
     
-    <div>
+    <div class="desc-proyecto">
         <label>Descripción:</label>
         <textarea name="descripcion" required><?= $proyecto['descripcion'] ?></textarea>
     </div>
     
-    <div>
+    <div class="detalles-proyecto">
         <label>Detalles:</label>
         <textarea name="detalles" required><?= $proyecto['detalles'] ?></textarea>
     </div>
 
-    <div>
+    <div class="url-proyecto">
         <label>Url:</label>
         <textarea name="url" required><?= $proyecto['url'] ?></textarea>
     </div>
     
-    <div>
+    <div class="img-proyecto">
         <label>Imagen Principal:</label>
         <img id="img-preview" src="../img/<?= $proyecto['img_proyecto'] ?>" style="max-width: 200px; max-height: 200px; object-fit: contain;">
         <input type="file" name="img_proyecto" accept="image/*">
         <small>Dejar vacío para mantener la imagen actual</small>
     </div>
 
-    <div>
+    <div class="imgads-proyecto">
         <label>Imágenes Adicionales Actuales:</label>
         <div id="imagenes_actuales" style="margin: 10px 0;">
             <?php if (!empty($proyecto['imagenes_adicionales'])): ?>
@@ -57,9 +70,9 @@ $num_imagenes = count($proyecto['imagenes_adicionales']);
         </div>
     </div>
     
-    <a href="formulario_fotos.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Agregar nuevas fotos</a>
+    <a class="btn-agg-img" href="formulario_fotos.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Agregar nuevas fotos</a>
 
-    <button type="submit">Guardar Cambios</button>
+    <button class="guardar-cambios" type="submit">Guardar Cambios</button>
 </form>
 
 <script>
@@ -163,3 +176,28 @@ $(document).ready(function() {
     });
 });
 </script>
+
+
+<style>
+    /* contenedor para volver */
+.con_volver {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background-color: white;
+}
+
+.con_volver .volver img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.con_volver h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+</style>
