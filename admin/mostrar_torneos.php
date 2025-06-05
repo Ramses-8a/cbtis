@@ -7,7 +7,7 @@ $sql = "SELECT t.pk_torneo, t.nom_torneo, t.descripcion, t.detalles, t.img, tt.n
         INNER JOIN tipo_torneos tt ON t.fk_tipo_torneo = tt.pk_tipo_torneo
         WHERE t.estatus = 1
         ORDER BY t.pk_torneo DESC";
-
+    
 $stmt = $connect->prepare($sql);
 $stmt->execute();
 $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);

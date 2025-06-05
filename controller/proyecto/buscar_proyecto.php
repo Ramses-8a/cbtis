@@ -14,7 +14,7 @@ $pk_proyecto = $_GET['pk_proyecto'];
 
 try {
     // Obtener el proyecto
-    $stmt = $connect->prepare("SELECT * FROM proyectos WHERE pk_proyecto = :pk_proyecto AND estatus = 1");
+    $stmt = $connect->prepare("SELECT * FROM proyectos WHERE pk_proyecto = :pk_proyecto");
     $stmt->bindParam(':pk_proyecto', $pk_proyecto, PDO::PARAM_INT);
     $stmt->execute();
     $proyecto = $stmt->fetch(PDO::FETCH_ASSOC);
