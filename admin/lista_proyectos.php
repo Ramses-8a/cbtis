@@ -27,7 +27,8 @@ include_once('header.php');
         <td><?= $proyecto['estatus'] == 1 ? 'activo' : 'baja' ?></td>
         <td>
             <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Editar</a>
-            <a class="btn-eliminar" href="" onclick="if(confirm('¿Dar de baja este proyecto?')) window.location='baja_proyecto.php?id=<?= $proyecto['pk_proyecto'] ?>'">Dar de baja</a>
+            <!-- Aquí se ha corregido el onclick para usar la función confirmAction -->
+            <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')"><?= $proyecto['estatus'] == 1 ? 'Dar de baja' : 'Dar de alta' ?></a>
         </td>
     </tr>
     <?php endforeach; ?>
