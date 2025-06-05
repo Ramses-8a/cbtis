@@ -70,7 +70,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Torneos</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item"  href="torneo1">Ver Torneos</a></li>
+                        <li><a class="dropdown-item"  href="lista_torneos.php">Ver Torneos</a></li>
                         <li><a class="dropdown-item" href="torneo2">Agregar Torneos</a></li>
                     </ul>
                 </li>

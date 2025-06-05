@@ -10,6 +10,7 @@ if (!isset($_GET['pk_proyecto'])) {
 $stmt = $connect->prepare("SELECT COUNT(*) FROM img_proyectos WHERE fk_proyecto = ?");
 $stmt->execute([$proyecto['pk_proyecto']]);
 $num_imagenes = $stmt->fetchColumn();
+
 ?>
 
 <head>
