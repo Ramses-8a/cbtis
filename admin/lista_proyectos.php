@@ -2,6 +2,9 @@
 include('../controller/proyecto/mostrar_proyecto.php');
 include_once('header.php'); 
 ?> 
+<head>
+    <link rel="stylesheet" href="../css/list_proyecto.css">
+</head>
 <body>
    <div class="contenedor">
      <table>
@@ -23,14 +26,15 @@ include_once('header.php');
         <td><?= $proyecto['url'] ?></td>
         <td><?= $proyecto['estatus'] == 1 ? 'activo' : 'baja' ?></td>
         <td>
-
             <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Editar</a>
             <a class="btn-eliminar" href="" onclick="if(confirm('¿Dar de baja este proyecto?')) window.location='baja_proyecto.php?id=<?= $proyecto['pk_proyecto'] ?>'">Dar de baja</a>
-
         </td>
     </tr>
     <?php endforeach; ?>
 </table>
+</div>
+
+</body>
 
 <script>
 function confirmAction(event, projectId, currentStatus) {
