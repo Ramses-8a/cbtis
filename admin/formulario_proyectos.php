@@ -12,7 +12,7 @@ include_once('header.php');
         <h3>Proyectos</h3>
         </div>
 
-<form id="formProyecto" enctype="multipart/form-data">
+<form id="formProyecto" enctype="multipart/form-data" class="form-proyectos">
     <div>
         <label for="nom_proyecto">Nombre del Proyecto:</label>
         <input type="text" id="nom_proyecto" name="nom_proyecto" >

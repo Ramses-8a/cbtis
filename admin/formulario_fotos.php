@@ -9,20 +9,25 @@ if (!isset($_GET['pk_proyecto'])) {
 $id = $_GET['pk_proyecto'];
 ?>
 
-<form action="../controller/proyecto/agregar_nuevas_fotos.php" method="post" id="formProyecto" enctype="multipart/form-data">
-    <div>
-    <label>Imágenes Adicionales:</label>
-    <div>
-        <input type="" id="pk_proyecto" name="pk_proyecto" value="<?= $id ?>" >
+<!-- <div class="con_volver">
+        <a href="editar_proyecto.php" class="volver">
+            <img src="../img/volver.webp" alt="Volver">
+        </a>
+        <h3>Proyectos</h3>
+        </div> -->
+
+<form action="../controller/proyecto/agregar_nuevas_fotos.php" method="post" id="formProyecto" enctype="multipart/form-data" class="form-ftsadd">
+    <!-- <label>Imágenes Adicionales:</label> -->
+    <div class="fotos-add">
+        <input type="hidden" id="pk_proyecto" name="pk_proyecto" value="<?= $id ?>" >
 
         <input type="file" id="img_adicionales" name="img_adicionales[]" accept="image/*" multiple>
         <span id="contador_imagenes">0/10 imágenes seleccionadas</span>
     </div>
     <div id="preview_adicionales" style="margin-top: 10px;"></div>
-    </div>
 
-    <div>
-    <button type="submit">Crear Proyecto</button>
+    <div class="btn-listo">
+    <button type="submit" >Listo</button>
     </div>
 </form>
 
@@ -136,3 +141,186 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 </script>
+
+<style>
+    /* Estilo formal blanco y rojo para formulario */
+.form-ftsadd {
+    background-color: #ffffff;
+    border: 2px solid #dc2626;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 500px;
+    margin: 20px auto;
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Contenedor de fotos */
+.fotos-add {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Estilo del input file */
+#img_adicionales {
+    display: none;
+}
+
+/* Label personalizado para el input file */
+.fotos-add::before {
+    content: "Seleccionar Imágenes";
+    display: inline-block;
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    text-transform: uppercase;
+}
+
+.fotos-add:hover::before {
+    background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+}
+
+/* Estilo del contador */
+#contador_imagenes {
+    display: block;
+    margin-top: 15px;
+    color: #dc2626;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 8px 16px;
+    background-color: #fef2f2;
+    border: 1px solid #fecaca;
+    border-radius: 6px;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Preview de imágenes */
+#preview_adicionales {
+    margin-top: 20px !important;
+    padding: 15px;
+    background-color: #f9fafb;
+    border: 1px dashed #dc2626;
+    border-radius: 8px;
+    min-height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+#preview_adicionales:empty::before {
+    content: "Vista previa de imágenes";
+    color: #9ca3af;
+    font-style: italic;
+    font-size: 14px;
+}
+
+/* Contenedor del botón */
+.btn-listo {
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* Estilo del botón */
+.btn-listo button {
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    color: #dc2626;
+    border: 2px solid #dc2626;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    min-width: 120px;
+}
+
+.btn-listo button:hover {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.3);
+}
+
+.btn-listo button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(220, 38, 38, 0.2);
+}
+
+/* Efectos de focus para accesibilidad */
+.btn-listo button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .form-ftsadd {
+        margin: 15px;
+        padding: 20px;
+        max-width: none;
+    }
+    
+    .fotos-add::before {
+        padding: 10px 20px;
+        font-size: 13px;
+    }
+    
+    .btn-listo button {
+        padding: 10px 25px;
+        font-size: 14px;
+    }
+}
+
+/* Animación sutil para el formulario */
+.form-ftsadd {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+    /* contenedor para volver */
+.con_volver {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background-color: white;
+}
+
+.con_volver .volver img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.con_volver h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+</style>
