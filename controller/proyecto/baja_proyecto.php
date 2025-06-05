@@ -1,5 +1,5 @@
 <?php
-include '../controller/conexion.php';
+require_once(__DIR__ . '/../conexion.php');
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
 
         if ($stmt->execute()) {
-            header('Location: lista_proyectos.php');
+            header('Location: ../../lista_proyectos.php');
             exit();
         } else {
             echo "Error al dar de baja el proyecto.";
