@@ -40,6 +40,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const preview = document.getElementById('preview_adicionales');
     const contador = document.getElementById('contador_imagenes');
     const form = document.getElementById('formProyecto');
+    const fotosAddDiv = document.querySelector('.fotos-add'); // Selecciona el div que contiene el input oculto
+
+    // Añade un event listener al div para simular el clic en el input de archivo
+    fotosAddDiv.addEventListener('click', function() {
+        inputImagenes.click();
+    });
 
     inputImagenes.addEventListener('change', function () {
         const files = Array.from(this.files);

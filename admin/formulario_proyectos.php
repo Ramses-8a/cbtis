@@ -30,7 +30,7 @@ include_once('header.php');
 
     <div>
         <label for="url">Url:</label>
-       <input type="text" id="url" name="nom_proyecto" >
+       <input type="text" id="url" name="url" >
     </div>
 
     <div>
