@@ -6,7 +6,7 @@ include_once('header.php');
     <title>Agregar Torneos</title>
 </head>
 
-<form id="formProyecto" action="guardar_torneo.php" method="POST" enctype="multipart/form-data">
+<form id="formProyecto" action="guardar_torneo.php" method="POST" enctype="multipart/form-data" class="form-proyectos">
 
     <div>
         <label for="nom_torneo">Nombre del Torneo:</label>
