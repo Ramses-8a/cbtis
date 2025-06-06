@@ -10,11 +10,42 @@
             line-height: 1.6;
         }
 
+        /* estilo de los botones de cancelar y guardar */
+    .button-container {
+        display: flex;
+        justify-content: space-between; 
+        margin-top: 10px;
+    }
+
+    .guardar, .cancelar {
+        background: #dc3545;
+        color: #ffffff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 100;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
+    }
+
+    .guardar-cambios {
+        width: auto; 
+    }
+
+    .cancelar {
+        width: auto; 
+    }
+
         .nom-proyecto,
         .desc-proyecto,
         .detalles-proyecto,
         .url-proyecto,
         .img-proyecto,
+        .tipo-proyecto,
         .imgads-proyecto {
             margin-bottom: 25px;
             padding: 20px;
@@ -27,6 +58,7 @@
         .nom-proyecto:hover,
         .desc-proyecto:hover,
         .detalles-proyecto:hover,
+        .tipo-proyecto:hover,
         .url-proyecto:hover,
         .img-proyecto:hover,
         .imgads-proyecto:hover {
@@ -57,6 +89,8 @@
             box-sizing: border-box;
             font-family: inherit;
         }
+
+        
 
         input[type="text"]:focus,
         textarea:focus {
@@ -186,32 +220,6 @@
             box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
         }
 
-        .guardar-cambios {
-            background: #dc3545;
-            color: #ffffff;
-            border: none;
-            padding: 18px 40px;
-            border-radius: 8px;
-            font-size: 18px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 30px;
-            width: 100%;
-            box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
-        }
-
-        .guardar-cambios:hover {
-            background: #b02a37;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(220, 53, 69, 0.3);
-        }
-
-        .guardar-cambios:active {
-            transform: translateY(0);
-        }
 
         /* mensaje para cuando no hay imágenes */
         #imagenes_actuales p {
