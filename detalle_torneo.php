@@ -102,6 +102,7 @@ if (!$torneo) {
     <span class="cerrar" id="cerrarModal">&times;</span>
     <h2>¡Inscríbete al torneo!</h2>
     <form>
+      <input type="text" value="<?=$torneo['pk_torneo']?>">
       <label for="nombre">Nombre completo:</label>
       <input type="text" id="nombre" name="nombre" required>
 
