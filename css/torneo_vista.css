@@ -30,7 +30,6 @@
         margin-bottom: 30px;
     }
 
-    /* Contenedor tipo grid para las tarjetas */
     .grid_torneos {
         display: flex;
         flex-wrap: wrap;
@@ -38,7 +37,7 @@
         justify-content: center;
     }
 
-    /* Estilo de cada tarjeta */
+    /* tarjetas de los torneos */
     .cont_torneo {
         background-color: #e5e5e5;
         border-radius: 15px;
@@ -58,7 +57,7 @@
     font-size: 18px;
     color: #dc3545;
     margin: 10px 0 5px;
-    font-weight: 700; /* Más gruesa */
+    font-weight: 700;
 }
 
 
