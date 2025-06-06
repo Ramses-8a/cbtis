@@ -60,7 +60,7 @@
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link text-white fw-bold" href="mostrar_proyectos.php">Proyectos</a></li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Torneos</a>
+                    <a class="nav-link dropdown-toggle text-white fw-bold" href="torneos_activos.php" role="button" data-bs-toggle="dropdown">Torneos</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item"  href="torneo1">Software</a></li>
                         <li><a class="dropdown-item" href="torneo2">Videojuegos</a></li>

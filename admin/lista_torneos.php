@@ -3,9 +3,9 @@ include('../controller/torneo/mostrar_torneos.php');
 include_once('header.php'); 
 ?>
 <head>
-    <link rel="stylesheet" href="..css">
+    <link rel="stylesheet" href="../css/list_proyecto.css">
 </head>
-
+<div class="contenedor">
 <table>
     <tr>
         <th>Imagen</th>
@@ -25,9 +25,10 @@ include_once('header.php');
         <td><?= $torneo['detalles'] ?></td>
         <td><?= $torneo['estatus']?></td>
         <td>
-            <a href="editar_torneo.php?pk_torneo=<?= $torneo['pk_torneo'] ?>">Editar</a>
-            <a href="" onclick="if(confirm('¿Dar de baja este torneo?')) window.location='baja_torneo.php?id=<?= $torneo['pk_torneo'] ?>'">Dar de baja</a>
+            <a class="btn-editar" href="editar_torneo.php?pk_torneo=<?= $torneo['pk_torneo'] ?>">Editar</a>
+            <a class="btn-eliminar" href="" onclick="if(confirm('¿Dar de baja este torneo?')) window.location='baja_torneo.php?id=<?= $torneo['pk_torneo'] ?>'">Dar de baja</a>
         </td>
     </tr>
     <?php endforeach; ?>
 </table>
+</div>
