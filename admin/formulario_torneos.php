@@ -4,12 +4,9 @@
     <title>Agregar Torneos</title>
 </head>
 
-<<<<<<< HEAD
 <form id="formProyecto" action="guardar_torneo.php" method="POST" enctype="multipart/form-data" class="form-proyectos">
 
-=======
 <form id="formTorneo" enctype="multipart/form-data">
->>>>>>> 40a42975dc7c7b075d3a86cff0e76048d22201d8
     <div>
         <label for="nom_torneo">Nombre del Torneo:</label>
         <input type="text" id="nom_torneo" name="nom_torneo">
