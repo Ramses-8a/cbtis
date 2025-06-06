@@ -2,10 +2,12 @@
 require_once(__DIR__ . '../controller/conexion.php');
 require_once 'header.php';
 
+$tipo_torneo = $_GET['tipo_torneo'];
+
 $sql = "SELECT t.pk_torneo, t.nom_torneo, t.descripcion, t.detalles, t.img, tt.nom_tipo
         FROM torneos t
         INNER JOIN tipo_torneos tt ON t.fk_tipo_torneo = tt.pk_tipo_torneo
-        WHERE t.estatus = 1
+        WHERE t.estatus = 1 and tt.pk_tipo_torneo = $tipo_torneo
         ORDER BY t.pk_torneo DESC";
 
 $stmt = $connect->prepare($sql);
@@ -73,7 +75,12 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         </a>
         <h3>Torneos</h3>
     </div>
-    <h1>Lista de Torneos</h1>
+    <h1>Lista de Torneos para <?php if($tipo_torneo == 1){
+        echo "Software";
+    }elseif ($tipo_torneo == 2){
+            echo "Videojuegos";
+        }
+     ?></h1>
 <div class="grid_torneos">
     <?php foreach ($torneos as $torneo): ?>
         <div class="cont_torneo">
