@@ -8,26 +8,31 @@ if (!isset($_GET['pk_torneo'])) {
 }
 
 ?>
+<head>
+    <link rel="stylesheet" href="../css/form_editar.css">
+</head>
 
-<form action="../controller/torneo/actualizar_torneo.php" method="POST" enctype="multipart/form-data">
+<div class="con_volver">
+        <a href="lista_proyectos.php" class="volver">
+            <img src="../img/volver.webp" alt="Volver">
+        </a>
+        <h3>Torneos</h3>
+        </div>
+
+<form action="../controller/torneo/actualizar_torneo.php" method="POST" enctype="multipart/form-data" class="form-editar">
     <input type="hidden" name="pk_torneo" value="<?php echo $pk_torneo; ?>">
     
-    <div>
+    <div class="nom-proyecto">
         <label for="nom_torneo">Nombre del Torneo:</label>
         <input type="text" id="nom_torneo" name="nom_torneo" value="<?php echo $torneo['nom_torneo']; ?>" required>
     </div>
 
-    <div>
+    <div class="nom-proyecto">
         <label for="fk_tipo_torneo">Tipo de Torneo:</label>
-        <input type="number" id="fk_tipo_torneo" name="fk_tipo_torneo" value="<?php echo $torneo['fk_tipo_torneo']; ?>" required>
+        <input type="text" id="fk_tipo_torneo" name="fk_tipo_torneo" value="<?php echo $torneo['fk_tipo_torneo']; ?>" required>
     </div>
 
-    <div>
-        <label for="estatus">Estatus:</label>
-        <input type="number" id="estatus" name="estatus" value="<?php echo $torneo['estatus']; ?>" required>
-    </div>
-
-    <div>
+    <div class="img-proyecto">
         <label for="img">Imagen:</label>
         <input type="file" id="img" name="img">
         <?php if(!empty($torneo['img'])): ?>
@@ -36,17 +41,20 @@ if (!isset($_GET['pk_torneo'])) {
         <?php endif; ?>
     </div>
 
-    <div>
+    <div class="desc-proyecto">
         <label for="descripcion">Descripción:</label>
         <textarea id="descripcion" name="descripcion" required><?php echo $torneo['descripcion']; ?></textarea>
     </div>
 
-    <div>
+    <div class="detalles-proyecto">
         <label for="detalles">Detalles:</label>
         <textarea id="detalles" name="detalles" required><?php echo $torneo['detalles']; ?></textarea>
     </div>
 
-    <button type="submit">Actualizar Torneo</button>
+    <div class="button-container">
+        <button class="guardar" type="submit">Actualizar Torneo</button>
+        <button class="cancelar" type="submit" onclick="window.location.href='lista_torneos.php'">Cancelar</button>
+    </div>
 </form>
 
 <script>
@@ -91,3 +99,27 @@ if (!isset($_GET['pk_torneo'])) {
 
     });
 </script>
+
+<style>
+    /* contenedor para volver */
+.con_volver {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background-color: white;
+}
+
+.con_volver .volver img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.con_volver h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+</style>
