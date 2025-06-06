@@ -72,7 +72,10 @@ $num_imagenes = $stmt->fetchColumn();
     
     <a class="btn-agg-img" href="formulario_fotos.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Agregar nuevas fotos</a>
 
-    <button class="guardar-cambios" type="submit">Guardar Cambios</button> 
+    <div class="button-container">
+        <button class="guardar" type="submit">Actualizar Proyecto</button>
+        <button class="cancelar" type="submit" onclick="window.location.href='lista_proyectos.php'">Cancelar</button>
+    </div>
     <!-- despues de guardar que te mande a la tabla "lista_proyectos.php" -->
 </form>
 

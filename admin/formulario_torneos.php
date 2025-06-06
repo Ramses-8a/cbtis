@@ -53,9 +53,11 @@
         <div id="preview_adicionales" style="margin-top: 10px;"></div>
     </div>
 
-    <div>
-        <button type="submit">Crear Torneo</button>
+    <div class="button-container">
+        <button class="guardar" type="submit">Crear Torneos</button>
+        <button class="cancelar" type="submit" onclick="window.location.href='index.php'">Cancelar</button>
     </div>
+    
 </form>
 
 <script>

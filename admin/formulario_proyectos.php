@@ -48,8 +48,9 @@ include_once('header.php');
         <div id="preview_adicionales" style="margin-top: 10px;"></div>
     </div>
 
-    <div>
-        <button type="submit">Crear Proyecto</button>
+    <div class="button-container">
+        <button class="guardar" type="submit">Crear Proyecto</button>
+        <button class="cancelar" type="submit" onclick="window.location.href='index.php'">Cancelar</button>
     </div>
 </form>
 
