@@ -2,6 +2,10 @@
 include('../controller/torneo/mostrar_torneos.php');
 include_once('header.php'); 
 ?>
+<head>
+    <link rel="stylesheet" href="..css">
+</head>
+
 <table>
     <tr>
         <th>Imagen</th>
