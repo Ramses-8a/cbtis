@@ -26,6 +26,7 @@ $imagenes = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
      <link rel="stylesheet" href="css/ver_proyecto.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <title><?= $proyecto['nom_proyecto'] ?></title>
 </head>
 <body>

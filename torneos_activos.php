@@ -1,5 +1,6 @@
 <?php
-require_once(__DIR__ . '/../conexion.php');
+require_once(__DIR__ . '../controller/conexion.php');
+require_once 'header.php';
 
 $sql = "SELECT t.pk_torneo, t.nom_torneo, t.descripcion, t.detalles, t.img, tt.nom_tipo
         FROM torneos t
@@ -16,6 +17,9 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 <head>
     <title>Lista de Torneos</title>
+    <link rel="stylesheet" href="css/torneo_vista.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
     <style>
         .torneo {
             border: 1px solid #ccc;
@@ -38,13 +42,41 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             margin-top: 10px;
             display: block;
         }
+   /* contenedor para volver */
+        .con_volver {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 15px 20px;
+          background-color: white;
+        }
+        
+        .con_volver .volver img {
+          width: 28px;
+          height: 28px;
+          object-fit: contain;
+          cursor: pointer;
+        }
+        
+        .con_volver h3 {
+          font-size: 2.5rem;
+          font-weight: bold;
+          margin: 0;
+        }
     </style>
 </head>
-<body>
-    <h1>Lista de Torneos</h1>
 
+<body>
+   <div class="con_volver">
+        <a href="index.php" class="volver">
+            <img src="img/volver.webp" alt="Volver">
+        </a>
+        <h3>Torneos</h3>
+    </div>
+    <h1>Lista de Torneos</h1>
+<div class="grid_torneos">
     <?php foreach ($torneos as $torneo): ?>
-        <div class="torneo">
+        <div class="cont_torneo">
             <a href="detalle_torneo.php?id=<?= urlencode($torneo['pk_torneo']) ?>">
                 <h2><?= htmlspecialchars($torneo['nom_torneo']) ?></h2>
                 <p><strong>Tipo:</strong> <?= htmlspecialchars($torneo['nom_tipo']) ?></p>
@@ -57,7 +89,7 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </p>
                 <?php endif; ?>
 
-                <div>
+                <div class="torneo">
                     <strong>Imágenes adicionales:</strong><br>
                     <?php
                     $sql_imgs = "SELECT img FROM img_torneos WHERE fk_torneo = ?";
@@ -73,5 +105,6 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </a>
         </div>
     <?php endforeach; ?>
+</div>
 </body>
 </html>
