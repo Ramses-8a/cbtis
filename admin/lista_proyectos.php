@@ -8,7 +8,7 @@ include_once('header.php');
 <body>
    <div class="contenedor">
      <table>
-    <tr>
+     <tr>
         <th>Imagen</th>
         <th>Nombre</th>
         <th>Descripción</th>
@@ -16,6 +16,7 @@ include_once('header.php');
         <th>Url</th>
         <th>Estatus</th>
         <th>Acciones</th>
+        <th>Eliminar</th> <!-- Nueva columna para eliminar -->
     </tr>
     <?php foreach ($proyectos as $proyecto): ?>
     <tr>
@@ -30,6 +31,11 @@ include_once('header.php');
             <!-- Aquí se ha corregido el onclick para usar la función confirmAction -->
             <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')"><?= $proyecto['estatus'] == 1 ? 'Dar de baja' : 'Dar de alta' ?></a>
         </td>
+        <td>
+            <a class="btn-eliminar" href="#" onclick="confirmDelete(event, '<?= $proyecto['pk_proyecto'] ?>')">
+                Eliminar <i class="fas fa-trash-alt"></i> <!-- Botón de eliminar con ícono -->
+            </a>
+        </td>
     </tr>
     <?php endforeach; ?>
 </table>
@@ -38,6 +44,25 @@ include_once('header.php');
 </body>
 
 <script>
+
+function confirmDelete(event, projectId) {
+    event.preventDefault();
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: "¡No podrás revertir esto!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        confirmButtonText: 'Sí, eliminarlo!',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            window.location.href = `../controller/proyecto/eliminar_proyecto.php?id=${projectId}`;
+        }
+    });
+}
+
 function confirmAction(event, projectId, currentStatus) {
     event.preventDefault(); // Previene la acción por defecto del enlace
 
