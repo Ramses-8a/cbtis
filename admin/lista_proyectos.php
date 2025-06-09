@@ -85,4 +85,38 @@ function confirmAction(event, projectId, currentStatus) {
         }
     });
 }
+
+function eliminarProyecto(id) {
+    Swal.fire({
+        title: '¿Estás seguro?',
+        text: 'Esta acción eliminará el proyecto permanentemente.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            fetch('../php/borrar_proyecto.php?id=' + id)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Eliminado',
+                            text: data.message,
+                            timer: 2000,
+                            showConfirmButton: false
+                        }).then(() => {
+                            location.reload();
+                        });
+                    } else {
+                        Swal.fire('Error', data.message, 'error');
+                    }
+                })
+                .catch(error => {
+                    Swal.fire('Error', 'Hubo un problema con la solicitud.', 'error');
+                });
+        }
+    });
+}
 </script>
