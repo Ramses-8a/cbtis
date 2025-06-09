@@ -181,6 +181,9 @@ $(document).ready(function() {
                             $('#preview_adicionales').empty();
                             imagenesSeleccionadas = [];
                             actualizarContador();
+                            if (res.redirect_url) {
+                                window.location.href = res.redirect_url;
+                            }
                         }
                     });
                 } else {

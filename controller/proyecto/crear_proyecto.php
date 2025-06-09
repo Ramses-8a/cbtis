@@ -32,6 +32,16 @@ $detalles = trim($_POST['detalles']);
 $url = trim($_POST['url']);
 $estatus = 1;
 
+// Validación de URL usando filter_var
+if (!filter_var($url, FILTER_VALIDATE_URL)) {
+    http_response_code(400);
+    echo json_encode([
+        "status" => "error",
+        "message" => "La URL proporcionada no es válida."
+    ]);
+    exit;
+}
+
 // Validación de imagen principal
 $img = $_FILES['img_proyecto'];
 $allowed_types = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp'];
@@ -137,7 +147,8 @@ try {
             "estatus" => $estatus,
             "url_imagen" => $img_nombre,
             "total_imagenes_adicionales" => isset($total_adicionales) ? $total_adicionales : 0
-        ]
+        ],
+        "redirect_url" => "../admin/lista_proyectos.php"
     ]);
 
 } catch (Exception $e) {
