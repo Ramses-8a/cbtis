@@ -1,6 +1,4 @@
-
-        /* estilo general del formulario */
-        .form-proyectos {
+    .form-proyectos {
             max-width: 800px;
             margin: 30px auto;
             padding: 40px;
@@ -10,7 +8,37 @@
             box-shadow: 0 8px 25px rgba(220, 53, 69, 0.15);
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
-        }
+    }
+ 
+    /* estilo de los botones de cancelar y guardar */
+    .button-container {
+        display: flex;
+        justify-content: space-between; 
+        margin-top: 10px;
+    }
+
+    .guardar, .cancelar {
+        background: #dc3545;
+        color: #ffffff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 100;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
+    }
+
+    .guardar-cambios {
+        width: auto; 
+    }
+
+    .cancelar {
+        width: auto; 
+    }
 
         /* contenedores */
         .nom-proyecto,
@@ -46,6 +74,34 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
+
+         input[type="text"],
+        select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #333;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus,
+        select:focus {
+            outline: none;
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+            background: #fff;
+        }
+
+        select {
+            min-height: 10px;
+            resize: vertical;
+        }
+
 
         input[type="text"],
         textarea {

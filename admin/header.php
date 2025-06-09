@@ -70,8 +70,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Torneos</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item"  href="lista_torneos.php">Ver Torneos</a></li>
                         <li><a class="dropdown-item" href="formulario_torneos.php">Agregar Torneos</a></li>
+                        <li><a class="dropdown-item"  href="lista_torneos.php">Editar Torneos</a></li>
                     </ul>
                 </li>
 
@@ -79,7 +79,7 @@
                     <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Recursos Tecnológicos</a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="2">Ver Recursos</a></li>
-                        <li><a class="dropdown-item" href="1">Agrgar Recurso</a></li>
+                        <li><a class="dropdown-item" href="1">Agregar Recurso</a></li>
                     </ul>
                 </li>
             </ul>
