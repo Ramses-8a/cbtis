@@ -55,7 +55,7 @@
 
     <div class="button-container">
         <button class="guardar" type="submit">Crear Torneos</button>
-        <button class="cancelar" type="submit" onclick="window.location.href='index.php'">Cancelar</button>
+        <button class="cancelar" type="button" onclick="window.location.href='index.php'">Cancelar</button>
     </div>
     
 </form>

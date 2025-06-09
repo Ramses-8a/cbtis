@@ -1,5 +1,5 @@
 <?php
-require_once(__DIR__ . '../controller/conexion.php');
+require_once 'controller/conexion.php';
 require_once 'header.php';
 
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
@@ -30,33 +30,9 @@ if (!$torneo) {
     <title>Detalle del Torneo - <?= htmlspecialchars($torneo['nom_torneo']) ?></title>
     <link rel="stylesheet" href="css/detalle_torneo.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
 </head>
 <body>
-        <style>
-            /* contenedor para volver */
-        .con_volver {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 15px 20px;
-          background-color: white;
-        }
-        
-        .con_volver .volver img {
-          width: 28px;
-          height: 28px;
-          object-fit: contain;
-          cursor: pointer;
-        }
-        
-        .con_volver h3 {
-          font-size: 2.5rem;
-          font-weight: bold;
-          margin: 0;
-        }
-        </style>
-   <div class="con_volver">
+    <div class="con_volver">
         <a href="torneos_activos.php" class="volver">
             <img src="img/volver.webp" alt="Volver">
         </a>
@@ -70,7 +46,7 @@ if (!$torneo) {
 
     <?php if (!empty($torneo['img'])): ?>
         <p><strong>Imagen Principal:</strong><br>
-        <img src="../../uploads/<?= urlencode($torneo['img']) ?>" alt="Imagen principal"></p>
+        <img src="../../uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen principal" style="max-width:100%; height:auto;"></p>
     <?php endif; ?>
 
     <div class="imagenes-adicionales">
@@ -86,57 +62,93 @@ if (!$torneo) {
         } else {
             foreach ($imgs as $img):
         ?>
-                <img src="../../uploads/<?= ($img['img']) ?>" alt="Imagen adicional">
+                <img src="../../uploads/<?= htmlspecialchars($img['img']) ?>" alt="Imagen adicional" style="max-width:150px; margin:5px;">
         <?php
             endforeach;
         }
         ?>
     </div>
 
-<!-- este boton es para abril el modal -->
-<button class="btn-flotante" id="btnAbrirModal">+</button>
+    <!-- Botón para abrir modal -->
+    <div class="btn-flotante" id="btnAbrirModal">+</div>
 
-<!-- este es el modal para incribirse -->
-<div class="modal" id="modalInscripcion">
-  <div class="modal-contenido">
-    <span class="cerrar" id="cerrarModal">&times;</span>
-    <h2>¡Inscríbete al torneo!</h2>
-    <form>
-      <input type="text" value="<?=$torneo['pk_torneo']?>">
-      <label for="nombre">Nombre completo:</label>
-      <input type="text" id="nombre" name="nombre" required>
+    <!-- Modal inscripción -->
+    <div class="modal" id="modalInscripcion" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); justify-content:center; align-items:center;">
+      <div class="modal-contenido" style="background-color:#fff; padding:20px; border-radius:8px; width:90%; max-width:400px; position:relative;">
+        <span class="cerrar" id="cerrarModal" style="position:absolute; top:10px; right:15px; font-size:28px; font-weight:bold; color:#333; cursor:pointer;">&times;</span>
+        <h2>¡Inscríbete al torneo!</h2>
+        <form id="formInscripcion">
+          <input type="hidden" name="pk_torneo" value="<?= htmlspecialchars($torneo['pk_torneo']) ?>">
+          <label for="nombre">Nombre completo:</label>
+          <input type="text" id="nombre" name="nombre" required>
 
-      <label for="grado">Grado:</label>
-      <input type="text" id="grado" name="grado" required>
+          <label for="grado">Grado:</label>
+          <input type="text" id="grado" name="grado" required>
 
-      <label for="grupo">Grupo:</label>
-      <input type="text" id="grupo" name="grupo" required>
+          <label for="grupo">Grupo:</label>
+          <input type="text" id="grupo" name="grupo" required>
 
-      <button type="submit" class="btn-inscribirse">Inscribirse</button>
-    </form>
-  </div>
-</div>
-
-
-</body>
-</html>
+          <button type="submit" class="btn-inscribirse">Inscribirse</button>
+        </form>
+        <div id="mensajeInscripcion" style="margin-top:10px; font-weight:600;"></div>
+      </div>
+    </div>
 
 <script>
+    // Abrir modal
     document.getElementById("btnAbrirModal").onclick = function () {
         document.getElementById("modalInscripcion").style.display = "flex";
     };
 
+    // Cerrar modal con la X
     document.getElementById("cerrarModal").onclick = function () {
         document.getElementById("modalInscripcion").style.display = "none";
+        document.getElementById('mensajeInscripcion').textContent = '';
     };
 
+    // Cerrar modal al hacer clic fuera
     window.onclick = function (event) {
         const modal = document.getElementById("modalInscripcion");
         if (event.target === modal) {
             modal.style.display = "none";
+            document.getElementById('mensajeInscripcion').textContent = '';
         }
     };
+
+    // Enviar formulario con AJAX
+    document.getElementById('formInscripcion').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const form = e.target;
+        const data = new FormData(form);
+
+        fetch('guardar_inscripcion.php', {
+            method: 'POST',
+            body: data
+        })
+        .then(response => response.json())
+        .then(res => {
+            const mensajeDiv = document.getElementById('mensajeInscripcion');
+            if (res.success) {
+                mensajeDiv.style.color = 'green';
+                mensajeDiv.textContent = res.message;
+                form.reset();
+                setTimeout(() => {
+                    document.getElementById('modalInscripcion').style.display = 'none';
+                    mensajeDiv.textContent = '';
+                }, 2000);
+            } else {
+                mensajeDiv.style.color = 'red';
+                mensajeDiv.textContent = res.message;
+            }
+        })
+        .catch(() => {
+            const mensajeDiv = document.getElementById('mensajeInscripcion');
+            mensajeDiv.style.color = 'red';
+            mensajeDiv.textContent = 'Error de conexión.';
+        });
+    });
 </script>
 
-
-
+</body>
+</html>
