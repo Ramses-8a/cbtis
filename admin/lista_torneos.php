@@ -26,9 +26,9 @@ include_once('header.php');
         <td><?= $torneo['estatus']?></td>
         <td>
 
-            <a href="editar_torneo.php?pk_torneo=<?= $torneo['pk_torneo'] ?>">Editar</a>
-            <a href="" onclick="if(confirm('¿Dar de baja este torneo?')) window.location='baja_torneo.php?id=<?= $torneo['pk_torneo'] ?>'">Dar de baja</a>
-            <a href="lista_participantes.php?pk_torneo=<?= $torneo['pk_torneo']?>">Ver particiapantes</a>
+            <a class="btn-editar" href="editar_torneo.php?pk_torneo=<?= $torneo['pk_torneo'] ?>">Editar</a>
+            <a class="btn-eliminar" href="" onclick="if(confirm('¿Dar de baja este torneo?')) window.location='baja_torneo.php?id=<?= $torneo['pk_torneo'] ?>'">Dar de baja</a>
+            <a class="btn-editar" href="lista_participantes.php?pk_torneo=<?= $torneo['pk_torneo']?>">Ver particiapantes</a>
         </td>
     </tr>
     <?php endforeach; ?>

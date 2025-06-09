@@ -95,20 +95,6 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <img src="../../uploads/<?= urlencode($torneo['img']) ?>" alt="Imagen principal">
                     </p>
                 <?php endif; ?>
-
-                <div class="torneo">
-                    <strong>Imágenes adicionales:</strong><br>
-                    <?php
-                    $sql_imgs = "SELECT img FROM img_torneos WHERE fk_torneo = ?";
-                    $stmt_imgs = $connect->prepare($sql_imgs);
-                    $stmt_imgs->execute([$torneo['pk_torneo']]);
-                    $imgs = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
-
-                    foreach ($imgs as $img):
-                    ?>
-                        <img src="../../uploads/<?= ($img['img']) ?>" alt="Imagen adicional">
-                    <?php endforeach; ?>
-                </div>
             </a>
         </div>
     <?php endforeach; ?>
