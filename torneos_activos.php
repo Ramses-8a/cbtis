@@ -2,7 +2,6 @@
 require_once 'controller/conexion.php';
 require_once 'header.php';
 
-
 $tipo = $_GET['tipo'] ?? '';
 
 if ($tipo) {
