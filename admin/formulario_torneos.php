@@ -14,7 +14,7 @@
 
     <div>
         <label for="tipo_torneo">Tipo de torneo:</label>
-        <select name="fk_tipo_torneo" required>
+         <select name="fk_tipo_torneo" required>
             <?php
             include_once '../controller/conexion.php';
             $stmt = $connect->prepare("SELECT pk_tipo_torneo, nom_tipo FROM tipo_torneos WHERE estatus = 1");

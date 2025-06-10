@@ -35,27 +35,6 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="css/torneo_vista.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
-        .torneo {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin-bottom: 15px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        .torneo:hover {
-            background-color: #f0f0f0;
-        }
-        .torneo a {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-        .torneo img {
-            max-width: 200px;
-            height: auto;
-            margin-top: 10px;
-            display: block;
-        }
    /* contenedor para volver */
         .con_volver {
           display: flex;
@@ -103,7 +82,6 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <h2><?= htmlspecialchars($torneo['nom_torneo']) ?></h2>
                     <p><strong>Tipo:</strong> <?= htmlspecialchars($torneo['nom_tipo']) ?></p>
                     <p><strong>Descripción:</strong> <?= htmlspecialchars($torneo['descripcion']) ?></p>
-                    <p><strong>Detalles:</strong> <?= htmlspecialchars($torneo['detalles']) ?></p>
 
                     <?php if (!empty($torneo['img'])): ?>
                         <p><strong>Imagen Principal:</strong><br>
@@ -111,18 +89,6 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         </p>
                     <?php endif; ?>
 
-                    <div class="torneo">
-                        <strong>Imágenes adicionales:</strong><br>
-                        <?php
-                        $sql_imgs = "SELECT img FROM img_torneos WHERE fk_torneo = ?";
-                        $stmt_imgs = $connect->prepare($sql_imgs);
-                        $stmt_imgs->execute([$torneo['pk_torneo']]);
-                        $imgs = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
-                        foreach ($imgs as $img):
-                        ?>
-                            <img src="../../uploads/<?= ($img['img']) ?>" alt="Imagen adicional">
-                        <?php endforeach; ?>
-                    </div>
                 </a>
             </div>
         <?php endforeach; ?>
@@ -132,6 +98,7 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </div>
 </body>
 </html>
+
 
 
 

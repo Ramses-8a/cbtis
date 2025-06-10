@@ -67,26 +67,3 @@ $imagenes = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
 </body>
 </html>
 
-<style>
-    /* estilo del contenedor para volver */
-.con_volver {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 20px;
-  background-color: white;
-}
-
-.con_volver .volver img {
-  width: 30px;
-  height: 28px;
-  object-fit: contain;
-  cursor: pointer;
-}
-
-.con_volver h3 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin: 0;
-}
-</style>
