@@ -15,6 +15,7 @@ if (isset($_GET['id'])) {
         if ($proyecto) {
             // Determinar el nuevo estatus (0 si es 1, 1 si es 0)
             $nuevo_estatus = ($proyecto['estatus'] == 1) ? 0 : 1;
+            $mensaje = ($nuevo_estatus == 1) ? 'activado' : 'desactivado';
 
             // Actualizar el estatus en la base de datos
             $sql_update = "UPDATE proyectos SET estatus = :nuevo_estatus WHERE pk_proyecto = :id";
@@ -23,24 +24,24 @@ if (isset($_GET['id'])) {
             $stmt_update->bindParam(':id', $id, PDO::PARAM_INT);
 
             if ($stmt_update->execute()) {
-                // Redirigir a la página anterior usando JavaScript
-                echo '<script>history.back();</script>';
+                // Redirigir con mensaje de éxito
+                header('Location: ../../admin/lista_proyectos.php?status_changed=1&message=' . urlencode($mensaje));
                 exit();
             } else {
-                // Manejar error de actualización
-                echo "Error al actualizar el estatus del proyecto.";
+                header('Location: ../../admin/lista_proyectos.php?error=update_failed');
+                exit();
             }
         } else {
-            // Manejar caso donde no se encuentra el proyecto
-            echo "Proyecto no encontrado.";
+            header('Location: ../../admin/lista_proyectos.php?error=not_found');
+            exit();
         }
 
     } catch (PDOException $e) {
-        // Manejar errores de base de datos
-        echo "Error en la base de datos: " . $e->getMessage();
+        header('Location: ../../admin/lista_proyectos.php?error=' . urlencode($e->getMessage()));
+        exit();
     }
 } else {
-    // Manejar caso donde no se proporciona el ID
-    echo "ID no proporcionado.";
+    header('Location: ../../admin/lista_proyectos.php?error=no_id');
+    exit();
 }
 ?>
