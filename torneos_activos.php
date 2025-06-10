@@ -7,7 +7,7 @@ $tipo_torneo = $_GET['tipo_torneo'];
 $sql = "SELECT t.pk_torneo, t.nom_torneo, t.descripcion, t.detalles, t.img, tt.nom_tipo
         FROM torneos t
         INNER JOIN tipo_torneos tt ON t.fk_tipo_torneo = tt.pk_tipo_torneo
-        WHERE t.estatus = 1 and tt.pk_tipo_torneo = $tipo_torneo
+        WHERE t.estatus = 1 and tt.nom_tipo = $tipo_torneo
         ORDER BY t.pk_torneo DESC";
 
 $stmt = $connect->prepare($sql);
