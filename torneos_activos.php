@@ -2,6 +2,7 @@
 require_once 'controller/conexion.php';
 require_once 'header.php';
 
+
 $tipo = $_GET['tipo'] ?? '';
 
 if ($tipo) {
@@ -23,6 +24,7 @@ if ($tipo) {
     $stmt = $connect->prepare($sql);
     $stmt->execute();
 }
+
 
 $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
@@ -80,6 +82,7 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </head>
 
 <body>
+
 <div class="con_volver">
     <a href="index.php" class="volver">
         <img src="img/volver.webp" alt="Volver">
