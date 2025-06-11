@@ -23,7 +23,7 @@ try {
             }
 
             $img_adicional_nombre = uniqid() . "_" . basename($_FILES['img_adicionales']['name'][$i]);
-            $img_adicional_ruta = "../../img/" . $img_adicional_nombre;
+            $img_adicional_ruta = "../../uploads/" . $img_adicional_nombre;
 
             if (!move_uploaded_file($_FILES['img_adicionales']['tmp_name'][$i], $img_adicional_ruta)) {
                 throw new Exception("Error al guardar imagen adicional " . ($i + 1));

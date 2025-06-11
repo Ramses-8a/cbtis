@@ -49,7 +49,7 @@ $num_imagenes = $stmt->fetchColumn();
     
     <div class="img-proyecto">
         <label>Imagen Principal:</label>
-        <img id="img-preview" src="../img/<?= $proyecto['img_proyecto'] ?>" style="max-width: 200px; max-height: 200px; object-fit: contain;">
+        <img id="img-preview" src="../uploads/<?= $proyecto['img_proyecto'] ?>" style="max-width: 200px; max-height: 200px; object-fit: contain;">
         <input type="file" name="img_proyecto" accept="image/*">
         <small>Dejar vacío para mantener la imagen actual</small>
     </div>
@@ -60,7 +60,7 @@ $num_imagenes = $stmt->fetchColumn();
             <?php if (!empty($proyecto['imagenes_adicionales'])): ?>
                 <?php foreach ($proyecto['imagenes_adicionales'] as $img): ?>
                     <div style="display: inline-block; margin: 5px; position: relative;">
-                        <img src="../img/<?= $img['img'] ?>" style="width: 150px; height: 150px; object-fit: contain;">
+                        <img src="../uploads/<?= $img['img'] ?>" style="width: 150px; height: 150px; object-fit: contain;">
                         <button type="button" class="eliminar-imagen" data-id="<?= $img['pk_img_proyectos'] ?>" style="position: absolute; top: 0; right: 0;">X</button>
                     </div>
                 <?php endforeach; ?>
@@ -94,7 +94,7 @@ $(document).ready(function() {
             };
             reader.readAsDataURL(file);
         } else {
-            imgPreview.attr('src', '../img/' + '<?= $proyecto["img_proyecto"] ?>');
+            imgPreview.attr('src', '../uploads/' + '<?= $proyecto["img_proyecto"] ?>');
         }
     });
 
