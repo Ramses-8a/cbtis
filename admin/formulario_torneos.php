@@ -44,15 +44,6 @@
         <input type="text" id="detalles" name="detalles">
     </div>
 
-    <div>
-        <label>Imágenes Adicionales:</label>
-        <div>
-            <input type="file" id="img_adicionales" name="img_adicionales[]" accept="image/*" multiple>
-            <span id="contador_imagenes">0/10 imágenes seleccionadas</span>
-        </div>
-        <div id="preview_adicionales" style="margin-top: 10px;"></div>
-    </div>
-
     <div class="button-container">
         <button class="guardar" type="submit">Crear Torneos</button>
         <button class="cancelar" type="button" onclick="window.location.href='index.php'">Cancelar</button>

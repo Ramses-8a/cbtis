@@ -49,25 +49,7 @@ if (!$torneo) {
         <img src="../../uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen principal" style="max-width:100%; height:auto;"></p>
     <?php endif; ?>
 
-    <div class="imagenes-adicionales">
-        <strong>Imágenes adicionales:</strong><br>
-        <?php
-        $sql_imgs = "SELECT img FROM img_torneos WHERE fk_torneo = ?";
-        $stmt_imgs = $connect->prepare($sql_imgs);
-        $stmt_imgs->execute([$torneo['pk_torneo']]);
-        $imgs = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
-
-        if (count($imgs) === 0) {
-            echo "<p>No hay imágenes adicionales.</p>";
-        } else {
-            foreach ($imgs as $img):
-        ?>
-                <img src="../../uploads/<?= htmlspecialchars($img['img']) ?>" alt="Imagen adicional" style="max-width:150px; margin:5px;">
-        <?php
-            endforeach;
-        }
-        ?>
-    </div>
+   
 
     <!-- Botón para abrir modal -->
     <div class="btn-flotante" id="btnAbrirModal">+</div>

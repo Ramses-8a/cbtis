@@ -34,29 +34,6 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Lista de Torneos</title>
     <link rel="stylesheet" href="css/torneo_vista.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-   /* contenedor para volver */
-        .con_volver {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 15px 20px;
-          background-color: white;
-        }
-        
-        .con_volver .volver img {
-          width: 28px;
-          height: 28px;
-          object-fit: contain;
-          cursor: pointer;
-        }
-        
-        .con_volver h3 {
-          font-size: 2.5rem;
-          font-weight: bold;
-          margin: 0;
-        }
-    </style>
 </head>
 
 <body>
@@ -99,7 +76,26 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </body>
 </html>
 
-
-
-
-
+ <style>
+   /* contenedor para volver */
+        .con_volver {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 15px 20px;
+          background-color: white;
+        }
+        
+        .con_volver .volver img {
+          width: 28px;
+          height: 28px;
+          object-fit: contain;
+          cursor: pointer;
+        }
+        
+        .con_volver h3 {
+          font-size: 2.5rem;
+          font-weight: bold;
+          margin: 0;
+        }
+    </style>
