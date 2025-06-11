@@ -58,11 +58,11 @@ if ($img['size'] > $max_size) {
 }
 
 $img_nombre = uniqid() . "_" . basename($img['name']);
-$img_ruta = "../../img/" . $img_nombre;
+$img_ruta = "../../uploads/" . $img_nombre;
 
 // Asegurarse de que la carpeta exista
-if (!is_dir("../../img")) {
-    mkdir("../../img", 0777, true);
+if (!is_dir("../../uploads")) {
+    mkdir("../../uploads", 0777, true);
 }
 
 if (!move_uploaded_file($img['tmp_name'], $img_ruta)) {
@@ -111,7 +111,7 @@ try {
             }
 
             $img_adicional_nombre = uniqid() . "_" . basename($_FILES['img_adicionales']['name'][$i]);
-            $img_adicional_ruta = "../../img/" . $img_adicional_nombre;
+            $img_adicional_ruta = "../../uploads/" . $img_adicional_nombre;
 
             if (!move_uploaded_file($_FILES['img_adicionales']['tmp_name'][$i], $img_adicional_ruta)) {
                 throw new Exception("Error al guardar imagen adicional " . ($i + 1));
@@ -131,6 +131,7 @@ try {
     echo json_encode([
         "status" => "success",
         "message" => "Proyecto creado correctamente con todas sus imágenes",
+        "redirect_url" => "../admin/lista_proyectos.php",
         "data" => [
             "nombre" => $nom_proyecto,
             "imagen" => $img_nombre,
