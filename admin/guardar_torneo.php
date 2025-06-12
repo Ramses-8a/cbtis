@@ -1,6 +1,7 @@
 <?php
 require_once(__DIR__ . '/../controller/conexion.php');
-////NO ME DIGAN NADA PORQUE LOS DEMAS ARCHIVOS TAMBIEN ESTAN COMENTADOS
+// NO ME DIGAN NADA PORQUE LOS DEMAS ARCHIVOS TAMBIEN ESTAN COMENTADOS
+
 if (
     empty($_POST['nom_torneo']) ||
     empty($_POST['fk_tipo_torneo']) ||
@@ -32,7 +33,7 @@ $descripcion = trim($_POST['descripcion']);
 $detalles = trim($_POST['detalles']);
 $estatus = 1;
 
-// Validaciones de imagen
+// Validaciones de imagen principal
 $img = $_FILES['img_proyecto'];
 $allowed_types = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'image/webp'];
 $max_size = 5 * 1024 * 1024; // 5MB
@@ -76,7 +77,7 @@ if (!move_uploaded_file($img['tmp_name'], $ruta_img)) {
 $connect->beginTransaction();
 
 try {
-    // Insertar torneo principal
+    // Insertar torneo
     $stmt = $connect->prepare("INSERT INTO torneos (nom_torneo, fk_tipo_torneo, estatus, img, descripcion, detalles)
                                VALUES (:nom_torneo, :fk_tipo_torneo, :estatus, :img, :descripcion, :detalles)");
     $stmt->bindParam(':nom_torneo', $nom_torneo);
@@ -87,39 +88,6 @@ try {
     $stmt->bindParam(':detalles', $detalles);
     $stmt->execute();
 
-    $id_torneo = $connect->lastInsertId();
-
-    // Procesar imágenes adicionales
-    if (isset($_FILES['img_adicionales']) && !empty($_FILES['img_adicionales']['name'][0])) {
-        $total_adicionales = count($_FILES['img_adicionales']['name']);
-
-        if ($total_adicionales > 10) {
-            throw new Exception("No se pueden subir más de 10 imágenes adicionales");
-        }
-
-        for ($i = 0; $i < $total_adicionales; $i++) {
-            if (!in_array($_FILES['img_adicionales']['type'][$i], $allowed_types)) {
-                throw new Exception("Tipo de imagen adicional no permitido en la imagen " . ($i + 1));
-            }
-
-            if ($_FILES['img_adicionales']['size'][$i] > $max_size) {
-                throw new Exception("Imagen adicional " . ($i + 1) . " excede el tamaño máximo");
-            }
-
-            $img_adicional_nombre = uniqid() . "_" . basename($_FILES['img_adicionales']['name'][$i]);
-            $img_adicional_ruta = $carpeta_destino . $img_adicional_nombre;
-
-            if (!move_uploaded_file($_FILES['img_adicionales']['tmp_name'][$i], $img_adicional_ruta)) {
-                throw new Exception("Error al guardar la imagen adicional " . ($i + 1));
-            }
-
-            $stmt_img = $connect->prepare("INSERT INTO img_torneos (img, fk_torneo) VALUES (:img, :fk_torneo)");
-            $stmt_img->bindParam(':img', $img_adicional_nombre);
-            $stmt_img->bindParam(':fk_torneo', $id_torneo);
-            $stmt_img->execute();
-        }
-    }
-
     $connect->commit();
 
     echo json_encode([
@@ -128,8 +96,7 @@ try {
         "data" => [
             "nombre" => $nom_torneo,
             "imagen" => $img_nombre,
-            "estatus" => $estatus,
-            "total_imagenes_adicionales" => isset($total_adicionales) ? $total_adicionales : 0
+            "estatus" => $estatus
         ]
     ]);
 } catch (Exception $e) {
@@ -137,15 +104,6 @@ try {
 
     if (file_exists($ruta_img)) {
         unlink($ruta_img);
-    }
-
-    if (isset($total_adicionales)) {
-        for ($i = 0; $i < $total_adicionales; $i++) {
-            $img_temp_ruta = $carpeta_destino . uniqid() . "_" . basename($_FILES['img_adicionales']['name'][$i]);
-            if (file_exists($img_temp_ruta)) {
-                unlink($img_temp_ruta);
-            }
-        }
     }
 
     http_response_code(500);
