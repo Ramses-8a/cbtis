@@ -45,12 +45,15 @@ if (!$torneo) {
     <p><strong>Detalles:</strong> <?= nl2br(htmlspecialchars($torneo['detalles'])) ?></p>
 
     <?php if (!empty($torneo['img'])): ?>
-        <p><strong>Imagen Principal:</strong><br>
-        <img src="../../uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen principal" style="max-width:100%; height:auto;"></p>
+        <p><strong>Imagen del Torneo:</strong><br>
+        <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen del torneo" style="max-width:100%; height:auto;"></p>
     <?php endif; ?>
 
+<<<<<<< HEAD
    
 
+=======
+>>>>>>> 28daf49c287d47d870a6f18ce35acd4288e19f7e
     <!-- Botón para abrir modal -->
     <div class="btn-flotante" id="btnAbrirModal">+</div>
 
@@ -77,18 +80,15 @@ if (!$torneo) {
     </div>
 
 <script>
-    // Abrir modal
     document.getElementById("btnAbrirModal").onclick = function () {
         document.getElementById("modalInscripcion").style.display = "flex";
     };
 
-    // Cerrar modal con la X
     document.getElementById("cerrarModal").onclick = function () {
         document.getElementById("modalInscripcion").style.display = "none";
         document.getElementById('mensajeInscripcion').textContent = '';
     };
 
-    // Cerrar modal al hacer clic fuera
     window.onclick = function (event) {
         const modal = document.getElementById("modalInscripcion");
         if (event.target === modal) {
@@ -97,7 +97,6 @@ if (!$torneo) {
         }
     };
 
-    // Enviar formulario con AJAX
     document.getElementById('formInscripcion').addEventListener('submit', function(e) {
         e.preventDefault();
 

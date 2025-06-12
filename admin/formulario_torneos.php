@@ -1,15 +1,15 @@
-<?php include_once('header.php'); ?>
+<?php
+ include_once('header.php'); 
+ ?>
 <head>
     <link rel="stylesheet" href="../css/form_proyecto.css">
     <title>Agregar Torneos</title>
 </head>
 
-<form id="formProyecto" action="guardar_torneo.php" method="POST" enctype="multipart/form-data" class="form-proyectos">
-
-<form id="formTorneo" enctype="multipart/form-data">
+<form id="formTorneo" action="guardar_torneo.php" method="POST" enctype="multipart/form-data" class="form-proyectos">
     <div>
         <label for="nom_torneo">Nombre del Torneo:</label>
-        <input type="text" id="nom_torneo" name="nom_torneo">
+        <input type="text" id="nom_torneo" name="nom_torneo" required>
     </div>
 
     <div>
@@ -20,7 +20,6 @@
             $stmt = $connect->prepare("SELECT pk_tipo_torneo, nom_tipo FROM tipo_torneos WHERE estatus = 1");
             $stmt->execute();
             $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
             foreach ($result as $row) {
                 echo "<option value='{$row['pk_tipo_torneo']}'>{$row['nom_tipo']}</option>";
             }
@@ -30,32 +29,34 @@
 
     <div>
         <label for="img_proyecto">Imagen del torneo:</label>
-        <input type="file" id="img_proyecto" name="img_proyecto" accept="image/*">
+        <input type="file" id="img_proyecto" name="img_proyecto" accept="image/*" required>
         <div id="preview_principal" style="max-width: 200px; max-height: 200px; margin-top: 10px;"></div>
     </div>
 
     <div>
         <label for="descripcion">Descripción:</label>
-        <input type="text" id="descripcion" name="descripcion">
+        <input type="text" id="descripcion" name="descripcion" required>
     </div>
 
     <div>
         <label for="detalles">Detalles del Torneo:</label>
+<<<<<<< HEAD
         <input type="text" id="detalles" name="detalles">
+=======
+        <input type="text" id="detalles" name="detalles" required>
+>>>>>>> 28daf49c287d47d870a6f18ce35acd4288e19f7e
     </div>
 
     <div class="button-container">
         <button class="guardar" type="submit">Crear Torneos</button>
         <button class="cancelar" type="button" onclick="window.location.href='index.php'">Cancelar</button>
     </div>
-    
 </form>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 $(document).ready(function() {
-    let imagenesSeleccionadas = [];
-    const maxImagenes = 10;
-
     $('#img_proyecto').on('change', function() {
         const file = this.files[0];
         const preview = document.getElementById('preview_principal');
@@ -74,79 +75,10 @@ $(document).ready(function() {
         }
     });
 
-    $('#img_adicionales').on('change', function() {
-        const files = Array.from(this.files);
-        const espacioDisponible = maxImagenes - imagenesSeleccionadas.length;
-
-        if (files.length > espacioDisponible) {
-            alert(`Solo puedes agregar ${espacioDisponible} imagen(es) más.`);
-            this.value = '';
-            return;
-        }
-
-        files.forEach(file => {
-            if (imagenesSeleccionadas.length < maxImagenes) {
-                const container = document.createElement('div');
-                container.style.display = 'inline-block';
-                container.style.margin = '5px';
-                container.style.position = 'relative';
-
-                const img = document.createElement('img');
-                img.style.width = '150px';
-                img.style.height = '150px';
-                img.style.objectFit = 'contain';
-
-                const btn = document.createElement('button');
-                btn.textContent = 'X';
-                btn.style.position = 'absolute';
-                btn.style.top = '0';
-                btn.style.right = '0';
-
-                const reader = new FileReader();
-                reader.onload = function(e) {
-                    img.src = e.target.result;
-                };
-                reader.readAsDataURL(file);
-
-                container.appendChild(img);
-                container.appendChild(btn);
-                document.getElementById('preview_adicionales').appendChild(container);
-
-                imagenesSeleccionadas.push({ file: file, container: container });
-
-                btn.onclick = function(e) {
-                    e.preventDefault();
-                    container.remove();
-                    imagenesSeleccionadas = imagenesSeleccionadas.filter(i => i.container !== container);
-                    actualizarContador();
-                    $('#img_adicionales').val('');
-                };
-            }
-        });
-
-        actualizarContador();
-        this.value = '';
-    });
-
-    function actualizarContador() {
-        $('#contador_imagenes').text(`${imagenesSeleccionadas.length}/10 imágenes seleccionadas`);
-    }
-
     $('#formTorneo').on('submit', function(e) {
         e.preventDefault();
 
         const formData = new FormData(this);
-
-        // Limpiar imágenes adicionales duplicadas del input
-        for (let pair of formData.entries()) {
-            if (pair[0] === 'img_adicionales[]') {
-                formData.delete(pair[0]);
-            }
-        }
-
-        imagenesSeleccionadas.forEach(img => {
-            formData.append('img_adicionales[]', img.file);
-        });
 
         $.ajax({
             url: 'guardar_torneo.php',
@@ -165,9 +97,6 @@ $(document).ready(function() {
                     }).then(() => {
                         $('#formTorneo')[0].reset();
                         $('#preview_principal').empty();
-                        $('#preview_adicionales').empty();
-                        imagenesSeleccionadas = [];
-                        actualizarContador();
                     });
                 } else {
                     Swal.fire({
@@ -178,7 +107,7 @@ $(document).ready(function() {
                     });
                 }
             },
-            error: function(xhr) {
+            error: function() {
                 Swal.fire({
                     icon: 'error',
                     title: 'Error',

@@ -15,27 +15,27 @@ include_once('header.php');
 <form id="formProyecto" enctype="multipart/form-data" class="form-proyectos">
     <div>
         <label for="nom_proyecto">Nombre del Proyecto:</label>
-        <input type="text" id="nom_proyecto" name="nom_proyecto" >
+        <input type="text" id="nom_proyecto" name="nom_proyecto" required>
     </div>
 
     <div>
         <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion" ></textarea>
+        <textarea id="descripcion" name="descripcion" required></textarea>
     </div>
 
     <div>
         <label for="detalles">Detalles:</label>
-        <textarea id="detalles" name="detalles" ></textarea>
+        <textarea id="detalles" name="detalles" required></textarea>
     </div>
 
     <div>
         <label for="url">Url:</label>
-       <input type="text" id="url" name="url" >
+       <input type="text" id="url" name="url" required>
     </div>
 
     <div>
         <label for="img_proyecto">Imagen Principal del Proyecto:</label>
-        <input type="file" id="img_proyecto" name="img_proyecto" accept="image/*" >
+        <input type="file" id="img_proyecto" name="img_proyecto" accept="image/*" required>
         <div id="preview_principal" style="max-width: 200px; max-height: 200px; margin-top: 10px;"></div>
     </div>
 
@@ -177,14 +177,7 @@ $(document).ready(function() {
                         confirmButtonColor: '#9d0707'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            $('#formProyecto')[0].reset();
-                            $('#preview_principal').empty();
-                            $('#preview_adicionales').empty();
-                            imagenesSeleccionadas = [];
-                            actualizarContador();
-                            if (res.redirect_url) {
-                                window.location.href = res.redirect_url;
-                            }
+                            window.location.href = res.redirect_url;
                         }
                     });
                 } else {

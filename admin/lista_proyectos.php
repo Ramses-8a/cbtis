@@ -1,47 +1,59 @@
 <?php
-include('../controller/proyecto/mostrar_proyecto.php');
+$proyectos = include('../controller/proyecto/mostrar_proyecto.php');
 include_once('header.php'); 
 ?> 
 <head>
     <link rel="stylesheet" href="../css/list_proyecto.css">
 </head>
 <body>
-   <div class="contenedor">
-     <table>
-     <tr>
-        <th>Imagen</th>
-        <th>Nombre</th>
-        <th>Descripción</th>
-        <th>Detalles</th>
-        <th>Url</th>
-        <th>Estatus</th>
-        <th>Acciones</th>
-        <th>Eliminar</th> <!-- Nueva columna para eliminar -->
-    </tr>
-    <?php foreach ($proyectos as $proyecto): ?>
-    <tr>
-        <td><img src="../img/<?= $proyecto['img_proyecto'] ?>" width="50px"></td>
-        <td><?= $proyecto['nom_proyecto'] ?></td>
-        <td><?= $proyecto['descripcion'] ?></td>
-        <td><?= $proyecto['detalles'] ?></td>
-        <td><a href="<?= $proyecto['url'] ?>"><?= $proyecto['url'] ?></a></td>
-        <td><?= $proyecto['estatus'] == 1 ? 'activo' : 'baja' ?></td>
-        <td>
-            <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Editar</a>
-            <!-- Aquí se ha corregido el onclick para usar la función confirmAction -->
-            <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')"><?= $proyecto['estatus'] == 1 ? 'Dar de baja' : 'Dar de alta' ?></a>
-        </td>
-        <td>
-            <a class="btn-eliminar" href="#" onclick="confirmDelete(event, '<?= $proyecto['pk_proyecto'] ?>')">
-                Eliminar <i class="fas fa-trash-alt"></i> <!-- Botón de eliminar con ícono -->
-            </a>
-        </td>
-    </tr>
-    <?php endforeach; ?>
-</table>
+<div class="contenedor">
+    <table>
+        <tr>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Detalles</th>
+            <th>Url</th>
+            <th>Estatus</th>
+            <th>Acciones</th>
+            <th>Eliminar</th>
+        </tr>
+
+        <?php if (empty($proyectos)): ?>
+            <tr>
+                <td colspan="8" style="text-align: center; padding: 20px;">
+                    <strong>No hay proyectos disponibles actualmente.</strong><br>
+                    Cuando se agreguen proyectos, aparecerán aquí.
+                </td>
+            </tr>
+        <?php else: ?>
+            <?php foreach ($proyectos as $proyecto): ?>
+            <tr>
+                <td><img src="../uploads/<?= $proyecto['img_proyecto'] ?>" width="50px"></td>
+                <td><?= $proyecto['nom_proyecto'] ?></td>
+                <td><?= $proyecto['descripcion'] ?></td>
+                <td><?= $proyecto['detalles'] ?></td>
+                <td><a href="<?= $proyecto['url'] ?>"><?= $proyecto['url'] ?></a></td>
+                <td><?= $proyecto['estatus'] == 1 ? 'Activo' : 'De baja' ?></td>
+                <td>
+                    <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Editar</a>
+                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')">
+                        <?= $proyecto['estatus'] == 1 ? 'Dar de baja' : 'Dar de alta' ?>
+                    </a>
+                </td>
+                <td>
+                    <a class="btn-eliminar" href="#" onclick="confirmDelete(event, '<?= $proyecto['pk_proyecto'] ?>')">
+                        Eliminar <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </table>
 </div>
 
 </body>
+
 
 <script>
 
@@ -171,3 +183,10 @@ window.onload = function() {
     }
 };
 </script>
+
+<style>table tr td[colspan="8"] {
+    background-color: #f9f9f9;
+    color: #555;
+    font-size: 16px;
+}
+</style>
