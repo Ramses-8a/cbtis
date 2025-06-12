@@ -34,29 +34,6 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <title>Lista de Torneos</title>
     <link rel="stylesheet" href="css/torneo_vista.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-   /* contenedor para volver */
-        .con_volver {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 15px 20px;
-          background-color: white;
-        }
-        
-        .con_volver .volver img {
-          width: 28px;
-          height: 28px;
-          object-fit: contain;
-          cursor: pointer;
-        }
-        
-        .con_volver h3 {
-          font-size: 2.5rem;
-          font-weight: bold;
-          margin: 0;
-        }
-    </style>
 </head>
 
 <body>
@@ -80,12 +57,9 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
             <div class="cont_torneo">
                 <a href="detalle_torneo.php?id=<?= urlencode($torneo['pk_torneo']) ?>">
                     <h2><?= htmlspecialchars($torneo['nom_torneo']) ?></h2>
-                    <p><strong>Tipo:</strong> <?= htmlspecialchars($torneo['nom_tipo']) ?></p>
-                    <p><strong>Descripción:</strong> <?= htmlspecialchars($torneo['descripcion']) ?></p>
-
                     <?php if (!empty($torneo['img'])): ?>
-                        <p><strong>Imagen Principal:</strong><br>
-                            <img src="../../uploads/<?= urlencode($torneo['img']) ?>" alt="Imagen principal">
+                        <p><strong></strong><br>
+                            <img src="uploads/<?= urlencode($torneo['img']) ?>" alt="Imagen principal">
                         </p>
                     <?php endif; ?>
 
@@ -99,7 +73,26 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 </body>
 </html>
 
-
-
-
-
+ <style>
+   /* contenedor para volver */
+        .con_volver {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          padding: 15px 20px;
+          background-color: white;
+        }
+        
+        .con_volver .volver img {
+          width: 28px;
+          height: 28px;
+          object-fit: contain;
+          cursor: pointer;
+        }
+        
+        .con_volver h3 {
+          font-size: 2.5rem;
+          font-weight: bold;
+          margin: 0;
+        }
+    </style>
