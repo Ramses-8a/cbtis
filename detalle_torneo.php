@@ -46,7 +46,7 @@ if (!$torneo) {
 
     <?php if (!empty($torneo['img'])): ?>
         <p><strong>Imagen del Torneo:</strong><br>
-        <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen del torneo" style="max-width:100%; height:auto;"></p>
+        <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen del torneo" style="max: width 40px; height:auto;"></p>
     <?php endif; ?>
 
     <!-- Botón para abrir modal -->
