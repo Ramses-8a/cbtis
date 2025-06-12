@@ -49,11 +49,6 @@ if (!$torneo) {
         <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen del torneo" style="max-width:100%; height:auto;"></p>
     <?php endif; ?>
 
-<<<<<<< HEAD
-   
-
-=======
->>>>>>> 28daf49c287d47d870a6f18ce35acd4288e19f7e
     <!-- Botón para abrir modal -->
     <div class="btn-flotante" id="btnAbrirModal">+</div>
 

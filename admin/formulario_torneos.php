@@ -40,11 +40,7 @@
 
     <div>
         <label for="detalles">Detalles del Torneo:</label>
-<<<<<<< HEAD
-        <input type="text" id="detalles" name="detalles">
-=======
         <input type="text" id="detalles" name="detalles" required>
->>>>>>> 28daf49c287d47d870a6f18ce35acd4288e19f7e
     </div>
 
     <div class="button-container">

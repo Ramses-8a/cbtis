@@ -62,15 +62,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white fw-bold" href="torneos_activos.php" role="button" data-bs-toggle="dropdown">Torneos</a>
                     <ul class="dropdown-menu">
-<<<<<<< HEAD
 
                         <li><a class="dropdown-item" href="torneos_activos.php?tipo=Video Juegos">Videojuegos</a></li>
                         <li><a class="dropdown-item" href="torneos_activos.php?tipo=Programación">Programación</a></li>
 
-=======
-                        <li><a class="dropdown-item" href="torneos_activos.php?tipo=Video Juegos">Videojuegos</a></li>
-                        <li><a class="dropdown-item" href="torneos_activos.php?tipo=Programacion">Software</a></li>
->>>>>>> 28daf49c287d47d870a6f18ce35acd4288e19f7e
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
