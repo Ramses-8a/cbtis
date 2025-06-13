@@ -2,7 +2,7 @@
 header('Content-Type: application/json');
 require_once(__DIR__ . '/../conexion.php');
 
-$response = ['success' => false, 'message' => ''];
+$response = ['status' => 'error', 'message' => ''];
 
 try {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
@@ -12,11 +12,10 @@ try {
     $pk_torneo = $_POST['pk_torneo'] ?? null;
     $nom_torneo = $_POST['nom_torneo'] ?? null;
     $fk_tipo_torneo = $_POST['fk_tipo_torneo'] ?? null;
-    $estatus = $_POST['estatus'] ?? null;
     $descripcion = $_POST['descripcion'] ?? null;
     $detalles = $_POST['detalles'] ?? null;
 
-    if (!$pk_torneo || !$nom_torneo || !$fk_tipo_torneo || !$estatus || !$descripcion || !$detalles) {
+    if (!$pk_torneo || !$nom_torneo || !$fk_tipo_torneo || !$descripcion || !$detalles) {
         throw new Exception('Todos los campos son obligatorios.');
     }
 
@@ -42,35 +41,53 @@ try {
     $stmt_check->execute([$pk_torneo]);
     $torneo_actual = $stmt_check->fetch(PDO::FETCH_ASSOC);
 
+    error_log('Torneo Actual: ' . print_r($torneo_actual, true));
+    error_log('Datos Recibidos (POST): nom_torneo=' . $nom_torneo . ', fk_tipo_torneo=' . $fk_tipo_torneo . ', descripcion=' . $descripcion . ', detalles=' . $detalles . ', img_name=' . $img_name);
+
     $has_changes = false;
-    if ($torneo_actual['nom_torneo'] !== $nom_torneo ||
-        $torneo_actual['fk_tipo_torneo'] !== $fk_tipo_torneo ||
-        $torneo_actual['estatus'] !== $estatus ||
-        $torneo_actual['descripcion'] !== $descripcion ||
-        $torneo_actual['detalles'] !== $detalles) {
+    if ($torneo_actual['nom_torneo'] !== $nom_torneo) {
+        error_log('Cambio detectado en nom_torneo: ' . $torneo_actual['nom_torneo'] . ' vs ' . $nom_torneo);
+        $has_changes = true;
+    }
+    if ($torneo_actual['fk_tipo_torneo'] != $fk_tipo_torneo) {
+        error_log('Cambio detectado en fk_tipo_torneo: ' . $torneo_actual['fk_tipo_torneo'] . ' vs ' . $fk_tipo_torneo);
+        $has_changes = true;
+    }
+    if ($torneo_actual['descripcion'] !== $descripcion) {
+        error_log('Cambio detectado en descripcion: ' . $torneo_actual['descripcion'] . ' vs ' . $descripcion);
+        $has_changes = true;
+    }
+    if ($torneo_actual['detalles'] !== $detalles) {
+        error_log('Cambio detectado en detalles: ' . $torneo_actual['detalles'] . ' vs ' . $detalles);
         $has_changes = true;
     }
 
     // Check if image has changed
     if ($img_name && $torneo_actual['img'] !== $img_name) {
+        error_log('Cambio detectado en imagen: ' . $torneo_actual['img'] . ' vs ' . $img_name);
         $has_changes = true;
     } elseif (!$img_name && $torneo_actual['img'] !== null) {
         // If no new image and current image exists, it means user wants to remove it (if that's the logic)
         // For now, we assume if no new image, keep old one unless explicitly removed.
         // If you want to allow removing image, you'd need a checkbox or similar.
+        error_log('Imagen eliminada (no se envió nueva imagen y existía una anterior).');
+        // Dependiendo de la lógica de negocio, esto podría ser un cambio o no.
+        // Por ahora, no lo marcamos como cambio a menos que se implemente una opción de "eliminar imagen".
     }
+
+    error_log('Has Changes final: ' . ($has_changes ? 'true' : 'false'));
 
     if (!$has_changes) {
         $connect->commit();
-        $response['success'] = true;
+        $response['status'] = 'warning';
         $response['message'] = 'No se detectaron cambios en el torneo.';
         echo json_encode($response);
-        exit;
+        die();
     }
 
     // Update tournament data
-    $sql = "UPDATE torneos SET nom_torneo = ?, fk_tipo_torneo = ?, estatus = ?, descripcion = ?, detalles = ?";
-    $params = [$nom_torneo, $fk_tipo_torneo, $estatus, $descripcion, $detalles];
+    $sql = "UPDATE torneos SET nom_torneo = ?, fk_tipo_torneo = ?, descripcion = ?, detalles = ?";
+    $params = [$nom_torneo, $fk_tipo_torneo, $descripcion, $detalles];
 
     if ($img_name) {
         $sql .= ", img = ?";
@@ -86,8 +103,9 @@ try {
     }
 
     if ($stmt->execute($params)) {
-        $response['success'] = true;
+        $response['status'] = 'success';
         $response['message'] = 'Torneo actualizado correctamente.';
+        $response['redirect_url'] = '../admin/lista_torneos.php';
     } else {
         throw new Exception('Error al actualizar el torneo: ' . $stmt->errorInfo()[2]);
     }

@@ -152,8 +152,12 @@ $(document).ready(function() {
                         icon: 'success',
                         title: '¡Éxito!',
                         text: response.message
-                    }).then(() => {
-                        window.location.reload();
+                    }).then((result) => {
+                        if (result.isConfirmed && response.redirect_url) {
+                            window.location.href = response.redirect_url;
+                        } else {
+                            window.location.reload();
+                        }
                     });
                 } else if (response.status === 'warning') {
                     Swal.fire({
