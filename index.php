@@ -20,16 +20,16 @@
   <p>Desarrollado para el Departamento de Programación</p>
   
   <div class="redes-sociales">
-    <a href="#" target="_blank" aria-label="Facebook">
+    <a href="" target="_blank" aria-label="Facebook">
       <i class="fab fa-facebook-f"></i>
     </a>
-    <a href="#" target="_blank" aria-label="Twitter">
+    <a href="" target="_blank" aria-label="Twitter">
       <i class="fab fa-twitter"></i>
     </a>
-    <a href="#" target="_blank" aria-label="Instagram">
+    <a href="" target="_blank" aria-label="Instagram">
       <i class="fab fa-instagram"></i>
     </a>
-    <a href="#" target="_blank" aria-label="YouTube">
+    <a href="" target="_blank" aria-label="YouTube">
       <i class="fab fa-youtube"></i>
     </a>
   </div>

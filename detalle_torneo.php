@@ -30,6 +30,8 @@ if (!$torneo) {
     <title>Detalle del Torneo - <?= htmlspecialchars($torneo['nom_torneo']) ?></title>
     <link rel="stylesheet" href="css/detalle_torneo.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 <body>
     <div class="con_volver">
@@ -38,6 +40,7 @@ if (!$torneo) {
         </a>
         <h3>Torneos</h3>
     </div>
+    
 
     <h1><?= htmlspecialchars($torneo['nom_torneo']) ?></h1>
     <p><strong>Tipo:</strong> <?= htmlspecialchars($torneo['nom_tipo']) ?></p>
@@ -46,7 +49,7 @@ if (!$torneo) {
 
     <?php if (!empty($torneo['img'])): ?>
         <p><strong>Imagen del Torneo:</strong><br>
-        <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen del torneo" style="max-width:100%; height:auto;"></p>
+        <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen del torneo" style="max: width 40px; height:auto;"></p>
     <?php endif; ?>
 
     <!-- Botón para abrir modal -->
@@ -67,6 +70,9 @@ if (!$torneo) {
 
           <label for="grupo">Grupo:</label>
           <input type="text" id="grupo" name="grupo" required>
+
+          <!-- reCAPTCHA -->
+          <div class="g-recaptcha" data-sitekey="6Le-_fsqAAAAABPT_xPcyqAfc9TCmAbh52c2Q_M0"></div>
 
           <button type="submit" class="btn-inscribirse">Inscribirse</button>
         </form>
