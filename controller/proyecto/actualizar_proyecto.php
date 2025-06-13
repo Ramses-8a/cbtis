@@ -14,6 +14,16 @@ try {
     $detalles = $_POST['detalles'];
     $url = $_POST['url'];
 
+    // Validate URL format
+    if (!filter_var($url, FILTER_VALIDATE_URL)) {
+        http_response_code(200);
+        echo json_encode([
+            'status' => 'warning',
+            'message' => 'El formato de la URL no es válido'
+        ]);
+        die();
+    }
+
 
     // Verificar si se ha proporcionado una nueva imagen principal
     $img_proyecto = null;
@@ -60,7 +70,7 @@ try {
             'status' => 'warning',
             'message' => 'No se detectaron cambios en el proyecto'
         ]);
-        exit;
+        die();
     }
 
     // Actualizar datos del proyecto
@@ -73,7 +83,8 @@ try {
     
     echo json_encode([
         'status' => 'success', 
-        'message' => 'Proyecto actualizado correctamente'
+        'message' => 'Proyecto actualizado correctamente',
+        'redirect_url' => '../admin/lista_proyectos.php'
     ]);
 
 } catch (Exception $e) {

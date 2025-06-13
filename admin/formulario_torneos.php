@@ -6,7 +6,7 @@
     <title>Agregar Torneos</title>
 </head>
 
-<form id="formTorneo" action="guardar_torneo.php" method="POST" enctype="multipart/form-data" class="form-proyectos">
+<form id="formTorneo" action="../controller/torneo/guardar_torneo.php" method="POST" enctype="multipart/form-data" class="form-proyectos">
     <div>
         <label for="nom_torneo">Nombre del Torneo:</label>
         <input type="text" id="nom_torneo" name="nom_torneo" required>
@@ -15,6 +15,7 @@
     <div>
         <label for="tipo_torneo">Tipo de torneo:</label>
          <select name="fk_tipo_torneo" required>
+            <option value="" disabled selected>Selecciona una opcion</option>
             <?php
             include_once '../controller/conexion.php';
             $stmt = $connect->prepare("SELECT pk_tipo_torneo, nom_tipo FROM tipo_torneos WHERE estatus = 1");
@@ -77,7 +78,7 @@ $(document).ready(function() {
         const formData = new FormData(this);
 
         $.ajax({
-            url: 'guardar_torneo.php',
+            url: '../controller/torneo/guardar_torneo.php',
             type: 'POST',
             data: formData,
             processData: false,
@@ -91,8 +92,12 @@ $(document).ready(function() {
                         text: res.message,
                         confirmButtonColor: '#9d0707'
                     }).then(() => {
-                        $('#formTorneo')[0].reset();
-                        $('#preview_principal').empty();
+                        if (res.redirect_url) {
+                            window.location.href = res.redirect_url;
+                        } else {
+                            $('#formTorneo')[0].reset();
+                            $('#preview_principal').empty();
+                        }
                     });
                 } else {
                     Swal.fire({

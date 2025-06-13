@@ -6,7 +6,7 @@ include_once('header.php');
     <title>Subir proyectos</title>
 </head>
  <div class="con_volver">
-        <a href="index.php" class="volver">
+        <a href="lista_proyectos.php" class="volver">
             <img src="../img/volver.webp" alt="Volver">
         </a>
         <h3>Proyectos</h3>
@@ -169,7 +169,8 @@ $(document).ready(function() {
             contentType: false,
             success: function(response) {
                 let res = JSON.parse(response);
-                if(res.status === 'success') {
+// ... existing code ...
+if(res.status === 'success') {
                     Swal.fire({
                         icon: 'success',
                         title: '¡Éxito!',
@@ -180,11 +181,25 @@ $(document).ready(function() {
                             window.location.href = res.redirect_url;
                         }
                     });
-                } else {
+                } else if (res.status === 'warning') {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Advertencia',
+                        text: res.message,
+                        confirmButtonColor: '#9d0707'
+                    });
+                } else if (res.status === 'error') {
                     Swal.fire({
                         icon: 'error',
                         title: 'Error',
                         text: res.message,
+                        confirmButtonColor: '#9d0707'
+                    });
+                } else {
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Información',
+                        text: res.message || 'Respuesta desconocida del servidor',
                         confirmButtonColor: '#9d0707'
                     });
                 }
@@ -193,9 +208,20 @@ $(document).ready(function() {
                 let responseText = xhr.responseText;
                 try {
                     let res = JSON.parse(responseText);
+                    let icon = 'error';
+                    let title = 'Error';
+
+                    if (res.status === 'warning') {
+                        icon = 'warning';
+                        title = 'Advertencia';
+                    } else if (res.status === 'info') {
+                        icon = 'info';
+                        title = 'Información';
+                    }
+
                     Swal.fire({
-                        icon: 'error',
-                        title: 'Error',
+                        icon: icon,
+                        title: title,
                         text: res.message || 'Ocurrió un error inesperado',
                         confirmButtonColor: '#9d0707'
                     });
