@@ -35,12 +35,13 @@ try {
             $stmt_img->execute();
         }
 
-        echo json_encode(['status' => 'success', 'message' => 'Imágenes subidas correctamente']);
-        exit;
+        echo json_encode(['status' => 'success', 'message' => 'Imágenes subidas correctamente', 'redirect_url' => '../admin/lista_proyectos.php']);
+        die();
     } else {
-        throw new Exception("No se enviaron imágenes");
+        echo json_encode(['status' => 'warning', 'message' => 'No se seleccionaron imágenes para subir.']);
+        die();
     }
 } catch (Exception $e) {
     echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
-    exit;
+    die();
 }

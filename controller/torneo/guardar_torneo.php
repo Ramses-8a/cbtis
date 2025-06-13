@@ -1,6 +1,5 @@
 <?php
-require_once(__DIR__ . '/../controller/conexion.php');
-// NO ME DIGAN NADA PORQUE LOS DEMAS ARCHIVOS TAMBIEN ESTAN COMENTADOS
+require_once(__DIR__ . '/../conexion.php');
 
 if (
     empty($_POST['nom_torneo']) ||
@@ -9,22 +8,22 @@ if (
     empty($_POST['detalles']) ||
     !isset($_FILES['img_proyecto'])
 ) {
-    http_response_code(400);
+    http_response_code(200);
     echo json_encode([
         "status" => "error",
         "message" => "Faltan datos o la imagen principal"
     ]);
-    exit;
+    die();
 }
 
 // Validación de longitud
 if (strlen($_POST['nom_torneo']) > 100 || strlen($_POST['descripcion']) > 255 || strlen($_POST['detalles']) > 1000) {
-    http_response_code(400);
+    http_response_code(200);
     echo json_encode([
         "status" => "error",
         "message" => "Los campos exceden la longitud máxima permitida"
     ]);
-    exit;
+    die();
 }
 
 $nom_torneo = trim($_POST['nom_torneo']);
@@ -39,24 +38,24 @@ $allowed_types = ['image/jpeg', 'image/png', 'image/gif', 'image/svg+xml', 'imag
 $max_size = 5 * 1024 * 1024; // 5MB
 
 if (!in_array($img['type'], $allowed_types)) {
-    http_response_code(400);
+    http_response_code(200);
     echo json_encode([
         "status" => "error",
         "message" => "Tipo de imagen principal no permitido"
     ]);
-    exit;
+    die();
 }
 
 if ($img['size'] > $max_size) {
-    http_response_code(400);
+    http_response_code(200);
     echo json_encode([
         "status" => "error",
         "message" => "La imagen principal excede el tamaño máximo de 5MB"
     ]);
-    exit;
+    die();
 }
 
-$carpeta_destino = "../uploads/";
+$carpeta_destino = "../../uploads/";
 if (!is_dir($carpeta_destino)) {
     mkdir($carpeta_destino, 0777, true);
 }
@@ -65,12 +64,12 @@ $img_nombre = uniqid() . "_" . basename($img['name']);
 $ruta_img = $carpeta_destino . $img_nombre;
 
 if (!move_uploaded_file($img['tmp_name'], $ruta_img)) {
-    http_response_code(500);
+    http_response_code(200);
     echo json_encode([
         "status" => "error",
         "message" => "Error al guardar la imagen principal"
     ]);
-    exit;
+    die();
 }
 
 // Iniciar transacción
@@ -93,12 +92,14 @@ try {
     echo json_encode([
         "status" => "success",
         "message" => "Torneo creado correctamente",
+        "redirect_url" => "../admin/lista_torneos.php",
         "data" => [
             "nombre" => $nom_torneo,
             "imagen" => $img_nombre,
             "estatus" => $estatus
         ]
     ]);
+    die();
 } catch (Exception $e) {
     $connect->rollBack();
 
@@ -106,10 +107,11 @@ try {
         unlink($ruta_img);
     }
 
-    http_response_code(500);
+    http_response_code(200);
     echo json_encode([
         "status" => "error",
         "message" => $e->getMessage()
     ]);
+    die();
 }
 ?>

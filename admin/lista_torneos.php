@@ -17,6 +17,15 @@ include_once('header.php');
         <th>Acciones</th>
         <th>Eliminar</th>
     </tr>
+
+    <?php if (empty($torneos)): ?>
+            <tr>
+                <td colspan="8" style="text-align: center; padding: 20px;">
+                    <strong>No hay torneos disponibles actualmente.</strong><br>
+                    Cuando se agreguen proyectos, aparecerán aquí.
+                </td>
+            </tr>
+        <?php else: ?>
     <?php foreach ($torneos as $torneo): ?>
     <tr>
         <td><img src="../uploads/<?= $torneo['img'] ?>" width="50px"></td>
@@ -38,6 +47,7 @@ include_once('header.php');
         </td>
     </tr>
     <?php endforeach; ?>
+    <?php endif; ?>
 </table>
 </div>
 
