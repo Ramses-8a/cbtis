@@ -38,6 +38,7 @@ if (!$torneo) {
         </a>
         <h3>Torneos</h3>
     </div>
+    
 
     <h1><?= htmlspecialchars($torneo['nom_torneo']) ?></h1>
     <p><strong>Tipo:</strong> <?= htmlspecialchars($torneo['nom_tipo']) ?></p>

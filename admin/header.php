@@ -78,13 +78,8 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Recursos Tecnológicos</a>
                     <ul class="dropdown-menu">
-<<<<<<< HEAD
                         <li><a class="dropdown-item" href="formulario_recursos.php">Agregar Recursos</a></li>
                         <li><a class="dropdown-item" href="lista_recursos.php">Editar Recursos</a></li>
-=======
-                        <li><a class="dropdown-item" href="lista_recursos.php">Ver Recursos</a></li>
-                        <li><a class="dropdown-item" href="formulario_recursos.php">Agregar Recurso</a></li>
->>>>>>> 28daf49c287d47d870a6f18ce35acd4288e19f7e
                     </ul>
                 </li>
             </ul>
