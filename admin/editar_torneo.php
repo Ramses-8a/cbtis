@@ -36,7 +36,7 @@ if (!isset($_GET['pk_torneo'])) {
         <label for="img">Imagen:</label>
         <input type="file" id="img" name="img">
         <?php if(!empty($torneo['img'])): ?>
-            <img src="../img/<?php echo $torneo['img']; ?>" width="100">
+            <img src="../uploads/<?php echo $torneo['img']; ?>" width="100">
             <input type="hidden" name="current_img" value="<?php echo $torneo['img']; ?>">
         <?php endif; ?>
     </div>
@@ -73,10 +73,16 @@ if (!isset($_GET['pk_torneo'])) {
 
     try {
         const data = JSON.parse(text); // Intentamos parsear manualmente
-        if (data.success) {
+        if (data.status === 'success') {
             Swal.fire({
                 icon: 'success',
                 title: '¡Éxito!',
+                text: data.message
+            });
+        } else if (data.status === 'warning') {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Advertencia',
                 text: data.message
             });
         } else {

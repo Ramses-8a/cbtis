@@ -119,11 +119,21 @@ document.addEventListener('DOMContentLoaded', function () {
                     icon: 'success',
                     title: '¡Éxito!',
                     text: res.message
-                }).then(() => {
-                    form.reset();
-                    preview.innerHTML = '';
-                    imagenesSeleccionadas = [];
-                    actualizarContador();
+                }).then((result) => {
+                    if (result.isConfirmed && res.redirect_url) {
+                        window.location.href = res.redirect_url;
+                    } else {
+                        form.reset();
+                        preview.innerHTML = '';
+                        imagenesSeleccionadas = [];
+                        actualizarContador();
+                    }
+                });
+            } else if (res.status === 'warning') {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Aviso',
+                    text: res.message
                 });
             } else {
                 Swal.fire({
