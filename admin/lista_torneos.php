@@ -21,7 +21,7 @@ include_once('header.php');
     <tr>
         <td><img src="../uploads/<?= $torneo['img'] ?>" width="50px"></td>
         <td><?= $torneo['nom_torneo'] ?></td>
-        <td><?= $torneo['fk_tipo_torneo'] ?></td>
+        <td><?= $torneo['nom_tipo'] ?></td>
         <td><?= $torneo['descripcion'] ?></td>
         <td><?= $torneo['detalles'] ?></td>
         <td><?= $torneo['estatus']?></td>
