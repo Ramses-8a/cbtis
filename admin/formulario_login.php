@@ -39,7 +39,7 @@
         .then(response => response.json())
         .then(data => {
           if (data.status === 'success') {
-            window.location.href = '../index.php';
+            window.location.href = '../admin/index.php';
           } else {
             alert(data.message);
           }
