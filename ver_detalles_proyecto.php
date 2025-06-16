@@ -47,7 +47,7 @@ $imagenes = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
                 } else {
                     $primera_imagen = true;
                     foreach ($imagenes as $img): ?>
-                        <img src="img/<?= $img['img'] ?>" 
+                        <img src="uploads/<?= $img['img'] ?>" 
                              alt="Imagen del proyecto" 
                              class="imagen-proyecto <?= $primera_imagen ? 'imagen-destacada' : '' ?>">
                         <?php $primera_imagen = false; ?>

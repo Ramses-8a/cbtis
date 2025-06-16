@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once('header.php');
 ?>
 <head>
@@ -169,8 +169,7 @@ $(document).ready(function() {
             contentType: false,
             success: function(response) {
                 let res = JSON.parse(response);
-// ... existing code ...
-if(res.status === 'success') {
+                if(res.status === 'success') {
                     Swal.fire({
                         icon: 'success',
                         title: '¡Éxito!',
