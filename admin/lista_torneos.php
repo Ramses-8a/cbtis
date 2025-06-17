@@ -1,5 +1,5 @@
 <?php
-include('../controller/torneos/mostrar_torneos.php');
+include('../controller/torneo/mostrar_torneos.php');
 include_once('header.php');
 ?>
 <head>
