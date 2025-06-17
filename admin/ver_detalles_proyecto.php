@@ -1,26 +1,7 @@
 <?php
-require_once '../controller/conexion.php';
-require_once 'header.php';
-
-if (!isset($_GET['pk_proyecto'])) {
-    exit("Proyecto no especificado.");
-}
-
-$pk_proyecto = $_GET['pk_proyecto'];
-
-$stmt = $connect->prepare("SELECT * FROM proyectos WHERE pk_proyecto = ?");
-$stmt->execute([$pk_proyecto]);
-$proyecto = $stmt->fetch(PDO::FETCH_ASSOC);
-
-if (!$proyecto) {
-    exit("Proyecto no encontrado.");
-}
-
-$stmt_imgs = $connect->prepare("SELECT img FROM img_proyectos WHERE fk_proyecto = ?");
-$stmt_imgs->execute([$pk_proyecto]);
-$imagenes = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
+include_once('header.php');
+include('../controller/proyecto/buscar_proyecto.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>

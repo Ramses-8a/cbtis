@@ -47,8 +47,8 @@ $password_hash = password_hash($password, PASSWORD_DEFAULT);
 $token_ver = hash('sha256', $correo);
 
 // Insertar usuario
-$sql = $connect->prepare("INSERT INTO usuarios (usuario, correo, password, token_ver, estatus, tipo) 
-                          VALUES (:usuario, :correo, :password, :token_ver, 1, 1)");
+$sql = $connect->prepare("INSERT INTO usuarios (usuario, correo, password, token_ver, estatus ) 
+                          VALUES (:usuario, :correo, :password, :token_ver, 1 )");
 
 $sql->bindParam(':usuario', $usuario, PDO::PARAM_STR);
 $sql->bindParam(':correo', $correo, PDO::PARAM_STR);
