@@ -59,7 +59,7 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     <h2><?= htmlspecialchars($torneo['nom_torneo']) ?></h2>
                     <?php if (!empty($torneo['img'])): ?>
                         <p><strong></strong><br>
-                            <img src="uploads/<?= urlencode($torneo['img']) ?>" alt="Imagen principal">
+                            <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen principal">
                         </p>
                     <?php endif; ?>
 

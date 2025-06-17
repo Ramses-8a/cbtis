@@ -33,7 +33,6 @@
             <a href="ver_detalles_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>" class="card">
                 <img src="uploads/<?= $proyecto['img_proyecto'] ?>" alt="Proyecto">
                 <p><strong><?= $proyecto['nom_proyecto'] ?></strong></p>
-                <p><?= $proyecto['detalles'] ?></p>
             </a>
             <?php 
             endif; // Close the if condition

@@ -47,7 +47,7 @@ $imagenes = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
                 } else {
                     $primera_imagen = true;
                     foreach ($imagenes as $img): ?>
-                        <img src="img/<?= $img['img'] ?>" 
+                        <img src="uploads/<?= $img['img'] ?>" 
                              alt="Imagen del proyecto" 
                              class="imagen-proyecto <?= $primera_imagen ? 'imagen-destacada' : '' ?>">
                         <?php $primera_imagen = false; ?>
@@ -59,6 +59,9 @@ $imagenes = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
             <div class="contenido-proyecto">
                 <p class="descripcion-proyecto">
                     <?= $proyecto['descripcion'] ?>
+                </p>
+                <p class="descripcion-proyecto">
+                    <?= $proyecto['detalles'] ?>
                 </p>
                 <a href="<?php echo $proyecto['url']; ?>" class="boton">Visitar</a>
             </div>
