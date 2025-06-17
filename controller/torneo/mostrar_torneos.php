@@ -1,7 +1,7 @@
 <?php
 require_once(__DIR__ . '/../conexion.php');
 
-$sql = $connect->prepare("SELECT * FROM torneos WHERE estatus = 1");
+$sql = $connect->prepare("SELECT * FROM torneos");
 
 try {
     $sql->execute();
