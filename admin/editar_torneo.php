@@ -72,18 +72,28 @@ if (!isset($_GET['pk_torneo'])) {
     console.log(text); // 👈 Aquí verás el HTML o el error real del servidor
 
     try {
-        const data = JSON.parse(text); // Intentamos parsear manualmente
+        const data = JSON.parse(text);
+        console.log(data); // Añadido para depuración
+        // Intentamos parsear manualmente
         if (data.status === 'success') {
             Swal.fire({
                 icon: 'success',
                 title: '¡Éxito!',
                 text: data.message
+            }).then(() => {
+                if (data.redirect_url) {
+                    window.location.href = data.redirect_url;
+                }
             });
         } else if (data.status === 'warning') {
             Swal.fire({
                 icon: 'warning',
                 title: 'Advertencia',
                 text: data.message
+            }).then(() => {
+                if (data.redirect_url) {
+                    window.location.href = data.redirect_url;
+                }
             });
         } else {
             Swal.fire({

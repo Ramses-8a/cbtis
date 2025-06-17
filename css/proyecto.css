@@ -21,8 +21,8 @@ body {
 /* card de los proyectos */
 .card {
   background-color: #e0e0e0;
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
   border: none;
   padding: 10px;
   border-radius: 10px;
@@ -49,7 +49,7 @@ body {
 
 .card p {
   font-size: 0.9rem;
-  margin: 2px 0;
+  margin: 10px 0;
   word-wrap: break-word;
   max-width: 100%;
   text-align: center;

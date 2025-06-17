@@ -1,4 +1,6 @@
-<?php include_once('header.php'); ?>
+<?php
+include_once('header.php');
+?>
 <head>
     <link rel="stylesheet" href="../css/form_proyecto.css">
     <title>Subir recursos</title>

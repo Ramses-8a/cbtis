@@ -40,6 +40,7 @@ if (!$torneo) {
         </a>
         <h3>Torneos</h3>
     </div>
+    
 
     <h1><?= htmlspecialchars($torneo['nom_torneo']) ?></h1>
     <p><strong>Tipo:</strong> <?= htmlspecialchars($torneo['nom_tipo']) ?></p>
@@ -48,7 +49,7 @@ if (!$torneo) {
 
     <?php if (!empty($torneo['img'])): ?>
         <p><strong>Imagen del Torneo:</strong><br>
-        <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen del torneo" style="max-width:100%; height:auto;"></p>
+        <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen del torneo" style="max: width 40px; height:auto;"></p>
     <?php endif; ?>
 
     <!-- Botón para abrir modal -->

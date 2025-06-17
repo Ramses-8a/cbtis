@@ -1,70 +1,60 @@
 <?php
-require_once 'controller/conexion.php'; // ajusta la ruta si es diferente
 
-try {
-    $sql = "SELECT pk_curso, nom_curso, fk_tipo_curso, fk_lenguaje, link, estatus FROM cursos";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-
-    $cursos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    echo "Error al consultar los cursos: " . $e->getMessage();
-    exit;
-}
+    include('controller/cursos/mostrar_cursos.php');
+    include_once('header.php');
 ?>
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Cursos</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            padding: 8px;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/proyecto.css">
+    <title>Cursos</title>
 </head>
 <body>
-    <h1>Listado de Cursos</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID Curso</th>
-                <th>Nombre</th>
-                <th>Tipo</th>
-                <th>Lenguaje</th>
-                <th>Link</th>
-                <th>Estatus</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (!empty($cursos)): ?>
-                <?php foreach ($cursos as $curso): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($curso['pk_curso']) ?></td>
-                        <td><?= htmlspecialchars($curso['nom_curso']) ?></td>
-                        <td><?= htmlspecialchars($curso['fk_tipo_curso']) ?></td>
-                        <td><?= htmlspecialchars($curso['fk_lenguaje']) ?></td>
-                        <td><a href="<?= htmlspecialchars($curso['link']) ?>" target="_blank">Ver</a></td>
-                        <td><?= $curso['estatus'] == 1 ? 'Activo' : 'Inactivo' ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <tr>
-                    <td colspan="6">No hay cursos registrados.</td>
-                </tr>
-            <?php endif; ?>
-        </tbody>
-    </table>
+    <div class="con_volver">
+        <a href="index.php" class="volver">
+            <img src="img/volver.webp" alt="Volver">
+        </a>
+        <h3>Cursos</h3>
+
+    </div>
+
+    <main class="proyectos">
+    <?php foreach ($cursos as $curso):
+            // Add this condition to check the status
+            if (isset($curso['estatus']) && $curso['estatus'] == 1):
+        ?>
+            <a href="ver_curso.php?pk_curso=<?= $curso['pk_curso'] ?>" class="card">
+                <?php if (!empty($curso['img'])): ?>
+                    <img src="uploads/<?= $curso['img'] ?>" alt="Custom Image" style="width: 100%; height: auto;">
+                <?php else: ?>
+                    <?php
+                    $youtube_link = $curso['link'];
+                    $video_id = '';
+                    $thumbnail_url = '';
+
+                    // Extract video ID from various YouTube URL formats
+                    if (preg_match('/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/ ]{11})/i', $youtube_link, $matches)) {
+                        $video_id = $matches[1];
+                        $thumbnail_url = "https://img.youtube.com/vi/{$video_id}/maxresdefault.jpg";
+                    }
+                    ?>
+                    <?php if (!empty($thumbnail_url)): ?>
+                        <img src="<?= $thumbnail_url ?>" alt="YouTube Thumbnail" style="width: 100%; height: auto;">
+                    <?php else: ?>
+                        No Image
+                    <?php endif; ?>
+                <?php endif; ?>
+                <p><strong><?= $curso['nom_curso'] ?></strong></p>
+                <p><?= $curso['descripcion'] ?></p>
+            </a>
+            <?php 
+            endif; // Close the if condition
+            endforeach; 
+        ?>
+    </main>
 </body>
 </html>

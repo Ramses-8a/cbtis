@@ -1,6 +1,6 @@
 <?php
-    include('../controller/proyecto/mostrar_proyecto.php');
-    include_once('header.php');
+include('../controller/proyecto/mostrar_proyecto.php');
+include_once('header.php');
 ?>
 
 <!DOCTYPE html>

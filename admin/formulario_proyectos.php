@@ -1,4 +1,4 @@
-<?php 
+<?php
 include_once('header.php');
 ?>
 <head>
@@ -6,10 +6,10 @@ include_once('header.php');
     <title>Subir proyectos</title>
 </head>
  <div class="con_volver">
-        <a href="lista_proyectos.php" class="volver">
-            <img src="../img/volver.webp" alt="Volver">
-        </a>
-        <h3>Proyectos</h3>
+            <a href="javascript:history.back()" class="volver">
+                <img src="../img/volver.webp" alt="Volver">
+            </a>
+            <h3>Proyectos</h3>
         </div>
 
 <form id="formProyecto" enctype="multipart/form-data" class="form-proyectos">
@@ -169,8 +169,7 @@ $(document).ready(function() {
             contentType: false,
             success: function(response) {
                 let res = JSON.parse(response);
-// ... existing code ...
-if(res.status === 'success') {
+                if(res.status === 'success') {
                     Swal.fire({
                         icon: 'success',
                         title: '¡Éxito!',

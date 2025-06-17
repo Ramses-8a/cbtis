@@ -1,6 +1,6 @@
 <?php
 include('../controller/torneo/mostrar_torneos.php');
-include_once('header.php'); 
+include_once('header.php');
 ?>
 <head>
     <link rel="stylesheet" href="../css/list_proyecto.css">
@@ -30,7 +30,7 @@ include_once('header.php');
     <tr>
         <td><img src="../uploads/<?= $torneo['img'] ?>" width="50px"></td>
         <td><?= $torneo['nom_torneo'] ?></td>
-        <td><?= $torneo['fk_tipo_torneo'] ?></td>
+        <td><?= $torneo['nom_tipo'] ?></td>
         <td><?= $torneo['descripcion'] ?></td>
         <td><?= $torneo['detalles'] ?></td>
         <td><?= $torneo['estatus']?></td>
@@ -53,7 +53,6 @@ include_once('header.php');
 
 <script>
 
-// ... existing code ...
 function confirmDelete(event, projectId) {
     event.preventDefault();
     Swal.fire({

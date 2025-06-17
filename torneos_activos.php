@@ -58,10 +58,9 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <a href="detalle_torneo.php?id=<?= urlencode($torneo['pk_torneo']) ?>">
                     <h2><?= htmlspecialchars($torneo['nom_torneo']) ?></h2>
                     <?php if (!empty($torneo['img'])): ?>
-                          <?php if (!empty($torneo['img'])): ?>
-        <p><strong>Imagen del Torneo:</strong><br>
-        <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen del torneo" style="max-width:100%; height:auto;"></p>
-    <?php endif; ?>
+                        <p><strong></strong><br>
+                            <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen principal">
+                        </p>
                     <?php endif; ?>
 
                 </a>
