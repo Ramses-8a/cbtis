@@ -59,7 +59,7 @@ if (!isset($_SESSION['usuario_id'])) {
 
             <a class="navbar-brand d-flex align-items-center" href="index.php">
                 <img src="../img/logo_cbtis.png" alt="logo" width="90" height="90" style="border-radius: 50%;">
-                <h2 class="ms-2 text-white fw-bold">CBTis No.152</h2>
+                <h2 class="ms-2 text-white fw-bold">Panel de administrador</h2>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
