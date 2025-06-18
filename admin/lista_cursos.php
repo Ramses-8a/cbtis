@@ -68,21 +68,23 @@ include_once('header.php');
                     </a>
                 </td>
                 <td>
-                    <a class="btn-eliminar" href="#">
+                    <a class="btn-eliminar" href="#" onclick="confirmDelete(event, '<?= $curso['pk_curso'] ?>')">
                         Eliminar <i class="fas fa-trash-alt"></i>
                     </a>
                 </td>
+
             </tr>
             <?php endforeach; ?>
         <?php endif; ?>
     </table>
 </div>
 
+
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 <script>
-
 function confirmDelete(event, projectId) {
     event.preventDefault();
     Swal.fire({
@@ -96,11 +98,10 @@ function confirmDelete(event, projectId) {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = `../controller/proyecto/eliminar_proyecto.php?id=${projectId}`;
+            window.location.href = `../controller/cursos/eliminar_curso.php?id=${projectId}`;
         }
     });
 }
-
 function confirmAction(event, courseId, currentStatus) {
     event.preventDefault(); // Previene la acción por defecto del enlace
 
