@@ -1,4 +1,4 @@
-    .form-proyectos {
+.form-proyectos {
             max-width: 800px;
             margin: 30px auto;
             padding: 40px;
@@ -406,3 +406,40 @@
                 max-height: 150px;
             }
         }
+
+        .image-preview-container {
+            position: relative;
+            display: inline-block;
+            margin-right: 10px; /* Add some space to the right of the image */
+            border: 1px solid #ddd; /* Add a subtle border around the image */
+            border-radius: 4px;
+            overflow: hidden; /* Ensure the image doesn't overflow the border-radius */
+        }
+
+        .image-preview-container img {
+            display: block; /* Remove extra space below the image */
+            max-width: 100px; /* Ensure image fits within the container */
+            height: auto;
+        }
+
+        .delete-image-icon {
+            position: absolute;
+            top: 5px; /* Adjust position to be slightly inside the top-right corner */
+            right: 5px;
+            background-color: rgba(255, 0, 0, 0.8); /* Slightly more opaque red */
+            color: white;
+            border-radius: 50%;
+            width: 24px; /* Slightly larger icon */
+            height: 24px;
+            text-align: center;
+            line-height: 24px; /* Adjust line-height for vertical alignment */
+            font-size: 16px; /* Larger font size for the 'x' */
+            font-weight: bold; /* Make the 'x' bolder */
+            cursor: pointer;
+            z-index: 10;
+            transition: background-color 0.3s ease; /* Smooth transition on hover */
+        }
+
+        /* Removed .image-preview-container and .delete-image-icon styles */
+
+        /* Removed .delete-image-icon:hover style */

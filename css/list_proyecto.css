@@ -153,6 +153,7 @@
     .btn-eliminar {
         background: linear-gradient(135deg, #dc3545 0%, #e8590c 100%);
         color: white;
+        margin-top: 10px;
     }
 
     .btn-eliminar:hover {

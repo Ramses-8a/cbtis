@@ -1,4 +1,5 @@
 <?php
+
     include('controller/cursos/mostrar_cursos.php');
     include_once('header.php');
 ?>
