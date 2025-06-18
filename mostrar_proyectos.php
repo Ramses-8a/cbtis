@@ -20,26 +20,42 @@
         </a>
         <h3>Proyectos</h3>
 
-        <div>
-            <input type="text" placeholder="Buscador">
-        </div>
-    </div>
+<input type="text" id="buscador-proyectos" placeholder="Buscar proyecto.." class="buscador">
 
-    <main class="proyectos">
+<main class="proyectos">
     <?php foreach ($proyectos as $proyecto):
-            // Add this condition to check the status
-            if (isset($proyecto['estatus']) && $proyecto['estatus'] == 1):
-        ?>
+     // Add this condition to check the status
+        if (isset($proyecto['estatus']) && $proyecto['estatus'] == 1):
+         ?>
             <a href="ver_detalles_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>" class="card">
                 <img src="uploads/<?= $proyecto['img_proyecto'] ?>" alt="Proyecto">
-                <p><strong><?= $proyecto['nom_proyecto'] ?></strong></p>
+
+                <p><strong class="nombre-proyecto"><?= $proyecto['nom_proyecto'] ?></strong></p>
                 <p><?= $proyecto['detalles'] ?></p>
+
             </a>
-            <?php 
-            endif; // Close the if condition
-            endforeach; 
-        ?>
-    </main>
+        <?php endif; // Close the if condition
+        endforeach; ?>
+</main>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const buscador = document.getElementById('buscador-proyectos');
+    const proyectos = document.querySelectorAll('.proyectos .card');
+    
+    buscador.addEventListener('input', function() {
+        const textoBusqueda = this.value.trim().toLowerCase();
+        
+        proyectos.forEach(proyecto => {
+            const nombreProyecto = proyecto.querySelector('.nombre-proyecto').textContent.toLowerCase();
+            
+            // Mostrar u ocultar según coincida con la búsqueda
+            proyecto.style.display = nombreProyecto.includes(textoBusqueda) ? 'block' : 'none';
+        });
+    });
+});
+</script>
 
 </body>
 </html>

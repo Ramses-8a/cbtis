@@ -93,8 +93,8 @@ if (!isset($_SESSION['usuario_id'])) {
                             <li><a class="dropdown-item" href="formulario_recursos.php">Agregar Recursos</a></li>
                             <li><a class="dropdown-item" href="lista_recursos.php">Editar Recursos</a></li>
 
-                            <li><a class="dropdown-item" href="">Agregar Cursos</a></li>
-                            <li><a class="dropdown-item" href="lista_cursos.php">Editar Recursos</a></li>
+                            <li><a class="dropdown-item" href="formulario_cursos.php">Agregar Cursos</a></li>
+                            <li><a class="dropdown-item" href="lista_cursos.php">Editar Cursos</a></li>
                         </ul>
                     </li>
 
