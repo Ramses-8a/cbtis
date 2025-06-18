@@ -33,12 +33,14 @@ include_once('header.php');
         <td><?= $torneo['nom_tipo'] ?></td>
         <td><?= $torneo['descripcion'] ?></td>
         <td><?= $torneo['detalles'] ?></td>
-        <td><?= $torneo['estatus']?></td>
+        <td><?= $torneo['estatus'] == 1 ? 'Activo' : 'De baja' ?></td>
         <td>
 
             <a class="btn-editar" href="editar_torneo.php?pk_torneo=<?= $torneo['pk_torneo'] ?>">Editar</a>
-            <a class="btn-eliminar" href="" onclick="if(confirm('¿Dar de baja este torneo?')) window.location='baja_torneo.php?id=<?= $torneo['pk_torneo'] ?>'">Dar de baja</a>
-            <a class="btn-editar" href="lista_participantes.php?pk_torneo=<?= $torneo['pk_torneo']?>">Ver particiapantes</a>
+            <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $torneo['pk_torneo'] ?>', '<?= $torneo['estatus'] ?>')">
+                        <?= $torneo['estatus'] == 1 ? 'Dar de baja' : 'Dar de alta' ?>
+            </a>
+            <a class="btn-editar" href="lista_participantes.php?pk_torneo=<?= $torneo['pk_torneo']?>">Ver participantes (<?= $torneo['total_participantes'] ?>)</a>
         </td>
         <td>
             <a class="btn-eliminar" href="#" onclick="confirmDelete(event, '<?= $torneo['pk_torneo'] ?>')">
@@ -89,7 +91,7 @@ function confirmAction(event, projectId, currentStatus) {
     }).then((result) => {
         if (result.isConfirmed) {
             // Si el usuario confirma, redirige a la URL de acción
-            window.location.href = `../controller/proyecto/baja_proyecto.php?id=${projectId}`;
+            window.location.href = `../controller/torneo/baja_torneo.php?id=${projectId}`;
         }
     });
 }
