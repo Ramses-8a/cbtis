@@ -1,6 +1,6 @@
 <?php
- include_once('header.php'); 
- ?>
+include_once('header.php'); 
+?>
 <head>
     <link rel="stylesheet" href="../css/form_proyecto.css">
     <title>Agregar Torneos</title>

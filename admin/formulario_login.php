@@ -12,18 +12,44 @@
   <div class="login-container">
     <img src="../img/logo_cbtis.png" alt="DGETI Logo">
     
-    <div class="form-group">
-      <label for="usuario">Usuario</label>
-      <input type="text" id="usuario" name="usuario" />
-    </div>
+    <form id="loginForm" action="../controller/usuario/auth.php" method="POST">
+      <div class="form-group">
+        <label for="correo">Correo</label>
+        <input type="text" id="correo" name="correo" />
+      </div>
 
-    <div class="form-group">
-      <label for="password">Contraseña</label>
-      <input type="password" id="password" name="password" />
-    </div>
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" />
+      </div>
 
-    <button class="btn">Entrar</button>
+      <button type="submit" class="btn" id="loginBtn">Entrar</button>
+    </form>
   </div>
 
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      const formData = new FormData(this);
+
+      fetch(this.action, {
+          method: 'POST',
+          body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.status === 'success') {
+            window.location.href = '../admin/index.php';
+          } else {
+            alert(data.message);
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          alert('Ocurrió un error al intentar iniciar sesión.');
+        });
+    });
+  </script>
 </body>
 </html>
