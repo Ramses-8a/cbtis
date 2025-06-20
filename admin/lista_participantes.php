@@ -12,14 +12,38 @@ include_once('header.php');
     <link rel="stylesheet" href="../css/lista_participantes.css">
 </head>
 
+<div class="con_volver">
+        <a href="lista_torneos.php" class="volver">
+            <img src="../img/volver.webp" alt="Volver">
+        </a>
+        <h3></h3>
+    </div>
+
 <div class="container">
     <h1>Lista de Participantes</h1>
-
-    <?php foreach ($alumnos as $alumno): ?>
-            <div class="participant-card">
-                <h2><?= htmlspecialchars($alumno['nombre']) ?></h2>
-                <p><strong>Grupo:</strong> <?= htmlspecialchars($alumno['grupo']) ?></p>
-                <p><strong>Grado:</strong> <?= htmlspecialchars($alumno['grado']) ?></p>
-            </div>
-    <?php endforeach; ?>
+    
+    <div class="table-container">
+        <table class="participants-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Grado</th>
+                    <th>Grupo</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php $id = 1; ?>
+                <?php foreach ($alumnos as $alumno): ?>
+                    <tr>
+                        <td><?= $id ?></td>
+                        <td><?= htmlspecialchars($alumno['nombre']) ?></td>
+                        <td><?= htmlspecialchars($alumno['grado']) ?></td>
+                        <td><?= htmlspecialchars($alumno['grupo']) ?></td>
+                    </tr>
+                    <?php $id++; ?>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 </div>

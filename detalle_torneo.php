@@ -41,16 +41,25 @@ if (!$torneo) {
         <h3>Torneos</h3>
     </div>
     
-
+<div class="torneo-detalle">
     <h1><?= htmlspecialchars($torneo['nom_torneo']) ?></h1>
-    <p><strong>Tipo:</strong> <?= htmlspecialchars($torneo['nom_tipo']) ?></p>
-    <p><strong>Descripción:</strong> <?= nl2br(htmlspecialchars($torneo['descripcion'])) ?></p>
-    <p><strong>Detalles:</strong> <?= nl2br(htmlspecialchars($torneo['detalles'])) ?></p>
 
-    <?php if (!empty($torneo['img'])): ?>
-        <p><strong>Imagen del Torneo:</strong><br>
-        <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen del torneo" style="max: width 40px; height:auto;"></p>
-    <?php endif; ?>
+    <div class="torneo-detalle-flex">
+        <?php if (!empty($torneo['img'])): ?>
+            <div class="torneo-img">
+                <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen del torneo">
+            </div>
+        <?php endif; ?>
+
+        <div class="torneo-info">
+            <p><strong>Tipo:</strong> <?= htmlspecialchars($torneo['nom_tipo']) ?></p>
+            <p><strong>Descripción:</strong> <?= nl2br(htmlspecialchars($torneo['descripcion'])) ?></p>
+            <p><strong>Detalles:</strong> <?= nl2br(htmlspecialchars($torneo['detalles'])) ?></p>
+        </div>
+    </div>
+</div>
+
+
 
     <!-- Botón para abrir modal -->
     <div class="btn-flotante" id="btnAbrirModal">+</div>

@@ -14,8 +14,9 @@ include_once('header.php');
         <tr>
             <th>Imagen</th>
             <th>Nombre</th>
-            <th>Descripción</th>
-            <th>Detalles</th>
+            <th>Descripcion</th>
+            <th>Tipo</th>
+            <th>Lenguaje</th>
             <th>Url</th>
             <th>Estatus</th>
             <th>Acciones</th>
@@ -56,32 +57,36 @@ include_once('header.php');
                 </th>
                 <td><?= $curso['nom_curso'] ?></td>
                 <td><?= $curso['descripcion'] ?></td>
-                <td><?= $curso['fk_tipo_curso'] ?></td>
-                <td><?= $curso['fk_lenguaje'] ?></td>
+                <td><?= $curso['nom_tipo'] ?></td>
+                <td><?= $curso['nom_lenguaje'] ?></td>
                 <td><a href="<?= $curso['link'] ?>"><?= $curso['link'] ?></a></td>
-                <td><?= $curso['estatus'] == 1 ? 'Activo' : 'De baja' ?></td>
+                 <td class="estatus <?= $curso['estatus'] == 1 ? 'activo' : 'de-baja' ?>">
+                <?= $curso['estatus'] == 1 ? 'Activo' : 'De baja' ?>
+                </td>
                 <td>
-                    <a class="btn-editar" href="">Editar</a>
-                    <a class="btn-eliminar" href="#" >
+                    <a class="btn-editar" href="editar_cursos.php?pk_curso=<?= $curso['pk_curso']?>">Editar</a>
+                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $curso['pk_curso'] ?>', '<?= $curso['estatus'] ?>')">
                         <?= $curso['estatus'] == 1 ? 'Dar de baja' : 'Dar de alta' ?>
                     </a>
                 </td>
                 <td>
-                    <a class="btn-eliminar" href="#">
+                    <a class="btn-eliminar" href="#" onclick="confirmDelete(event, '<?= $curso['pk_curso'] ?>')">
                         Eliminar <i class="fas fa-trash-alt"></i>
                     </a>
                 </td>
+
             </tr>
             <?php endforeach; ?>
         <?php endif; ?>
     </table>
 </div>
 
+
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
 <script>
-
 function confirmDelete(event, projectId) {
     event.preventDefault();
     Swal.fire({
@@ -95,16 +100,15 @@ function confirmDelete(event, projectId) {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = `../controller/proyecto/eliminar_proyecto.php?id=${projectId}`;
+            window.location.href = `../controller/cursos/eliminar_curso.php?id=${projectId}`;
         }
     });
 }
-
-function confirmAction(event, projectId, currentStatus) {
+function confirmAction(event, courseId, currentStatus) {
     event.preventDefault(); // Previene la acción por defecto del enlace
 
     let actionText = currentStatus == 1 ? 'Dar de baja' : 'Dar de alta';
-    let confirmMessage = `¿Estás seguro de ${actionText.toLowerCase()} este proyecto?`;
+    let confirmMessage = `¿Estás seguro de ${actionText.toLowerCase()} este curso?`;
 
     Swal.fire({
         title: 'Confirmar Acción',
@@ -118,7 +122,7 @@ function confirmAction(event, projectId, currentStatus) {
     }).then((result) => {
         if (result.isConfirmed) {
             // Si el usuario confirma, redirige a la URL de acción
-            window.location.href = `../controller/proyecto/baja_proyecto.php?id=${projectId}`;
+            window.location.href = `../controller/cursos/baja_curso.php?id=${courseId}`;
         }
     });
 }
@@ -164,7 +168,7 @@ window.onload = function() {
         Swal.fire({
             icon: 'success',
             title: '¡Éxito!',
-            text: 'El proyecto ha sido eliminado correctamente',
+            text: 'El curso ha sido eliminado correctamente',
             confirmButtonText: 'Aceptar'
         }).then(() => {
             window.location.href = window.location.pathname;
@@ -174,7 +178,7 @@ window.onload = function() {
         Swal.fire({
             icon: 'success',
             title: '¡Éxito!',
-            text: `El proyecto ha sido ${mensaje} correctamente`,
+            text: `El curso ha sido ${mensaje} correctamente`,
             confirmButtonText: 'Aceptar'
         }).then(() => {
             window.location.href = window.location.pathname;
@@ -185,13 +189,13 @@ window.onload = function() {
         
         switch(errorMsg) {
             case 'no_id':
-                mensaje = 'No se proporcionó el ID del proyecto';
+                mensaje = 'No se proporcionó el ID del curso';
                 break;
             case 'not_found':
-                mensaje = 'Proyecto no encontrado';
+                mensaje = 'Curso no encontrado';
                 break;
             case 'update_failed':
-                mensaje = 'Error al actualizar el estado del proyecto';
+                mensaje = 'Error al actualizar el estado del curso';
                 break;
             default:
                 mensaje = 'Error: ' + errorMsg;

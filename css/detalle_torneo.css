@@ -1,44 +1,97 @@
-    body {
-        font-family: "Segoe UI", sans-serif;
-        background: #fff;
-        color: #333;
-        padding: 0;
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #fff;
+  padding: 0;
+  color: #333;
+}
+
+.torneo-detalle {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.torneo-detalle h1 {
+  text-align: center;
+  color: #b11818;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+.torneo-detalle-flex {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.torneo-img img {
+  max-width: 300px;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.torneo-info {
+  flex: 1;
+  min-width: 260px;
+}
+
+.torneo-info p {
+  margin-bottom: 15px;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.torneo-info strong {
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .torneo-detalle-flex {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .torneo-info {
+    text-align: center;
+  }
+}
+
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+    .torneo-detalle-flex {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .g-recaptcha{
-        margin-top: 20px;
-    }
-
-    h1 {
-        color: #dc3545;
-        margin-bottom: 20px;
+    .torneo-info {
         text-align: center;
-        font-family: 'Poppins', 'Segoe UI', sans-serif;
+    }
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+    .torneo-detalle {
+        padding: 20px;
     }
 
-    p {
-        line-height: 1.5;
-        text-align: center;
+    .torneo-detalle h1 {
+        font-size: 1.5rem;
     }
 
-    img {
-        max-width: 300px;
-        margin: 10px auto;
-        display: block;
-        border-radius: 10px;
+    .torneo-detalle p {
+        font-size: 0.95rem;
     }
+}
 
-    .imagenes-adicionales {
-        text-align: center;
-        margin-top: 20px;
-    }
-
-    .imagenes-adicionales img {
-        max-width: 120px;
-        margin: 10px 5px;
-        border-radius: 8px;
-        box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
-    }
 
     /* boton flotante circular */
     .btn-flotante {
@@ -155,4 +208,8 @@
 
     .cerrar:hover {
         color: #000;
+    }
+
+    .g-recaptcha{
+        margin-top: 10px;
     }

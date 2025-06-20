@@ -19,28 +19,44 @@
             <img src="img/volver.webp" alt="Volver">
         </a>
         <h3>Proyectos</h3>
-
-        <div>
-            <input type="text" placeholder="Buscador">
-        </div>
     </div>
+       <!-- Contenedor del buscador alineado a la derecha -->
+<div class="contenedor-buscador">
+  <input type="text" id="buscador-proyectos" placeholder="Buscar proyecto.." class="buscador">
+</div>
 
-    <main class="proyectos">
+<main class="proyectos">
     <?php foreach ($proyectos as $proyecto):
-            // Add this condition to check the status
-            if (isset($proyecto['estatus']) && $proyecto['estatus'] == 1):
-        ?>
-            <a href="ver_detalles_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>" class="card">
-                <img src="uploads/<?= $proyecto['img_proyecto'] ?>" alt="Proyecto">
-                <p><strong><?= $proyecto['nom_proyecto'] ?></strong></p>
-            </a>
-            <?php 
-            endif; // Close the if condition
-            endforeach; 
-        ?>
-    </main>
+    if (isset($proyecto['estatus']) && $proyecto['estatus'] == 1): ?>
+        <a href="ver_detalles_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>" class="card">
+            <img src="uploads/<?= $proyecto['img_proyecto'] ?>" alt="Proyecto">
+            <p><strong class="nombre-proyecto"><?= $proyecto['nom_proyecto'] ?></strong></p>
+        </a>
+    <?php endif;
+    endforeach; ?>
+</main>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const buscador = document.getElementById('buscador-proyectos');
+    const proyectos = document.querySelectorAll('.proyectos .card');
+    
+    buscador.addEventListener('input', function() {
+        const textoBusqueda = this.value.trim().toLowerCase();
+        
+        proyectos.forEach(proyecto => {
+            const nombreProyecto = proyecto.querySelector('.nombre-proyecto').textContent.toLowerCase();
+            
+            // Mostrar u ocultar según coincida con la búsqueda
+            proyecto.style.display = nombreProyecto.includes(textoBusqueda) ? 'block' : 'none';
+        });
+    });
+});
+</script>
 
 </body>
 </html>
+
 
 

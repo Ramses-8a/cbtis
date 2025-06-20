@@ -34,7 +34,9 @@ include_once('header.php');
                 <td><?= $proyecto['descripcion'] ?></td>
                 <td><?= $proyecto['detalles'] ?></td>
                 <td><a href="<?= $proyecto['url'] ?>"><?= $proyecto['url'] ?></a></td>
-                <td><?= $proyecto['estatus'] == 1 ? 'Activo' : 'De baja' ?></td>
+                <td class="estatus <?= $proyecto['estatus'] == 1 ? 'activo' : 'de-baja' ?>">
+                <?= $proyecto['estatus'] == 1 ? 'Activo' : 'De baja' ?>
+                </td>
                 <td>
                     <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Editar</a>
                     <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')">

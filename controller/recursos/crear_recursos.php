@@ -91,14 +91,13 @@ $connect->beginTransaction();
 
 try {
     // Insertar recurso
-    $stmt = $connect->prepare("INSERT INTO recursos (nom_recurso, descripcion, fk_tipo_recurso, url, estatus, img)
-                             VALUES (:nom_recurso, :descripcion, :fk_tipo_recurso, :url, :estatus, :img)");
+    $stmt = $connect->prepare("INSERT INTO recursos (nom_recurso, descripcion, fk_tipo_recurso, url , img)
+                             VALUES (:nom_recurso, :descripcion, :fk_tipo_recurso, :url, :img)");
 
     $stmt->bindParam(':nom_recurso', $nom_recurso);
     $stmt->bindParam(':descripcion', $descripcion);
     $stmt->bindParam(':fk_tipo_recurso', $pk_tipo_recurso, PDO::PARAM_INT);
     $stmt->bindParam(':url', $url);
-    $stmt->bindParam(':estatus', $estatus, PDO::PARAM_INT);
     $stmt->bindParam(':img', $img_nombre);
     $stmt->execute();
     

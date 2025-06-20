@@ -18,6 +18,7 @@ if (!isset($_SESSION['usuario_id'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <style>
         .navbar {
@@ -61,7 +62,7 @@ if (!isset($_SESSION['usuario_id'])) {
 
             <a class="navbar-brand d-flex align-items-center" href="index.php">
                 <img src="../img/logo_cbtis.png" alt="logo" width="90" height="90" style="border-radius: 50%;">
-                <h2 class="ms-2 text-white fw-bold">CBTis No.152</h2>
+                <h2 class="ms-2 text-white fw-bold">Panel de administrador</h2>
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
@@ -94,8 +95,8 @@ if (!isset($_SESSION['usuario_id'])) {
                             <li><a class="dropdown-item" href="formulario_recursos.php">Agregar Recursos</a></li>
                             <li><a class="dropdown-item" href="lista_recursos.php">Editar Recursos</a></li>
 
-                            <li><a class="dropdown-item" href="">Agregar Cursos</a></li>
-                            <li><a class="dropdown-item" href="lista_cursos.php">Editar Recursos</a></li>
+                            <li><a class="dropdown-item" href="formulario_cursos.php">Agregar Cursos</a></li>
+                            <li><a class="dropdown-item" href="lista_cursos.php">Editar Cursos</a></li>
                         </ul>
                     </li>
 

@@ -25,7 +25,9 @@ include_once('header.php');
         <td><?= $recurso['descripcion'] ?></td>
         <td><?= $recurso['nom_tipo'] ?? 'Sin tipo' ?></td>
         <td><a href="<?= $recurso['url'] ?>"><?= $recurso['url'] ?></a></td>
-        <td><?= $recurso['estatus'] == 1 ? 'activo' : 'baja' ?></td>
+         <td class="estatus <?= $recurso['estatus'] == 1 ? 'activo' : 'de-baja' ?>">
+                <?= $recurso['estatus'] == 1 ? 'Activo' : 'De baja' ?>
+                </td>
         <td>
             <a class="btn-editar" href="editar_recurso.php?pk_recurso=<?= $recurso['pk_recurso'] ?>">Editar</a>
             <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $recurso['pk_recurso'] ?>', '<?= $recurso['estatus'] ?>')">
