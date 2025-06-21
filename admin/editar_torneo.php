@@ -29,7 +29,17 @@ if (!isset($_GET['pk_torneo'])) {
 
     <div class="nom-proyecto">
         <label for="fk_tipo_torneo">Tipo de Torneo:</label>
-        <input type="text" id="fk_tipo_torneo" name="fk_tipo_torneo" value="<?php echo $torneo['fk_tipo_torneo']; ?>" required>
+        <select class="" name="fk_tipo_torneo" id="fk_tipo_torneo" required>
+            <?php
+            require_once(__DIR__ . '/../controller/torneo/mostrar_tipo_torneos.php');
+            $tipos_torneo = getTiposTorneo($connect); // Assuming a function `getTiposTorneo` is created
+
+            foreach ($tipos_torneo as $tipo) {
+                $selected = ($tipo['pk_tipo_torneo'] == $torneo['fk_tipo_torneo']) ? 'selected' : '';
+                echo "<option value=\"{$tipo['pk_tipo_torneo']}\" {$selected}>{$tipo['nom_tipo']}</option>";
+            }
+            ?>
+        </select>
     </div>
 
     <div class="img-proyecto">
