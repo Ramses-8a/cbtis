@@ -22,13 +22,24 @@ include_once('header.php');
         <select name="pk_tipo_recurso" id="pk_tipo_recurso" required>
             <?php
             include_once '../controller/conexion.php';
-            $stmt = $connect->prepare("SELECT * FROM tipo_recursos WHERE estatus = 1");
-            $stmt->execute();
-            foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
-                echo "<option value='{$row['pk_tipo_recurso']}'>{$row['nom_tipo']}</option>";
+            
+            // Función para obtener tipos de recurso directamente
+            try {
+                $stmt = $connect->prepare("SELECT pk_tipo_recurso, nom_tipo FROM tipo_recursos WHERE estatus = 1 ORDER BY nom_tipo ASC");
+                $stmt->execute();
+                $tipos_recurso = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                
+                foreach ($tipos_recurso as $row) {
+                    echo "<option value='{$row['pk_tipo_recurso']}'>{$row['nom_tipo']}</option>";
+                }
+            } catch (PDOException $e) {
+                echo "<option value=''>Error al cargar tipos de recurso</option>";
             }
             ?>
         </select>
+        <div>
+            <a href="formulario_tipo_recurso.php">Agregar Nuevo Tipo</a>
+        </div>
     </div>
 
     <div>
@@ -86,3 +97,26 @@ $('#formRecurso').on('submit', function(e) {
     });
 });
 </script>
+
+<style>
+    .button-group {
+        margin-top: 10px;
+        display: flex;
+        gap: 10px;
+    }
+    .btn-add-type, .btn-view-types {
+        display: inline-block;
+        padding: 8px 15px;
+        background-color: #4CAF50; /* Green */
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    .btn-add-type:hover, .btn-view-types:hover {
+        background-color: #45a049;
+    }
+</style>

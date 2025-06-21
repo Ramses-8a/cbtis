@@ -30,6 +30,10 @@ include_once '../controller/conexion.php';
     </div>
 
     <div>
+            <a href="formulario_tipo_curso.php" >Agregar Nuevo Tipo</a>
+    </div>
+
+    <div>
         <label for="fk_lenguaje">Lenguaje:</label>
         <select name="fk_lenguaje" required>
             <option value="" disabled selected>Selecciona un lenguaje</option>
@@ -42,6 +46,10 @@ include_once '../controller/conexion.php';
             }
             ?>
         </select>
+    </div>
+
+    <div>
+            <a href="formulario_tipo_lenguaje.php" >Agregar Nuevo Tipo</a>
     </div>
 
     <div>

@@ -14,7 +14,7 @@ $pk_torneo = $_GET['pk_torneo'];
 
 try {
     // Obtener el torneo
-    $stmt = $connect->prepare("SELECT * FROM torneos WHERE pk_torneo = :pk_torneo AND estatus = 1");
+    $stmt = $connect->prepare("SELECT * FROM torneos WHERE pk_torneo = :pk_torneo");
     $stmt->bindParam(':pk_torneo', $pk_torneo, PDO::PARAM_INT);
     $stmt->execute();
     $torneo = $stmt->fetch(PDO::FETCH_ASSOC);
