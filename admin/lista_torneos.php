@@ -33,7 +33,9 @@ include_once('header.php');
         <td><?= $torneo['nom_tipo'] ?></td>
         <td><?= $torneo['descripcion'] ?></td>
         <td><?= $torneo['detalles'] ?></td>
-        <td><?= $torneo['estatus'] == 1 ? 'Activo' : 'De baja' ?></td>
+         <td class="estatus <?= $torneo['estatus'] == 1 ? 'activo' : 'de-baja' ?>">
+                <?= $torneo['estatus'] == 1 ? 'Activo' : 'De baja' ?>
+                </td>
         <td>
 
             <a class="btn-editar" href="editar_torneo.php?pk_torneo=<?= $torneo['pk_torneo'] ?>">Editar</a>

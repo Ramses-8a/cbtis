@@ -60,7 +60,9 @@ include_once('header.php');
                 <td><?= $curso['nom_tipo'] ?></td>
                 <td><?= $curso['nom_lenguaje'] ?></td>
                 <td><a href="<?= $curso['link'] ?>"><?= $curso['link'] ?></a></td>
-                <td><?= $curso['estatus'] == 1 ? 'Activo' : 'De baja' ?></td>
+                 <td class="estatus <?= $curso['estatus'] == 1 ? 'activo' : 'de-baja' ?>">
+                <?= $curso['estatus'] == 1 ? 'Activo' : 'De baja' ?>
+                </td>
                 <td>
                     <a class="btn-editar" href="editar_cursos.php?pk_curso=<?= $curso['pk_curso']?>">Editar</a>
                     <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $curso['pk_curso'] ?>', '<?= $curso['estatus'] ?>')">
