@@ -1,10 +1,18 @@
 <?php
 include_once('header.php');
+require_once('../controller/conexion.php');
 
-// Obtener tipos de curso usando la función existente
-$response = file_get_contents('http://localhost/cbetis/controller/tipo_curso/mostrar_tipos.php');
-$data = json_decode($response, true);
-$tipos_curso = ($data && $data['status'] === 'success') ? $data['data'] : [];
+// Obtener tipos de curso directamente desde la base de datos
+$tipos_curso = [];
+try {
+    $sql = "SELECT pk_tipo_curso, nom_tipo, estatus FROM tipo_cursos ORDER BY pk_tipo_curso DESC";
+    $stmt = $connect->prepare($sql);
+    $stmt->execute();
+    $tipos_curso = $stmt->fetchAll(PDO::FETCH_ASSOC);
+} catch (PDOException $e) {
+    // En caso de error, $tipos_curso permanece como array vacío
+    error_log('Error al obtener tipos de curso: ' . $e->getMessage());
+}
 ?>
 
 <div >
