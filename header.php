@@ -71,7 +71,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Recursos Tecnológicos</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="1">Tecnológicos</a></li>
+                        <li><a class="dropdown-item" href="mostrar_recursos.php">Tecnológicos</a></li>
                         <li><a class="dropdown-item" href="mostrar_cursos.php">Cursos</a></li>
                     </ul>
                 </li>

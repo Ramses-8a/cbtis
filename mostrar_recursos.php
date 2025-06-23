@@ -1,5 +1,6 @@
 <?php
-require_once 'controller/conexion.php'; // Ajusta si tu ruta es diferente
+require_once 'controller/conexion.php';
+include_once('header.php');
 
 try {
     $sql = "SELECT r.pk_recurso, tr.nom_tipo AS tipo_recurso, r.nom_recurso, r.url, r.estatus, r.img 
@@ -7,7 +8,6 @@ try {
             INNER JOIN tipo_recursos tr ON r.fk_tipo_recurso = tr.pk_tipo_recurso";
     $stmt = $connect->prepare($sql);
     $stmt->execute();
-
     $recursos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 } catch (PDOException $e) {
     echo "Error al consultar los recursos: " . $e->getMessage();
@@ -19,66 +19,38 @@ try {
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Lista de Recursos</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        th, td {
-            padding: 8px;
-            border: 1px solid #ddd;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-        a {
-            text-decoration: none;
-            color: blue;
-        }
-
-        img {
-            max-width: 100px;
-            height: auto;
-        }
-    </style>
+    <title>Recursos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/proyecto.css">
 </head>
 <body>
-    <h1>Listado de Recursos</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>Tipo de Recurso</th>
-                <th>Nombre</th>
-                <th>URL</th>
-                <th>Imagen</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (!empty($recursos)): ?>
-                <?php foreach ($recursos as $recurso): ?>
-                    <tr>
-                        <td><?= htmlspecialchars($recurso['tipo_recurso']) ?></td>
-                        <td><?= htmlspecialchars($recurso['nom_recurso']) ?></td>
-                        <td><a href="<?= htmlspecialchars($recurso['url']) ?>" target="_blank">Visitar</a></td>
-                        <td>
-                            <?php if (!empty($recurso['img'])): ?>
-                                <img src="uploads/<?= htmlspecialchars($recurso['img']) ?>" alt="Imagen recurso">
-                            <?php else: ?>
-                                Sin imagen
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
+    <div class="con_volver">
+        <a href="index.php" class="volver">
+            <img src="img/volver.webp" alt="Volver">
+        </a>
+        <h3>Recursos</h3>
+    </div>
+
+    <main class="proyectos">
+    <?php foreach ($recursos as $recurso):
+        if (isset($recurso['estatus']) && $recurso['estatus'] == 1):
+    ?>
+        <a href="<?= htmlspecialchars($recurso['url']) ?>" class="card" target="_blank">
+            <?php if (!empty($recurso['img'])): ?>
+                <img src="uploads/<?= htmlspecialchars($recurso['img']) ?>" alt="Imagen recurso" style="width: 100%; height: auto;">
             <?php else: ?>
-                <tr>
-                    <td colspan="4">No hay recursos registrados.</td>
-                </tr>
+                <div style="width:100%;height:200px;display:flex;align-items:center;justify-content:center;background:#f2f2f2;color:#666;">
+                    Sin imagen
+                </div>
             <?php endif; ?>
-        </tbody>
-    </table>
+            <p><strong><?= htmlspecialchars($recurso['nom_recurso']) ?></strong></p>
+            <p><?= htmlspecialchars($recurso['tipo_recurso']) ?></p>
+        </a>
+    <?php 
+        endif;
+    endforeach; 
+    ?>
+    </main>
 </body>
 </html>
