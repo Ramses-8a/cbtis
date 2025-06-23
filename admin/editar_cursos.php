@@ -12,7 +12,7 @@ $curso = $curso ?? null;
 ?>
 <head>
     <link rel="stylesheet" href="../css/form_proyecto.css">
-    <title>Editar Curso</title>
+    <title>Editar Curso 2</title>
     <style>
         .image-preview-container {
             position: relative;
