@@ -24,14 +24,14 @@ if (!$curso) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/ver_proyecto.css">
+    <link rel="stylesheet" href="css/ver_curso.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <title><?= $curso['nom_curso'] ?></title>
 </head>
 
 <body>
     <div class="con_volver">
-        <a href="mostrar_proyectos.php" class="volver">
+        <a href="mostrar_cursos.php" class="volver">
             <img src="img/volver.webp" alt="Volver">
         </a>
         <h3><?=$curso['nom_curso']?></h3>
@@ -57,8 +57,8 @@ if (!$curso) {
                 <?php endif; ?>
             <?php endif; ?>
 
-            <p><strong>Nombre:</strong> <?= $curso['nom_curso'] ?></p>
-            <p><strong>Descripción:</strong> <?= $curso['descripcion'] ?></p>
+            <p><strong>Curso:</strong> <?= $curso['nom_curso'] ?></p>
+            <p><?= $curso['descripcion'] ?></p>
             <p><strong>Tipo de Curso:</strong> <?= $curso['nom_tipo'] ?></p>
             <p><strong>Lenguaje:</strong> <?= $curso['nom_lenguaje'] ?></p>
             <p><strong>Enlace:</strong> <a href="<?= $curso['link'] ?>" target="_blank"><?= $curso['link'] ?></a></p>

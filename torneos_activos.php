@@ -32,7 +32,7 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <html>
 <head>
     <title>Lista de Torneos</title>
-    <link rel="stylesheet" href="css/torneo_vista.css">
+    <link rel="stylesheet" href="css/proyecto.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
@@ -43,26 +43,21 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <img src="img/volver.webp" alt="Volver">
     </a>
     <h3>Torneos</h3>
-</div>
-
-<?php if ($tipo): ?>
-    <h1>Lista de Torneos de <?= htmlspecialchars(ucfirst($tipo)) ?></h1>
+</div><?php if ($tipo): ?>
+    <h1 style="text-align: center; margin-top: 30px;">Lista de Torneos de <?= htmlspecialchars(ucfirst($tipo)) ?></h1>
 <?php else: ?>
-    <h1>Lista de Todos los Torneos</h1>
+    <h1 style="text-align: center; margin-top: 30px;">Lista de Todos los Torneos</h1>
 <?php endif; ?>
 
-<div class="grid_torneos">
+<div class="proyectos">
     <?php if (count($torneos) > 0): ?>
         <?php foreach ($torneos as $torneo): ?>
-            <div class="cont_torneo">
-                <a href="detalle_torneo.php?id=<?= urlencode($torneo['pk_torneo']) ?>">
-                    <h2><?= htmlspecialchars($torneo['nom_torneo']) ?></h2>
+            <div class="card">
+                <a href="detalle_torneo.php?id=<?= urlencode($torneo['pk_torneo']) ?>" style="text-decoration: none; color: inherit;">
                     <?php if (!empty($torneo['img'])): ?>
-                        <p><strong></strong><br>
-                            <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen principal">
-                        </p>
+                        <img src="uploads/<?= htmlspecialchars($torneo['img']) ?>" alt="Imagen principal">
                     <?php endif; ?>
-
+                    <p><strong class="nombre-proyecto"><?= htmlspecialchars($torneo['nom_torneo']) ?></strong></p>
                 </a>
             </div>
         <?php endforeach; ?>
@@ -70,29 +65,5 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <p style="padding: 20px;">No se encontraron torneos para este tipo.</p>
     <?php endif; ?>
 </div>
-</body>
-</html>
 
- <style>
-   /* contenedor para volver */
-        .con_volver {
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 15px 20px;
-          background-color: white;
-        }
-        
-        .con_volver .volver img {
-          width: 28px;
-          height: 28px;
-          object-fit: contain;
-          cursor: pointer;
-        }
-        
-        .con_volver h3 {
-          font-size: 2.5rem;
-          font-weight: bold;
-          margin: 0;
-        }
-    </style>
+

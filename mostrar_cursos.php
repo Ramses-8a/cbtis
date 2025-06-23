@@ -49,7 +49,6 @@
                     <?php endif; ?>
                 <?php endif; ?>
                 <p><strong><?= $curso['nom_curso'] ?></strong></p>
-                <p><?= $curso['descripcion'] ?></p>
             </a>
             <?php 
             endif; // Close the if condition
