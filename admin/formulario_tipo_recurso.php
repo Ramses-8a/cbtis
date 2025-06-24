@@ -1,17 +1,6 @@
 <?php
 include_once('header.php');
-
-// Obtener tipos de recurso directamente desde la base de datos
-require_once('../controller/conexion.php');
-
-try {
-    $stmt = $connect->prepare('SELECT * FROM tipo_recursos ORDER BY nom_tipo ASC');
-    $stmt->execute();
-    $tipo_recursos = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    $tipo_recursos = [];
-    $error_message = 'Error al obtener los tipos de recurso: ' . $e->getMessage();
-}
+include('../controller/tipo_recursos/mostrar_tipo_recursos.php');
 ?>
 
 <div>

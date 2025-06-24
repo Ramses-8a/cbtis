@@ -1,18 +1,6 @@
 <?php
 include_once('header.php');
-require_once('../controller/conexion.php');
-
-// Obtener tipos de lenguaje directamente desde la base de datos
-$tipos_lenguaje = [];
-try {
-    $sql = "SELECT pk_lenguaje, nom_lenguaje, estatus FROM lenguajes ORDER BY pk_lenguaje DESC";
-    $stmt = $connect->prepare($sql);
-    $stmt->execute();
-    $tipos_lenguaje = $stmt->fetchAll(PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    // En caso de error, $tipos_lenguaje permanece como array vacío
-    error_log('Error al obtener tipos de lenguaje: ' . $e->getMessage());
-}
+include('../controller/tipo_lenguaje/mostrar_tipos.php');
 ?>
 
 <div>
