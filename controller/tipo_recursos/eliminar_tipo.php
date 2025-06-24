@@ -16,7 +16,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['id'])) {
             $response = array('status' => 'error', 'message' => 'Error al eliminar el tipo de recurso.');
         }
     } catch (PDOException $e) {
-        $response = array('status' => 'error', 'message' => 'Error de base de datos: ' . $e->getMessage());
+        // Verificar si es un error de clave foránea
+        if ($e->getCode() == '23000' || strpos($e->getMessage(), 'foreign key constraint') !== false || strpos($e->getMessage(), 'FOREIGN KEY') !== false) {
+            $response = array('status' => 'error', 'message' => 'El tipo de recurso no se puede eliminar porque se utiliza en uno o más recursos.');
+        } else {
+            $response = array('status' => 'error', 'message' => 'Error de base de datos: ' . $e->getMessage());
+        }
     }
 } else {
     $response = array('status' => 'error', 'message' => 'ID de tipo de recurso no proporcionado.');
