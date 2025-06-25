@@ -1,0 +1,15 @@
+ErrorDocument 404 /cb/cbtis/error404.php
+
+RewriteEngine On
+RewriteBase /cb/cbtis/
+
+# Redirigir errores 404 en la sección de admin
+RewriteCond %{REQUEST_URI} ^/cb/cbtis/admin/.*$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* /cb/cbtis/error404.php [L]
+
+# Redirigir errores 404 en la sección principal
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* /cb/cbtis/error404.php [L]
