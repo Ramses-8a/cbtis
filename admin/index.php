@@ -30,8 +30,8 @@ foreach ($torneos as $torneo) {
     <!-- Coloca esto justo antes de cerrar la etiqueta <head> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../css/admin.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css" integrity="sha384-CgRB3jUvPrxCGryXuCYwHJTEYjCnW7Ew3E6R1RDpRF0Xs+UEqK1mhxh0UjE4Xm1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js" integrity="sha384-qwJPPqm+vKKFh8LuD5XyVB0QZXNz2HGZ2w8AGGTXdh/Q8E1TNxx5EMQhWEwNiJ6" crossorigin="anonymous"></script>
     <style>
         .actions a {
             text-decoration: none;
