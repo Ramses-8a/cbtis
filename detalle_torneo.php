@@ -21,7 +21,7 @@ $torneo = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$torneo) {
     echo "Torneo no encontrado.";
     exit;
-}
+} 
 ?>
 
 <!DOCTYPE html>

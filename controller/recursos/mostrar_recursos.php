@@ -20,4 +20,4 @@ try {
         "message" => "Error al obtener los recursos",
         "error" => $e->getMessage()
     ]));
-}
+} 

@@ -74,13 +74,12 @@ include_once '../controller/conexion.php';
     </div>
 </form>
 
-<!-- Incluye jQuery y SweetAlert2 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 $(document).ready(function() {
-    // Previsualizar imagen
+    
     $('#img_curso').on('change', function() {
         const file = this.files[0];
         const preview = $('#preview_img').empty();
@@ -101,7 +100,7 @@ $(document).ready(function() {
         }
     });
 
-    // Envío con AJAX
+   
     $('#formCurso').on('submit', function(e) {
         e.preventDefault();
 

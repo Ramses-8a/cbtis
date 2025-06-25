@@ -1,7 +1,7 @@
 <?php
     include('controller/proyecto/mostrar_proyecto.php');
     include_once('header.php');
-?>
+?> 
 
 <!DOCTYPE html>
 <html lang="es">
@@ -20,7 +20,7 @@
         </a>
         <h3>Proyectos</h3>
     </div>
-       <!-- Contenedor del buscador alineado a la derecha -->
+       
 <div class="contenedor-buscador">
   <input type="text" id="buscador-proyectos" placeholder="Buscar proyecto.." class="buscador">
 </div>
@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         proyectos.forEach(proyecto => {
             const nombreProyecto = proyecto.querySelector('.nombre-proyecto').textContent.toLowerCase();
             
-            // Mostrar u ocultar según coincida con la búsqueda
+          
             proyecto.style.display = nombreProyecto.includes(textoBusqueda) ? 'block' : 'none';
         });
     });
