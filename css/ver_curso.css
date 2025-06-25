@@ -1,9 +1,14 @@
+:root {
+    --secondary-gray: #4b5563;
+    --dark-bg: #111827;
+}
 
+/* Fondo degradado simple */
 body {
-    font-family: 'Poppins', sans-serif;
-    background-color: #ffff;
-    color: #333;
-    padding: 0;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary-gray) 100%);
+    background-attachment: fixed;
+    color: white;
+    min-height: 100vh;
 }
 
 main {
@@ -80,7 +85,6 @@ a:hover {
     align-items: center;
     gap: 10px;
     padding: 15px 20px;
-    background-color: white;
 }
 
 .con_volver .volver img {

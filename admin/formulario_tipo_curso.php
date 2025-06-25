@@ -2,22 +2,28 @@
 include_once('header.php');
 include('../controller/tipo_curso/mostrar_tipo.php');
 ?>
-
-<div >
+<head>
+    <link rel="stylesheet" href="../css/tipos_cambios.css">
+</head>
+<div class="con_volver">
+        <a href="formulario_cursos.php" class="volver">
+            <img src="../img/volver.webp" alt="Volver">
+        </a>
+        <h3>Regresar</h3>
+    </div>
+<div class="contenedor-flex">
     <!-- Formulario -->
-    <div >
+    <div class="formulario">
         <h3>Crear Tipo de Curso</h3>
-        <div>
-            <form id="tipoCursoForm" action="../controller/tipo_curso/crear_tipo.php" method="POST">
-                <label for="">Nombre del tipo de curso</label>
-                <input type="text" name="nom_tipo" id="nom_tipo_input" required>
-                <input type="submit" value="Guardar">
-            </form>
-        </div>
+        <form id="tipoCursoForm" action="../controller/tipo_curso/crear_tipo.php" method="POST">
+            <label for="nom_tipo_input">Nombre del tipo de curso</label>
+            <input type="text" name="nom_tipo" id="nom_tipo_input" required>
+            <input type="submit" value="Guardar">
+        </form>
     </div>
     
     <!-- Lista de tipos de curso -->
-    <div style="flex: 2;">
+    <div class="tabla">
         <h3>Lista de Tipos de Curso</h3>
         <table id="tiposCursoTable">
             <thead>
@@ -34,9 +40,9 @@ include('../controller/tipo_curso/mostrar_tipo.php');
                             <td><?php echo htmlspecialchars($tipo['nom_tipo']); ?></td>
                             <td><?php echo $tipo['estatus'] == 1 ? 'Activo' : 'Inactivo'; ?></td>
                             <td>
-                                <button class="editar-btn" data-id="<?php echo $tipo['pk_tipo_curso']; ?>" data-nombre="<?php echo htmlspecialchars($tipo['nom_tipo']); ?>">Editar</button>
-                                <button class="eliminar-btn" data-id="<?php echo $tipo['pk_tipo_curso']; ?>" data-nombre="<?php echo htmlspecialchars($tipo['nom_tipo']); ?>">Eliminar</button>
-                                <button class="cambiar-estatus-btn" data-id="<?php echo $tipo['pk_tipo_curso']; ?>" data-nombre="<?php echo htmlspecialchars($tipo['nom_tipo']); ?>" data-estatus="<?php echo $tipo['estatus']; ?>">
+                                <button class="btn-editar" data-id="<?php echo $tipo['pk_tipo_curso']; ?>" data-nombre="<?php echo htmlspecialchars($tipo['nom_tipo']); ?>">Editar</button>
+                                <button class="btn-eliminar" data-id="<?php echo $tipo['pk_tipo_curso']; ?>" data-nombre="<?php echo htmlspecialchars($tipo['nom_tipo']); ?>">Eliminar</button>
+                                <button class="btn-editar" data-id="<?php echo $tipo['pk_tipo_curso']; ?>" data-nombre="<?php echo htmlspecialchars($tipo['nom_tipo']); ?>" data-estatus="<?php echo $tipo['estatus']; ?>">
                                     <?php echo $tipo['estatus'] == 1 ? 'Desactivar' : 'Activar'; ?>
                                 </button>
                             </td>
@@ -51,6 +57,7 @@ include('../controller/tipo_curso/mostrar_tipo.php');
         </table>
     </div>
 </div>
+
 
 <script>
 $(document).ready(function() {

@@ -38,7 +38,7 @@ include_once('header.php');
             ?>
         </select>
         <div>
-            <a href="formulario_tipo_recurso.php">Agregar Nuevo Tipo</a>
+            <a href="formulario_tipo_recurso.php"  class="boton-agregar">Agregar Nuevo Tipo</a>
         </div>
     </div>
 
