@@ -18,6 +18,14 @@ include_once('header.php');
         <th>Acciones</th>
         <th>Eliminar</th>
     </tr>
+    <?php if (empty($recursos)): ?>
+    <tr>
+        <td colspan="8" style="text-align: center; padding: 20px; background-color: #f5f5f5; color: #666;">
+            <strong>No hay recursos disponibles actualmente.</strong><br>
+            Cuando se agreguen recursos, aparecerán aquí.
+        </td>
+    </tr>
+<?php else: ?>
     <?php foreach ($recursos as $recurso): ?>
     <tr>
         <td><img src="../uploads/<?= $recurso['img'] ?>" width="50px"></td>
@@ -25,13 +33,13 @@ include_once('header.php');
         <td><?= $recurso['descripcion'] ?></td>
         <td><?= $recurso['nom_tipo'] ?? 'Sin tipo' ?></td>
         <td><a href="<?= $recurso['url'] ?>"><?= $recurso['url'] ?></a></td>
-         <td class="estatus <?= $recurso['estatus'] == 1 ? 'activo' : 'de-baja' ?>">
-                <?= $recurso['estatus'] == 1 ? 'Activo' : 'De baja' ?>
+         <td class="estatus <?= $recurso['estatus'] == 1 ? 'activo' : 'inactivo' ?>">
+                <?= $recurso['estatus'] == 1 ? 'Activo' : 'Inactivo' ?>
                 </td>
         <td>
             <a class="btn-editar" href="editar_recurso.php?pk_recurso=<?= $recurso['pk_recurso'] ?>">Editar</a>
             <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $recurso['pk_recurso'] ?>', '<?= $recurso['estatus'] ?>')">
-                <?= $recurso['estatus'] == 1 ? 'Dar de baja' : 'Dar de alta' ?>
+                <?= $recurso['estatus'] == 1 ? 'Desactivar' : 'Activar' ?>
             </a>
         </td>
         <td>
@@ -41,6 +49,7 @@ include_once('header.php');
         </td>
     </tr>
     <?php endforeach; ?>
+<?php endif; ?>
 </table>
 </div>
 
@@ -66,7 +75,7 @@ function confirmDelete(event, resourceId) {
 function confirmAction(event, resourceId, currentStatus) {
     event.preventDefault();
 
-    let actionText = currentStatus == 1 ? 'Dar de baja' : 'Dar de alta';
+    let actionText = currentStatus == 1 ? 'Desactivar' : 'Activar';
     let confirmMessage = `¿Estás seguro de ${actionText.toLowerCase()} este recurso?`;
 
     Swal.fire({

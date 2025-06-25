@@ -1,4 +1,4 @@
-    * {
+* {
         margin: 0;
         padding: 0;
         box-sizing: border-box;
@@ -389,8 +389,8 @@
 }
 
 /* Este hace el estatus baja */
-.estatus.de-baja {
-    background-color: #ffe6e6; 
-    color: #cc0000; 
-    border: 1px solid #ff0000; 
+.estatus.inactivo {
+    background-color: #ffe6e6 !important; 
+    color: #cc0000 !important; 
+    border: 1px solid #ff0000 !important; 
 }

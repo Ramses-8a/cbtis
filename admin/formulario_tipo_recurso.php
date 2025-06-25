@@ -26,11 +26,11 @@ include('../controller/tipo_recursos/mostrar_tipo_recursos.php');
                         <?php foreach ($tipo_recursos as $tipo_recurso): ?>
                             <tr>
                                 <td><?= htmlspecialchars($tipo_recurso['nom_tipo']) ?></td>
-                                <td><?= $tipo_recurso['estatus'] == 1 ? 'Activo' : 'De baja' ?></td>
+                                <td><?= $tipo_recurso['estatus'] == 1 ? 'Activo' : 'Inactivo' ?></td>
                                 <td>
                                     <button class="editar-btn" data-id="<?= $tipo_recurso['pk_tipo_recurso'] ?>" data-nombre="<?= htmlspecialchars($tipo_recurso['nom_tipo']) ?>">Editar</button>
                                     <button class="cambiar-estatus-btn" data-id="<?= $tipo_recurso['pk_tipo_recurso'] ?>" data-estatus="<?= $tipo_recurso['estatus'] ?>">
-                                        <?= $tipo_recurso['estatus'] == 1 ? 'Dar de Baja' : 'Dar de Alta' ?>
+                                        <?= $tipo_recurso['estatus'] == 1 ? 'Desactivar' : 'Activar' ?>
                                     </button>
                                     <button class="eliminar-btn" data-id="<?= $tipo_recurso['pk_tipo_recurso'] ?>">Eliminar</button>
                                 </td>
@@ -149,9 +149,9 @@ include('../controller/tipo_recursos/mostrar_tipo_recursos.php');
             event.preventDefault();
             var id_tipo = $(this).data('id');
             var estatus_actual = $(this).data('estatus');
-            var accion = estatus_actual == 1 ? 'dar de baja' : 'dar de alta';
-            var titulo = estatus_actual == 1 ? '¿Dar de baja?' : '¿Dar de alta?';
-            var texto = estatus_actual == 1 ? '¿Estás seguro de que quieres dar de baja este tipo de recurso?' : '¿Estás seguro de que quieres dar de alta este tipo de recurso?';
+            var accion = estatus_actual == 1 ? 'desactivar' : 'activar';
+                var titulo = estatus_actual == 1 ? '¿Desactivar?' : '¿Activar?';
+                var texto = estatus_actual == 1 ? '¿Estás seguro de que quieres desactivar este tipo de recurso?' : '¿Estás seguro de que quieres activar este tipo de recurso?';
 
             Swal.fire({
                 title: titulo,

@@ -63,8 +63,8 @@ include_once '../controller/conexion.php';
 
 
     <div>
-        <label for="img_curso">Imagen del Curso:</label>
-        <input type="file" id="img_curso" name="img_curso" accept="image/*" required>
+        <label for="img_curso">Imagen del Curso (opcional):</label>
+        <input type="file" id="img_curso" name="img_curso" accept="image/*">
         <div id="preview_img" style="max-width: 200px; max-height: 200px; margin-top: 10px;"></div>
     </div>
 
@@ -126,8 +126,7 @@ $(document).ready(function() {
                             text: res.message,
                             confirmButtonColor: '#9d0707'
                         }).then(() => {
-                            $('#formCurso')[0].reset();
-                            $('#preview_img').empty();
+                            window.location.href = 'lista_cursos.php';
                         });
                     } else {
                         Swal.fire({

@@ -11,9 +11,8 @@ $stmt = $connect->prepare("SELECT * FROM alumno_torneos WHERE fk_torneo =?");
 $stmt->execute([$pk_torneo]);
 $alumnos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-if (empty($alumnos)) {
-    exit("Torneo no encontrado o sin participantes.");
-}
+// Si no hay alumnos, simplemente continuamos con un array vacío
+// El mensaje se mostrará en la vista
 
 // No need to return $alumnos here as it's included directly in lista_participantes.php
 // The variable $alumnos will be available in the scope where this file is included.

@@ -20,7 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         exit;
     }
 
-    $img_name = $current_img;
+    $img_name = null;
+    if (!empty($current_img)) {
+        $img_name = $current_img;
+    }
     $upload_dir = '../../uploads/';
 
     if (isset($_FILES['img']) && $_FILES['img']['error'] == UPLOAD_ERR_OK) {

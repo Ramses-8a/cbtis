@@ -4,8 +4,12 @@ require_once(__DIR__ . '/../conexion.php');
 
 
 try {
-    if (!isset($_POST['pk_proyecto'])) {
-        throw new Exception('ID del proyecto no proporcionado');
+    // Validar campos requeridos
+    $required_fields = ['pk_proyecto', 'nom_proyecto', 'descripcion', 'detalles', 'url'];
+    foreach ($required_fields as $field) {
+        if (empty($_POST[$field])) {
+            throw new Exception('El campo ' . $field . ' es obligatorio');
+        }
     }
 
     $pk_proyecto = $_POST['pk_proyecto'];
@@ -41,7 +45,7 @@ try {
         }
 
         $img_nombre = uniqid() . "_" . basename($img['name']);
-        $img_ruta = "../../img/" . $img_nombre;
+        $img_ruta = "../../uploads/" . $img_nombre;
 
         if (!move_uploaded_file($img['tmp_name'], $img_ruta)) {
             throw new Exception('No se pudo guardar la imagen principal.');
