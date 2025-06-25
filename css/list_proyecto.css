@@ -99,6 +99,10 @@
         text-align: left;
     }
 
+    td a {
+        text-decoration: none;
+    }
+
     tbody tr {
         transition: all 0.3s ease;
     }
