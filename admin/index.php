@@ -30,6 +30,13 @@ foreach ($torneos as $torneo) {
     <!-- Coloca esto justo antes de cerrar la etiqueta <head> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="../css/admin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
+    <style>
+        .actions a {
+            text-decoration: none;
+        }
+    </style>
 
     <title>CBTis 152</title>
 </head>
@@ -222,12 +229,21 @@ foreach ($torneos as $torneo) {
                                         <?php endif; ?>
                                     </td>
                                     <td class="actions">
-                                        <div class="action-btn view-btn" title="Ver">
-                                            <i class="fas fa-eye"></i>
-                                        </div>
-                                        <div class="action-btn edit-btn" title="Editar">
-                                            <i class="fas fa-edit"></i>
-                                        </div>
+                                        <a href="lista_participantes.php?pk_torneo=<?= $torneo['pk_torneo'] ?>">
+                                            <div class="action-btn view-btn" title="Ver Participantes">
+                                                <i class="fas fa-eye"></i>
+                                            </div>
+                                        </a>
+                                        <a href="editar_torneo.php?pk_torneo=<?= $torneo['pk_torneo'] ?>">
+                                            <div class="action-btn edit-btn" title="Editar">
+                                                <i class="fas fa-edit"></i>
+                                            </div>
+                                        </a>
+                                        <a href="#" class="delete-btn" data-id="<?php echo htmlspecialchars($torneo['pk_torneo']); ?>" data-type="torneo">
+                                            <div class="action-btn delete-btn" title="Eliminar">
+                                                <i class="fas fa-trash"></i>
+                                            </div>
+                                        </a>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -316,17 +332,88 @@ foreach ($torneos as $torneo) {
                                         <?php endif; ?>
                                     </td>
                                     <td class="actions">
-                                        <div class="action-btn view-btn" title="Ver">
-                                            <i class="fas fa-eye"></i>
-                                        </div>
-                                        <div class="action-btn edit-btn" title="Editar">
-                                            <i class="fas fa-edit"></i>
-                                        </div>
+                                        <?php
+                                        $edit_url = $item['type'] === 'Recurso' ? 'editar_recurso.php?pk_recurso=' : 'editar_cursos.php?pk_curso=';
+                                        $edit_url .= $item['id'];
+                                        ?>
+                                        <a href="<?php echo $edit_url; ?>">
+                                            <div class="action-btn edit-btn" title="Editar">
+                                                <i class="fas fa-edit"></i>
+                                            </div>
+                                        </a>
                                         <a href="#" class="delete-btn" data-id="<?php echo htmlspecialchars($item['id']); ?>" data-type="<?php echo htmlspecialchars(strtolower($item['type'])); ?>">
                                             <div class="action-btn delete-btn" title="Eliminar">
                                                 <i class="fas fa-trash"></i>
                                             </div>
                                         </a>
+                                        <script>
+                                            document.addEventListener('DOMContentLoaded', function() {
+                                                const deleteButtons = document.querySelectorAll('.delete-btn');
+                                                deleteButtons.forEach(button => {
+                                                    button.addEventListener('click', function(e) {
+                                                        e.preventDefault();
+                                                        const itemId = this.dataset.id;
+                                                        const itemType = this.dataset.type;
+                                                        let deleteUrl = '';
+
+                                                        if (itemType === 'recurso') {
+                                                            deleteUrl = '../controller/recursos/eliminar_recurso.php';
+                                                        } else if (itemType === 'curso') {
+                                                            deleteUrl = '../controller/cursos/eliminar_curso.php';
+                                                        }
+
+                                                        if (deleteUrl) {
+                                                            Swal.fire({
+                                                                title: '¿Estás seguro?',
+                                                                text: "¡No podrás revertir esto!",
+                                                                icon: 'warning',
+                                                                showCancelButton: true,
+                                                                confirmButtonColor: '#3085d6',
+                                                                cancelButtonColor: '#d33',
+                                                                confirmButtonText: 'Sí, eliminarlo!',
+                                                                cancelButtonText: 'Cancelar'
+                                                            }).then((result) => {
+                                                                if (result.isConfirmed) {
+                                                                    fetch(deleteUrl, {
+                                                                        method: 'POST',
+                                                                        headers: {
+                                                                            'Content-Type': 'application/x-www-form-urlencoded',
+                                                                        },
+                                                                        body: `id=${itemId}`,
+                                                                    })
+                                                                    .then(response => response.json())
+                                                                    .then(data => {
+                                                                        if (data.status === 'success') {
+                                                                            Swal.fire(
+                                                                                '¡Eliminado!',
+                                                                                'El elemento ha sido eliminado.',
+                                                                                'success'
+                                                                            ).then(() => {
+                                                                                location.reload();
+                                                                            });
+                                                                        } else {
+                                                                            Swal.fire(
+                                                                                'Error',
+                                                                                data.message || 'Hubo un error al eliminar el elemento.',
+                                                                                'error'
+                                                                            );
+                                                                        }
+                                                                    })
+                                                                    .catch(error => {
+                                                                        console.error('Error:', error);
+                                                                        Swal.fire(
+                                                                            'Error',
+                                                                            'Hubo un error al procesar la solicitud.',
+                                                                            'error'
+                                                                        );
+                                                                    });
+                                                                }
+                                                            });
+                                                        }
+                                                    });
+                                                });
+                                            });
+                                        </script>
                                     </td>
                                 </tr>
                             <?php endforeach; ?>
@@ -384,6 +471,9 @@ foreach ($torneos as $torneo) {
                         case 'curso':
                             deleteUrl = '../controller/cursos/eliminar_curso.php';
                             break;
+                        case 'torneo':
+                            deleteUrl = '../controller/torneo/eliminar_torneo.php';
+                            break;
                         default:
                             Swal.fire('Error', 'Tipo de elemento desconocido.', 'error');
                             return;
@@ -439,6 +529,7 @@ foreach ($torneos as $torneo) {
             });
         });
     </script>
+
 
 </body>
 
