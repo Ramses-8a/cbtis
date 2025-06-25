@@ -1,17 +1,21 @@
-# Obtener la ruta base dinámicamente
+# Configuración básica
 RewriteEngine On
-RewriteBase %{REQUEST_URI}/../
+Options -Indexes +FollowSymLinks
 
-# Configurar el documento de error 404
-ErrorDocument 404 %{REQUEST_URI}/../error404.php
+# Establecer la ruta base
+RewriteBase /cb/cbtis/
+
+# Configurar páginas de error
+ErrorDocument 404 /cb/cbtis/error404.php
+ErrorDocument 500 "Lo sentimos, ha ocurrido un error interno del servidor"
 
 # Redirigir errores 404 en la sección de admin
-RewriteCond %{REQUEST_URI} ^(.*/)?admin/.*$
+RewriteCond %{REQUEST_URI} ^/cb/cbtis/admin/.*$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule .* %{REQUEST_URI}/../error404.php [L]
+RewriteRule .* /cb/cbtis/error404.php [L]
 
 # Redirigir errores 404 en la sección principal
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule .* error404.php [L]
+RewriteRule .* /cb/cbtis/error404.php [L]
