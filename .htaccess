@@ -2,20 +2,21 @@
 RewriteEngine On
 Options -Indexes +FollowSymLinks
 
-# Establecer la ruta base
-RewriteBase /cb/cbtis/
+# Obtener la ruta base dinámicamente
+RewriteCond %{REQUEST_URI} ^(.*?)/[^/]*$
+RewriteRule .* - [E=BASE:%1]
 
 # Configurar páginas de error
-ErrorDocument 404 /cb/cbtis/error404.php
+ErrorDocument 404 %{ENV:BASE}/error404.php
 ErrorDocument 500 "Lo sentimos, ha ocurrido un error interno del servidor"
 
 # Redirigir errores 404 en la sección de admin
-RewriteCond %{REQUEST_URI} ^/cb/cbtis/admin/.*$
+RewriteCond %{REQUEST_URI} ^(.*?)/admin/.*$
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule .* /cb/cbtis/error404.php [L]
+RewriteRule .* %{ENV:BASE}/error404.php [L]
 
 # Redirigir errores 404 en la sección principal
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule .* /cb/cbtis/error404.php [L]
+RewriteRule .* error404.php [L]
