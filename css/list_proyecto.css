@@ -292,11 +292,11 @@
         }
         
         /* reducir anchos máximos para pantallas muy pequeñas */
-        th:nth-child(3), td:nth-child(3) { /* Descripción */
+        th:nth-child(3), td:nth-child(3) { 
             max-width: 120px;
         }
         
-        th:nth-child(4), td:nth-child(4) { /* Detalles */
+        th:nth-child(4), td:nth-child(4) {
             max-width: 100px;
         }
     }

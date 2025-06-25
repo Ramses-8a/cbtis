@@ -1,3 +1,5 @@
+
+
 .form-proyectos {
             max-width: 800px;
             margin: 30px auto;
@@ -151,6 +153,27 @@
             background: #f8f9fa;
             border-color: #b02a37;
         }
+
+        input[type="url"]{
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #333;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        input[type="url"]:hover {
+            outline: none;
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+            background: #fff;
+        }
+        
 
         #img-preview {
             display: block;
@@ -410,36 +433,50 @@
         .image-preview-container {
             position: relative;
             display: inline-block;
-            margin-right: 10px; /* Add some space to the right of the image */
-            border: 1px solid #ddd; /* Add a subtle border around the image */
+            margin-right: 10px; 
+            border: 1px solid #ddd; 
             border-radius: 4px;
-            overflow: hidden; /* Ensure the image doesn't overflow the border-radius */
+            overflow: hidden; 
         }
 
         .image-preview-container img {
-            display: block; /* Remove extra space below the image */
-            max-width: 100px; /* Ensure image fits within the container */
+            display: block;
+            max-width: 100px; 
             height: auto;
         }
 
         .delete-image-icon {
             position: absolute;
-            top: 5px; /* Adjust position to be slightly inside the top-right corner */
+            top: 5px; 
             right: 5px;
-            background-color: rgba(255, 0, 0, 0.8); /* Slightly more opaque red */
+            background-color: rgba(255, 0, 0, 0.8); 
             color: white;
             border-radius: 50%;
-            width: 24px; /* Slightly larger icon */
+            width: 24px; 
             height: 24px;
             text-align: center;
-            line-height: 24px; /* Adjust line-height for vertical alignment */
-            font-size: 16px; /* Larger font size for the 'x' */
-            font-weight: bold; /* Make the 'x' bolder */
+            line-height: 24px; 
+            font-size: 16px;
+            font-weight: bold; 
             cursor: pointer;
             z-index: 10;
-            transition: background-color 0.3s ease; /* Smooth transition on hover */
+            transition: background-color 0.3s ease; 
         }
 
-        /* Removed .image-preview-container and .delete-image-icon styles */
+        /* css para los botones de agregar */
 
-        /* Removed .delete-image-icon:hover style */
+        .boton-agregar {
+        display: inline-block;
+        padding: 8px 16px;
+        background-color: #dc3545;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+        margin-top: 10px;
+    }
+
+    .boton-agregar:hover {
+        background-color: #dc3545;
+    }

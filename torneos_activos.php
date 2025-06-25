@@ -40,7 +40,7 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 <div class="con_volver">
     <a href="index.php" class="volver">
-        <img src="img/volver.webp" alt="Volver">
+        <img src="img/regresar.png" alt="Volver">
     </a>
     <h3>Torneos</h3>
 </div><?php if ($tipo): ?>
