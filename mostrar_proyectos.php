@@ -26,14 +26,25 @@
 </div>
 
 <main class="proyectos">
-    <?php foreach ($proyectos as $proyecto):
-    if (isset($proyecto['estatus']) && $proyecto['estatus'] == 1): ?>
+    <?php 
+    $proyectosActivos = false;
+    foreach ($proyectos as $proyecto):
+        if (isset($proyecto['estatus']) && $proyecto['estatus'] == 1): 
+            $proyectosActivos = true;
+    ?>
         <a href="ver_detalles_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>" class="card">
             <img src="uploads/<?= $proyecto['img_proyecto'] ?>" alt="Proyecto">
             <p><strong class="nombre-proyecto"><?= $proyecto['nom_proyecto'] ?></strong></p>
         </a>
-    <?php endif;
-    endforeach; ?>
+    <?php 
+        endif;
+    endforeach; 
+    
+    if (!$proyectosActivos): ?>
+        <div style="text-align: center; width: 100%; padding: 20px;">
+            <p>No se encontraron proyectos activos actualmente.</p>
+        </div>
+    <?php endif; ?>
 </main>
 
 

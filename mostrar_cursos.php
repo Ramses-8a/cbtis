@@ -23,9 +23,11 @@
     </div>
 
     <main class="proyectos">
-    <?php foreach ($cursos as $curso):
-            // Add this condition to check the status
+    <?php 
+    $cursosActivos = false;
+    foreach ($cursos as $curso):
             if (isset($curso['estatus']) && $curso['estatus'] == 1):
+                $cursosActivos = true;
         ?>
             <a href="ver_curso.php?pk_curso=<?= $curso['pk_curso'] ?>" class="card">
                 <?php if (!empty($curso['img'])): ?>
@@ -51,8 +53,14 @@
                 <p><strong><?= $curso['nom_curso'] ?></strong></p>
             </a>
             <?php 
-            endif; // Close the if condition
-            endforeach; 
+            endif;
+            endforeach;
+            
+            if (!$cursosActivos): ?>
+                <div style="text-align: center; width: 100%; padding: 20px;">
+                    <p>No se encontraron cursos activos actualmente.</p>
+                </div>
+            <?php endif; 
         ?>
     </main>
 </body>

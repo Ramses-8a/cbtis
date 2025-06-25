@@ -13,8 +13,6 @@
 # Logs
 *.log
 
-!/img/.gitkeep
-
 # Cache files
 *.cache
 
