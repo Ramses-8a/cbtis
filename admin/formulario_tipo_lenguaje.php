@@ -3,21 +3,28 @@ include_once('header.php');
 include('../controller/tipo_lenguaje/mostrar_tipos.php');
 ?>
 
-<div>
-    <!-- Formulario -->
-    <div>
-        <h3>Crear Tipo de Lenguaje</h3>
-        <div>
-            <form id="tipoLenguajeForm" action="../controller/tipo_lenguaje/crear_tipo.php" method="POST">
-                <label for="nom_lenguaje_input">Nombre del lenguaje</label>
-                <input type="text" name="nom_lenguaje" id="nom_lenguaje_input" required>
-                <input type="submit" value="Guardar">
-            </form>
-        </div>
+<head>
+    <link rel="stylesheet" href="../css/tipos_cambios.css">
+</head>
+<div class="con_volver">
+        <a href="formulario_cursos.php" class="volver">
+            <img src="../img/volver.webp" alt="Volver">
+        </a>
+        <h3>Regresar</h3>
     </div>
-    
+<div class="contenedor-flex">
+    <!-- Formulario -->
+    <div class="formulario">
+        <h3>Crear Tipo de Lenguaje</h3>
+        <form id="tipoLenguajeForm" action="../controller/tipo_lenguaje/crear_tipo.php" method="POST">
+            <label for="nom_lenguaje_input">Nombre del lenguaje</label>
+            <input type="text" name="nom_lenguaje" id="nom_lenguaje_input" required>
+            <input type="submit" value="Guardar">
+        </form>
+    </div>
+
     <!-- Lista de tipos de lenguajes -->
-    <div>
+    <div class="tabla">
         <h3>Lista de Tipos de Lenguajes</h3>
         <table>
             <thead>
@@ -36,7 +43,9 @@ include('../controller/tipo_lenguaje/mostrar_tipos.php');
                             <td>
                                 <button class="btn-editar" data-id="<?php echo $tipo['pk_lenguaje']; ?>" data-nombre="<?php echo htmlspecialchars($tipo['nom_lenguaje']); ?>">Editar</button>
                                 <button class="btn-eliminar" data-id="<?php echo $tipo['pk_lenguaje']; ?>">Eliminar</button>
-                                <button class="btn-cambiar-estatus" data-id="<?php echo $tipo['pk_lenguaje']; ?>" data-estatus="<?php echo $tipo['estatus']; ?>"><?php echo $tipo['estatus'] == 1 ? 'Desactivar' : 'Activar'; ?></button>
+                                <button class="btn-editar" data-id="<?php echo $tipo['pk_lenguaje']; ?>" data-estatus="<?php echo $tipo['estatus']; ?>">
+                                    <?php echo $tipo['estatus'] == 1 ? 'Desactivar' : 'Activar'; ?>
+                                </button>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -49,6 +58,7 @@ include('../controller/tipo_lenguaje/mostrar_tipos.php');
         </table>
     </div>
 </div>
+
 
 <script>
 $(document).ready(function() {

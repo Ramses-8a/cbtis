@@ -30,7 +30,7 @@ include_once '../controller/conexion.php';
     </div>
 
     <div>
-            <a href="formulario_tipo_curso.php" >Agregar Nuevo Tipo</a>
+            <a href="formulario_tipo_curso.php" class="boton-agregar">Agregar Nuevo Tipo</a>
     </div>
 
     <div>
@@ -49,7 +49,7 @@ include_once '../controller/conexion.php';
     </div>
 
     <div>
-            <a href="formulario_tipo_lenguaje.php" >Agregar Nuevo Tipo</a>
+            <a href="formulario_tipo_lenguaje.php" class="boton-agregar">Agregar Nuevo Tipo</a>
     </div>
 
     <div>

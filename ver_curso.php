@@ -32,7 +32,7 @@ if (!$curso) {
 <body>
     <div class="con_volver">
         <a href="mostrar_cursos.php" class="volver">
-            <img src="img/volver.webp" alt="Volver">
+            <img src="img/regresar.png" alt="Volver">
         </a>
         <h3><?=$curso['nom_curso']?></h3>
     </div>

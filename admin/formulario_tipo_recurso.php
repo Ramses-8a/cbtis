@@ -3,49 +3,62 @@ include_once('header.php');
 include('../controller/tipo_recursos/mostrar_tipo_recursos.php');
 ?>
 
-<div>
-    <div>
-        <div>
-            <form id="tipoRecursoForm" action="../controller/tipo_recursos/crear_tipo.php" method="POST">
-                <label for="nom_tipo">Nombre del tipo de recurso</label>
-                <input type="text" name="nom_tipo" id="nom_tipo" required>
-                <input type="submit" value="Guardar">
-            </form>
-        </div>
-        <div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre del Tipo</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (!empty($tipo_recursos)): ?>
-                        <?php foreach ($tipo_recursos as $tipo_recurso): ?>
-                            <tr>
-                                <td><?= htmlspecialchars($tipo_recurso['nom_tipo']) ?></td>
-                                <td><?= $tipo_recurso['estatus'] == 1 ? 'Activo' : 'De baja' ?></td>
-                                <td>
-                                    <button class="editar-btn" data-id="<?= $tipo_recurso['pk_tipo_recurso'] ?>" data-nombre="<?= htmlspecialchars($tipo_recurso['nom_tipo']) ?>">Editar</button>
-                                    <button class="cambiar-estatus-btn" data-id="<?= $tipo_recurso['pk_tipo_recurso'] ?>" data-estatus="<?= $tipo_recurso['estatus'] ?>">
-                                        <?= $tipo_recurso['estatus'] == 1 ? 'Dar de Baja' : 'Dar de Alta' ?>
-                                    </button>
-                                    <button class="eliminar-btn" data-id="<?= $tipo_recurso['pk_tipo_recurso'] ?>">Eliminar</button>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
+<head>
+    <link rel="stylesheet" href="../css/tipos_cambios.css">
+</head>
+<div class="con_volver">
+        <a href="formulario_recursos.php" class="volver">
+            <img src="../img/volver.webp" alt="Volver">
+        </a>
+        <h3>Regresar</h3>
+    </div>
+<div class="contenedor-flex">
+    <!-- Formulario -->
+    <div class="formulario">
+        <h3>Crear Tipo de Recurso</h3>
+        <form id="tipoRecursoForm" action="../controller/tipo_recursos/crear_tipo.php" method="POST">
+            <label for="nom_tipo">Nombre del tipo de recurso</label>
+            <input type="text" name="nom_tipo" id="nom_tipo" required>
+            <input type="submit" value="Guardar">
+        </form>
+    </div>
+
+    <!-- Tabla -->
+    <div class="tabla">
+        <h3>Lista de Tipos de Recurso</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nombre del Tipo</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!empty($tipo_recursos)): ?>
+                    <?php foreach ($tipo_recursos as $tipo_recurso): ?>
                         <tr>
-                            <td colspan="3">No hay tipos de recurso registrados</td>
+                            <td><?= htmlspecialchars($tipo_recurso['nom_tipo']) ?></td>
+                            <td><?= $tipo_recurso['estatus'] == 1 ? 'Activo' : 'De baja' ?></td>
+                            <td>
+                                <button class="btn-editar" data-id="<?= $tipo_recurso['pk_tipo_recurso'] ?>" data-nombre="<?= htmlspecialchars($tipo_recurso['nom_tipo']) ?>">Editar</button>
+                                <button class="btn-editar" data-id="<?= $tipo_recurso['pk_tipo_recurso'] ?>" data-estatus="<?= $tipo_recurso['estatus'] ?>">
+                                    <?= $tipo_recurso['estatus'] == 1 ? 'Dar de Baja' : 'Dar de Alta' ?>
+                                </button>
+                                <button class="btn-eliminar" data-id="<?= $tipo_recurso['pk_tipo_recurso'] ?>">Eliminar</button>
+                            </td>
                         </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="3">No hay tipos de recurso registrados</td>
+                    </tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
     </div>
 </div>
+
 
 <script>
     $(document).ready(function() {

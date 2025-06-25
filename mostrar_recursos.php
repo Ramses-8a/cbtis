@@ -27,7 +27,7 @@ try {
 <body>
     <div class="con_volver">
         <a href="index.php" class="volver">
-            <img src="img/volver.webp" alt="Volver">
+            <img src="img/regresar.png" alt="Volver">
         </a>
         <h3>Recursos</h3>
     </div>
@@ -38,7 +38,7 @@ try {
     ?>
         <a href="<?= htmlspecialchars($recurso['url']) ?>" class="card" target="_blank">
             <?php if (!empty($recurso['img'])): ?>
-                <img src="uploads/<?= htmlspecialchars($recurso['img']) ?>" alt="Imagen recurso" style="width: 100%; height: auto;">
+                <img src="uploads/<?= htmlspecialchars($recurso['img']) ?>" alt="Imagen recurso">
             <?php else: ?>
                 <div style="width:100%;height:200px;display:flex;align-items:center;justify-content:center;background:#f2f2f2;color:#666;">
                     Sin imagen
