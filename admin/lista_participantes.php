@@ -33,16 +33,25 @@ include_once('header.php');
                 </tr>
             </thead>
             <tbody>
-                <?php $id = 1; ?>
-                <?php foreach ($alumnos as $alumno): ?>
+                <?php if (empty($alumnos)): ?>
                     <tr>
-                        <td><?= $id ?></td>
-                        <td><?= htmlspecialchars($alumno['nombre']) ?></td>
-                        <td><?= htmlspecialchars($alumno['grado']) ?></td>
-                        <td><?= htmlspecialchars($alumno['grupo']) ?></td>
+                        <td colspan="4" style="text-align: center; padding: 20px; background-color: #f9f9f9; color: #555;">
+                            <strong>No hay participantes registrados actualmente.</strong><br>
+                            Cuando se inscriban participantes, aparecerán aquí.
+                        </td>
                     </tr>
-                    <?php $id++; ?>
-                <?php endforeach; ?>
+                <?php else: ?>
+                    <?php $id = 1; ?>
+                    <?php foreach ($alumnos as $alumno): ?>
+                        <tr>
+                            <td><?= $id ?></td>
+                            <td><?= htmlspecialchars($alumno['nombre']) ?></td>
+                            <td><?= htmlspecialchars($alumno['grado']) ?></td>
+                            <td><?= htmlspecialchars($alumno['grupo']) ?></td>
+                        </tr>
+                        <?php $id++; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </tbody>
         </table>
     </div>

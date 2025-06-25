@@ -35,7 +35,7 @@ try {
             $stmt_img->execute();
         }
 
-        echo json_encode(['status' => 'success', 'message' => 'Imágenes subidas correctamente', 'redirect_url' => '../admin/lista_proyectos.php']);
+        echo json_encode(['status' => 'success', 'message' => 'Imágenes subidas correctamente', 'redirect_url' => '../admin/editar_proyecto.php?pk_proyecto=' . $pk_proyecto]);
         die();
     } else {
         echo json_encode(['status' => 'warning', 'message' => 'No se seleccionaron imágenes para subir.']);

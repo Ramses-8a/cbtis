@@ -33,14 +33,14 @@ include_once('header.php');
         <td><?= $torneo['nom_tipo'] ?></td>
         <td><?= $torneo['descripcion'] ?></td>
         <td><?= $torneo['detalles'] ?></td>
-         <td class="estatus <?= $torneo['estatus'] == 1 ? 'activo' : 'de-baja' ?>">
-                <?= $torneo['estatus'] == 1 ? 'Activo' : 'De baja' ?>
+         <td class="estatus <?= $torneo['estatus'] == 1 ? 'activo' : 'inactivo' ?>">
+                <?= $torneo['estatus'] == 1 ? 'Activo' : 'Inactivo' ?>
                 </td>
         <td>
 
             <a class="btn-editar" href="editar_torneo.php?pk_torneo=<?= $torneo['pk_torneo'] ?>">Editar</a>
             <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $torneo['pk_torneo'] ?>', '<?= $torneo['estatus'] ?>')">
-                        <?= $torneo['estatus'] == 1 ? 'Dar de baja' : 'Dar de alta' ?>
+                        <?= $torneo['estatus'] == 1 ? 'Desactivar' : 'Activar' ?>
             </a>
             <a class="btn-editar" href="lista_participantes.php?pk_torneo=<?= $torneo['pk_torneo']?>">Ver participantes (<?= $torneo['total_participantes'] ?>)</a>
         </td>
@@ -78,7 +78,7 @@ function confirmDelete(event, projectId) {
 function confirmAction(event, projectId, currentStatus) {
     event.preventDefault(); // Previene la acción por defecto del enlace
 
-    let actionText = currentStatus == 1 ? 'Dar de baja' : 'Dar de alta';
+    let actionText = currentStatus == 1 ? 'Desactivar' : 'Activar';
     let confirmMessage = `¿Estás seguro de ${actionText.toLowerCase()} este proyecto?`;
 
     Swal.fire({

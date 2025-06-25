@@ -60,13 +60,13 @@ include_once('header.php');
                 <td><?= $curso['nom_tipo'] ?></td>
                 <td><?= $curso['nom_lenguaje'] ?></td>
                 <td><a href="<?= $curso['link'] ?>"><?= $curso['link'] ?></a></td>
-                 <td class="estatus <?= $curso['estatus'] == 1 ? 'activo' : 'de-baja' ?>">
-                <?= $curso['estatus'] == 1 ? 'Activo' : 'De baja' ?>
+                 <td class="estatus <?= $curso['estatus'] == 1 ? 'activo' : 'inactivo' ?>">
+                <?= $curso['estatus'] == 1 ? 'Activo' : 'Inactivo' ?>
                 </td>
                 <td>
                     <a class="btn-editar" href="editar_cursos.php?pk_curso=<?= $curso['pk_curso']?>">Editar</a>
                     <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $curso['pk_curso'] ?>', '<?= $curso['estatus'] ?>')">
-                        <?= $curso['estatus'] == 1 ? 'Dar de baja' : 'Dar de alta' ?>
+                        <?= $curso['estatus'] == 1 ? 'Desactivar' : 'Activar' ?>
                     </a>
                 </td>
                 <td>
@@ -107,7 +107,7 @@ function confirmDelete(event, projectId) {
 function confirmAction(event, courseId, currentStatus) {
     event.preventDefault(); // Previene la acción por defecto del enlace
 
-    let actionText = currentStatus == 1 ? 'Dar de baja' : 'Dar de alta';
+    let actionText = currentStatus == 1 ? 'Desactivar' : 'Activar';
     let confirmMessage = `¿Estás seguro de ${actionText.toLowerCase()} este curso?`;
 
     Swal.fire({

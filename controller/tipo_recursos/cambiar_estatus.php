@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt->bindParam(2, $id, PDO::PARAM_INT);
 
             if ($stmt->execute()) {
-                $accion = $nuevo_estatus == 1 ? 'dado de alta' : 'dado de baja';
+                $accion = $nuevo_estatus == 1 ? 'activado' : 'desactivado';
                 $response['status'] = 'success';
                 $response['message'] = 'Tipo de recurso ' . $accion . ' correctamente.';
             } else {

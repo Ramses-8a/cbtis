@@ -110,7 +110,6 @@ $curso = $curso ?? null;
             </div>
             <input type="hidden" name="current_img" value="<?= $curso['img'] ?>">
         <?php endif; ?>
-        <input type="file" id="img" name="img" accept="image/*">
     </div>
 
     <div class="button-container">
