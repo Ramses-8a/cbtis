@@ -36,7 +36,7 @@ try {
     <?php foreach ($recursos as $recurso):
         if (isset($recurso['estatus']) && $recurso['estatus'] == 1):
     ?>
-        <div class="card">
+        <a href="controller/recursos/mostrar_recursos.php?pk_recurso=<?= $recurso['pk_recurso'] ?>" class="card">
             <?php if (!empty($recurso['img'])): ?>
                 <img src="uploads/<?= htmlspecialchars($recurso['img']) ?>" alt="Imagen recurso">
             <?php else: ?>
@@ -46,7 +46,7 @@ try {
             <?php endif; ?>
             <p><strong><?= htmlspecialchars($recurso['nom_recurso']) ?></strong></p>
             <p><?= htmlspecialchars($recurso['tipo_recurso']) ?></p>
-        </div>
+        </a>
     <?php 
         endif;
     endforeach; 
