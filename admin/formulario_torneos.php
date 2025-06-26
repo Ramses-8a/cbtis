@@ -1,7 +1,7 @@
 <?php
 include_once('header.php'); 
 ?>
-<head>
+<head> 
     <link rel="stylesheet" href="../css/form_proyecto.css">
     <title>Agregar Torneos</title>
 </head>
