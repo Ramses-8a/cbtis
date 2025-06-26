@@ -33,8 +33,11 @@ try {
     </div>
 
     <main class="proyectos">
-    <?php foreach ($recursos as $recurso):
+    <?php 
+    $recursosActivos = false;
+    foreach ($recursos as $recurso):
         if (isset($recurso['estatus']) && $recurso['estatus'] == 1):
+            $recursosActivos = true;
     ?>
         <a href="controller/recursos/mostrar_recursos.php?pk_recurso=<?= $recurso['pk_recurso'] ?>" class="card">
             <?php if (!empty($recurso['img'])): ?>
@@ -49,8 +52,13 @@ try {
         </a>
     <?php 
         endif;
-    endforeach; 
-    ?>
+    endforeach;
+    
+    if (!$recursosActivos): ?>
+        <div style="text-align: center; width: 100%; padding: 20px;">
+            <p>No se encontraron recursos activos actualmente.</p>
+        </div>
+    <?php endif; ?>
     </main>
 </body>
 </html>

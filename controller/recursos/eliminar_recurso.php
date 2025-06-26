@@ -1,8 +1,10 @@
 <?php
 require_once(__DIR__ . '/../conexion.php');
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+header('Content-Type: application/json');
+
+if (isset($_POST['id'])) {
+    $id = $_POST['id'];
 
     try {
        
@@ -15,17 +17,21 @@ if (isset($_GET['id'])) {
 
         $connect->commit();
 
+<<<<<<< Coyac
         header('Location: ../../admin/lista_recursos.php?deleted=1');
+=======
+        echo json_encode(['status' => 'success', 'message' => 'Recurso eliminado correctamente']);
+>>>>>>> main
         exit();
 
     } catch (PDOException $e) {
     
         $connect->rollBack();
-        header('Location: ../../admin/lista_recursos.php?error=' . urlencode($e->getMessage()));
+        echo json_encode(['status' => 'error', 'message' => 'Error al eliminar el recurso: ' . $e->getMessage()]);
         exit();
     }
 } else {
-    header('Location: ../../admin/lista_recursos.php?error=no_id');
+    echo json_encode(['status' => 'error', 'message' => 'No se proporcionó un ID']);
     exit();
 }
 ?>

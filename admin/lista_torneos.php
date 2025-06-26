@@ -4,6 +4,7 @@ include_once('header.php');
 ?>
 <head>
     <link rel="stylesheet" href="../css/list_proyecto.css">
+    </style>
 </head>
 <div class="contenedor">
 <table>
@@ -70,7 +71,39 @@ function confirmDelete(event, projectId) {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            window.location.href = `../controller/torneo/eliminar_torneo.php?id=${projectId}`;
+            fetch('../controller/torneo/eliminar_torneo.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: `id=${projectId}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === 'success') {
+                    Swal.fire(
+                        '¡Eliminado!',
+                        'El torneo ha sido eliminado correctamente',
+                        'success'
+                    ).then(() => {
+                        location.reload();
+                    });
+                } else {
+                    Swal.fire(
+                        'Error',
+                        data.message || 'Hubo un error al eliminar el torneo',
+                        'error'
+                    );
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                Swal.fire(
+                    'Error',
+                    'Hubo un error de conexión',
+                    'error'
+                );
+            });
         }
     });
 }

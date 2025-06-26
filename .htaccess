@@ -1,0 +1,22 @@
+# Configuración básica
+RewriteEngine On
+Options -Indexes +FollowSymLinks
+
+# Obtener la ruta base dinámicamente
+RewriteCond %{REQUEST_URI} ^(.*?)/[^/]*$
+RewriteRule .* - [E=BASE:%1]
+
+# Configurar páginas de error
+ErrorDocument 404 %{ENV:BASE}/error404.php
+ErrorDocument 500 "Lo sentimos, ha ocurrido un error interno del servidor"
+
+# Redirigir errores 404 en la sección de admin
+RewriteCond %{REQUEST_URI} ^(.*?)/admin/.*$
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* %{ENV:BASE}/error404.php [L]
+
+# Redirigir errores 404 en la sección principal
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule .* error404.php [L]

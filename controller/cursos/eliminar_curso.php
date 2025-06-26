@@ -1,12 +1,14 @@
 <?php
 require_once '../conexion.php';
 
-if (!isset($_GET['id'])) {
-    header("Location: ../../admin/lista_cursos.php?error=no_id");
+header('Content-Type: application/json');
+
+if (!isset($_POST['id'])) {
+    echo json_encode(['status' => 'error', 'message' => 'No se proporcionó un ID']);
     exit();
 }
 
-$id = $_GET['id'];
+$id = $_POST['id'];
 
 try {
 
@@ -15,7 +17,7 @@ try {
     $curso = $stmt->fetch(PDO::FETCH_ASSOC);
 
     if (!$curso) {
-        header("Location: ../../admin/lista_cursos.php?error=not_found");
+        echo json_encode(['status' => 'error', 'message' => 'Curso no encontrado']);
         exit();
     }
 
@@ -23,9 +25,9 @@ try {
     $stmt = $connect->prepare("DELETE FROM cursos WHERE pk_curso = ?");
     $stmt->execute([$id]);
 
-    header("Location: ../../admin/lista_cursos.php?deleted=true");
+    echo json_encode(['status' => 'success', 'message' => 'Curso eliminado correctamente']);
     exit();
 } catch (PDOException $e) {
-    header("Location: ../../admin/lista_cursos.php?error=" . urlencode($e->getMessage()));
+    echo json_encode(['status' => 'error', 'message' => 'Error al eliminar el curso: ' . $e->getMessage()]);
     exit();
 }
