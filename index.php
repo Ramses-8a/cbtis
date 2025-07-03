@@ -189,7 +189,7 @@
         </div>
     </section>
 
-    <!-- Footer
+     <!-- Footer -->
     <footer class="bg-dark text-center py-4 border-top border-secondary">
         <div class="container">
             <p class="mb-0 text-light">
@@ -198,7 +198,7 @@
                 <span class="code-font">console.log("¡Programa tu futuro!");</span>
             </p>
         </div>
-    </footer> -->
+    </footer> 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
 

@@ -77,7 +77,7 @@ if (!isset($_SESSION['usuario_id'])) {
                         <a class="nav-link dropdown-toggle text-white fw-bold" href="mostrar_proyectos.php" role="button" data-bs-toggle="dropdown">Proyectos</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="formulario_proyectos.php">Agregar Proyecto</a></li>
-                            <li><a class="dropdown-item" href="lista_proyectos.php">Editar Proyecto</a></li>
+                            <li><a class="dropdown-item" href="lista_proyectos.php">Lista de Proyecto</a></li>
                         </ul>
                     </li>
 
@@ -85,7 +85,7 @@ if (!isset($_SESSION['usuario_id'])) {
                         <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Torneos</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="formulario_torneos.php">Agregar Torneos</a></li>
-                            <li><a class="dropdown-item" href="lista_torneos.php">Editar Torneos</a></li>
+                            <li><a class="dropdown-item" href="lista_torneos.php">Lista de Torneos</a></li>
                         </ul>
                     </li>
 
@@ -93,10 +93,10 @@ if (!isset($_SESSION['usuario_id'])) {
                         <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Recursos Tecnológicos</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="formulario_recursos.php">Agregar Recursos</a></li>
-                            <li><a class="dropdown-item" href="lista_recursos.php">Editar Recursos</a></li>
+                            <li><a class="dropdown-item" href="lista_recursos.php">Lista de Recursos</a></li>
 
                             <li><a class="dropdown-item" href="formulario_cursos.php">Agregar Cursos</a></li>
-                            <li><a class="dropdown-item" href="lista_cursos.php">Editar Cursos</a></li>
+                            <li><a class="dropdown-item" href="lista_cursos.php">Lista de Cursos</a></li>
                         </ul>
                     </li>
 

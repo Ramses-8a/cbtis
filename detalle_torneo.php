@@ -62,7 +62,7 @@ if (!$torneo) {
 
 
     <!-- Botón para abrir modal -->
-    <div class="btn-flotante" id="btnAbrirModal">+</div>
+    <div class="btn-flotante" id="btnAbrirModal">Inscribete</div>
 
     <!-- Modal inscripción -->
     <div class="modal" id="modalInscripcion" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); justify-content:center; align-items:center;">
