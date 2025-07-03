@@ -16,7 +16,7 @@ include_once('header.php');
             <th>Url</th>
             <th>Estatus</th>
             <th>Acciones</th>
-            <th>Eliminar</th>
+            <!-- <th>Eliminar</th> -->
         </tr>
 
         <?php if (empty($proyectos)): ?>
@@ -43,11 +43,11 @@ include_once('header.php');
                         <?= $proyecto['estatus'] == 1 ? 'Desactivar' : 'Activar' ?>
                     </a>
                 </td>
-                <td>
+                <!-- <td>
                     <a class="btn-eliminar" href="#" onclick="confirmDelete(event, '<?= $proyecto['pk_proyecto'] ?>')">
                         Eliminar <i class="fas fa-trash-alt"></i>
                     </a>
-                </td>
+                </td> -->
             </tr>
             <?php endforeach; ?>
         <?php endif; ?>

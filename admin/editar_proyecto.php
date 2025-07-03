@@ -59,7 +59,7 @@ $num_imagenes = $stmt->fetchColumn();
         <div id="imagenes_actuales" style="margin: 10px 0;">
             <?php if (!empty($proyecto['imagenes_adicionales'])): ?>
                 <?php foreach ($proyecto['imagenes_adicionales'] as $img): ?>
-                    <div style="display: inline-block; margin: 5px; position: relative;">
+                    <div class="img-adicional" data-id="<?= $img['pk_img_proyectos'] ?>" style="display: inline-block; margin: 5px; position: relative;">
                         <img src="../uploads/<?= $img['img'] ?>" style="width: 150px; height: 150px; object-fit: contain;">
                         <button type="button" class="eliminar-imagen" data-id="<?= $img['pk_img_proyectos'] ?>" style="position: absolute; top: 0; right: 0;">X</button>
                     </div>
@@ -68,9 +68,11 @@ $num_imagenes = $stmt->fetchColumn();
                 <p>No hay imágenes adicionales</p>
             <?php endif; ?>
         </div>
+        <input type="file" id="img_adicionales" name="img_adicionales[]" accept="image/*" multiple style="margin-top:10px;">
+        <div id="preview_adicionales" style="margin-top: 10px;"></div>
     </div>
     
-    <a class="btn-agg-img" href="formulario_fotos.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Agregar nuevas fotos</a>
+    <!-- Botón de agregar nuevas fotos eliminado -->
 
     <div class="button-container">
         <button class="guardar" type="submit">Actualizar Proyecto</button>
@@ -98,48 +100,74 @@ $(document).ready(function() {
         }
     });
 
-    // Eliminar imagen existente
-    $('.eliminar-imagen').on('click', function() {
-        const imgId = $(this).data('id');
-        const imgContainer = $(this).parent();
+    // --- NUEVO MANEJO DE IMÁGENES ADICIONALES ---
+    let imagenesAEliminar = [];
+    let nuevasImagenes = [];
+    const maxImagenes = 10;
+    const inputAdicionales = $('#img_adicionales');
+    const previewAdicionales = $('#preview_adicionales');
+    const imagenesActualesDiv = $('#imagenes_actuales');
 
+    // Eliminar imagen adicional (solo en frontend hasta guardar) con SweetAlert
+    imagenesActualesDiv.on('click', '.eliminar-imagen', function(e) {
+        e.preventDefault();
+        const imgId = $(this).data('id');
+        const $imgDiv = $(this).parent();
         Swal.fire({
-            title: '¿Estás seguro?',
-            text: "Esta acción no se puede deshacer",
+            title: '¿Estás seguro de eliminar esta foto?',
+            text: 'Los cambios se harán cuando actualices el proyecto.',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
             confirmButtonText: 'Sí, eliminar',
             cancelButtonText: 'Cancelar'
         }).then((result) => {
             if (result.isConfirmed) {
-                $.ajax({
-                    url: '../controller/proyecto/eliminar_imagen.php',
-                    type: 'POST',
-                    data: { pk_img_proyectos: imgId },
-                    success: function(response) {
-                        if (response.status === 'success') {
-                            imgContainer.remove();
-                            Swal.fire('¡Eliminada!', 'La imagen ha sido eliminada.', 'success');
-                        } else {
-                            Swal.fire('Error', response.message, 'error');
-                        }
-                    },
-                    error: function() {
-                        Swal.fire('Error', 'Hubo un error al eliminar la imagen', 'error');
-                    }
-                });
+                $imgDiv.hide();
+                if (!imagenesAEliminar.includes(imgId)) imagenesAEliminar.push(imgId);
             }
         });
+    });
+
+    // Previsualizar nuevas imágenes
+    inputAdicionales.on('change', function() {
+        const files = Array.from(this.files);
+        if ((nuevasImagenes.length + files.length) > maxImagenes) {
+            Swal.fire('Límite', 'Solo puedes agregar hasta 10 imágenes en total.', 'warning');
+            return this.value = '';
+        }
+        files.forEach(file => {
+            if (nuevasImagenes.length >= maxImagenes) return;
+            nuevasImagenes.push(file);
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const imgContainer = $('<div style="display:inline-block; margin:5px; position:relative;"></div>');
+                const img = $('<img style="width:150px; height:150px; object-fit:contain;">').attr('src', e.target.result);
+                const btn = $('<button type="button" style="position:absolute;top:0;right:0;">X</button>');
+                btn.on('click', function(ev) {
+                    ev.preventDefault();
+                    imgContainer.remove();
+                    nuevasImagenes = nuevasImagenes.filter(f => f !== file);
+                });
+                imgContainer.append(img).append(btn);
+                previewAdicionales.append(imgContainer);
+            };
+            reader.readAsDataURL(file);
+        });
+        this.value = '';
     });
 
     // Envío del formulario
     $('#formEditar').on('submit', function(e) {
         e.preventDefault();
-        
         const formData = new FormData(this);
-
+        // Remover el input file original para evitar conflictos
+        formData.delete('img_adicionales[]');
+        
+        // Adjuntar imágenes a eliminar
+        imagenesAEliminar.forEach(id => formData.append('imagenes_a_eliminar[]', id));
+        
+        // Adjuntar nuevas imágenes
+        nuevasImagenes.forEach(file => formData.append('img_adicionales[]', file));
         $.ajax({
             url: '../controller/proyecto/actualizar_proyecto.php',
             type: 'POST',
@@ -181,6 +209,12 @@ $(document).ready(function() {
                 });
             }
         });
+    });
+
+    // Si se da click en cancelar, recargar la página para descartar cambios
+    $('.cancelar').on('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'lista_proyectos.php';
     });
 });
 </script>
