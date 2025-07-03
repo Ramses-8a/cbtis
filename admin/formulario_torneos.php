@@ -44,6 +44,14 @@ include_once('header.php');
         <input type="text" id="detalles" name="detalles" required>
     </div>
 
+    <div>
+        <label for="">Fecha de inicio:</label>
+        <input type="date" name="finicio" required>
+
+        <label for="">Fecha limite:</label>
+        <input type="date" name="ffinal" required>
+    </div>
+
     <div class="button-container">
         <button class="guardar" type="submit">Crear Torneos</button>
         <button class="cancelar" type="button" onclick="window.location.href='index.php'">Cancelar</button>

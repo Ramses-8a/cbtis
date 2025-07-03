@@ -234,6 +234,13 @@
     <a href="" target="_blank" aria-label="YouTube">
       <i class="fab fa-youtube"></i>
     </a>
+    <a href="">
+    
+    <p><a style="text-decoration:none" href="aviso_privacidad.php">Aviso de privacidad</a></p>
+
+
+
+    </a>
   </div>
 </footer>
 

@@ -14,9 +14,11 @@ include_once('header.php');
         <th>Tipo</th>
         <th>Descripcion</th>
         <th>Detalles</th>
+        <th>Fecha de inicio</th>
+        <th>Fecha fin</th>
         <th>Estatus</th>
         <th>Acciones</th>
-        <th>Eliminar</th>
+        <!-- <th>Eliminar</th> -->
     </tr>
 
     <?php if (empty($torneos)): ?>
@@ -34,7 +36,9 @@ include_once('header.php');
         <td><?= $torneo['nom_tipo'] ?></td>
         <td><?= $torneo['descripcion'] ?></td>
         <td><?= $torneo['detalles'] ?></td>
-         <td class="estatus <?= $torneo['estatus'] == 1 ? 'activo' : 'inactivo' ?>">
+        <td><?= $torneo['finicio'] ?></td>
+        <td><?= $torneo['ffinal'] ?></td>
+        <td class="estatus <?= $torneo['estatus'] == 1 ? 'activo' : 'inactivo' ?>">
                 <?= $torneo['estatus'] == 1 ? 'Activo' : 'Inactivo' ?>
                 </td>
         <td>
@@ -45,11 +49,11 @@ include_once('header.php');
             </a>
             <a class="btn-editar" href="lista_participantes.php?pk_torneo=<?= $torneo['pk_torneo']?>">Ver participantes (<?= $torneo['total_participantes'] ?>)</a>
         </td>
-        <td>
+        <!-- <td>
             <a class="btn-eliminar" href="#" onclick="confirmDelete(event, '<?= $torneo['pk_torneo'] ?>')">
                 Eliminar <i class="fas fa-trash-alt"></i>
             </a>
-        </td>
+        </td> -->
     </tr>
     <?php endforeach; ?>
     <?php endif; ?>
