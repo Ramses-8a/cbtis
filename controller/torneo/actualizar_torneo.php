@@ -14,8 +14,10 @@ try {
     $fk_tipo_torneo = $_POST['fk_tipo_torneo'] ?? null;
     $descripcion = $_POST['descripcion'] ?? null;
     $detalles = $_POST['detalles'] ?? null;
+    $finicio = $_POST['finicio'] ?? null;
+    $ffinal = $_POST['ffinal'] ?? null;
 
-    if (!$pk_torneo || !$nom_torneo || !$fk_tipo_torneo || !$descripcion || !$detalles) {
+    if (!$pk_torneo || !$nom_torneo || !$fk_tipo_torneo || !$descripcion || !$detalles || !$finicio || !$ffinal) {
         throw new Exception('Todos los campos son obligatorios.');
     }
 
@@ -37,12 +39,12 @@ try {
     $connect->beginTransaction();
 
     // Check for changes before updating (optional, but good practice)
-    $stmt_check = $connect->prepare("SELECT nom_torneo, fk_tipo_torneo, estatus, descripcion, detalles, img FROM torneos WHERE pk_torneo = ?");
+    $stmt_check = $connect->prepare("SELECT nom_torneo, fk_tipo_torneo, estatus, descripcion, detalles, img, finicio, ffinal FROM torneos WHERE pk_torneo = ?");
     $stmt_check->execute([$pk_torneo]);
     $torneo_actual = $stmt_check->fetch(PDO::FETCH_ASSOC);
 
     error_log('Torneo Actual: ' . print_r($torneo_actual, true));
-    error_log('Datos Recibidos (POST): nom_torneo=' . $nom_torneo . ', fk_tipo_torneo=' . $fk_tipo_torneo . ', descripcion=' . $descripcion . ', detalles=' . $detalles . ', img_name=' . $img_name);
+    error_log('Datos Recibidos (POST): nom_torneo=' . $nom_torneo . ', fk_tipo_torneo=' . $fk_tipo_torneo . ', descripcion=' . $descripcion . ', detalles=' . $detalles . ', img_name=' . $img_name . ', finicio=' . $finicio . ', ffinal=' . $ffinal);
 
     $has_changes = false;
     if ($torneo_actual['nom_torneo'] !== $nom_torneo) {
@@ -59,6 +61,14 @@ try {
     }
     if ($torneo_actual['detalles'] !== $detalles) {
         error_log('Cambio detectado en detalles: ' . $torneo_actual['detalles'] . ' vs ' . $detalles);
+        $has_changes = true;
+    }
+    if ($torneo_actual['finicio'] !== $finicio) {
+        error_log('Cambio detectado en fecha de inicio: ' . $torneo_actual['finicio'] . ' vs ' . $finicio);
+        $has_changes = true;
+    }
+    if ($torneo_actual['ffinal'] !== $ffinal) {
+        error_log('Cambio detectado en fecha final: ' . $torneo_actual['ffinal'] . ' vs ' . $ffinal);
         $has_changes = true;
     }
 
@@ -86,8 +96,8 @@ try {
     }
 
     // Update tournament data
-    $sql = "UPDATE torneos SET nom_torneo = ?, fk_tipo_torneo = ?, descripcion = ?, detalles = ?";
-    $params = [$nom_torneo, $fk_tipo_torneo, $descripcion, $detalles];
+    $sql = "UPDATE torneos SET nom_torneo = ?, fk_tipo_torneo = ?, descripcion = ?, detalles = ?, finicio = ?, ffinal = ?";
+    $params = [$nom_torneo, $fk_tipo_torneo, $descripcion, $detalles, $finicio, $ffinal];
 
     if ($img_name) {
         $sql .= ", img = ?";

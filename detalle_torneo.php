@@ -9,7 +9,7 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $id = (int) $_GET['id'];
 
-$sql = "SELECT t.pk_torneo, t.nom_torneo, t.descripcion, t.detalles, t.img, tt.nom_tipo
+$sql = "SELECT t.pk_torneo, t.nom_torneo, t.descripcion, t.detalles, t.img, tt.nom_tipo, t.finicio, t.ffinal
         FROM torneos t
         INNER JOIN tipo_torneos tt ON t.fk_tipo_torneo = tt.pk_tipo_torneo
         WHERE t.pk_torneo = ? AND t.estatus = 1";
@@ -31,6 +31,7 @@ if (!$torneo) {
     <link rel="stylesheet" href="css/detalle_torneo.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 <body>
@@ -55,6 +56,8 @@ if (!$torneo) {
             <p><strong>Tipo:</strong> <?= htmlspecialchars($torneo['nom_tipo']) ?></p>
             <p><strong>Descripción:</strong> <?= nl2br(htmlspecialchars($torneo['descripcion'])) ?></p>
             <p><strong>Detalles:</strong> <?= nl2br(htmlspecialchars($torneo['detalles'])) ?></p>
+            <p><strong>Fecha de inicio de inscripciones:</strong> <?= date('d/m/Y', strtotime($torneo['finicio'])) ?></p>
+            <p><strong>Fecha límite de inscripciones:</strong> <?= date('d/m/Y', strtotime($torneo['ffinal'])) ?></p>
         </div>
     </div>
 </div>
@@ -75,10 +78,22 @@ if (!$torneo) {
           <input type="text" id="nombre" name="nombre" required>
 
           <label for="grado">Grado:</label>
-          <input type="text" id="grado" name="grado" required>
+          <!-- <input type="text" id="grado" name="grado" required> -->
+           <select name="grado" id="grado" required>
+                <option value="" selected>Selecciona una opción</option>
+                <option value="Segundo">2°do</option>
+                <option value="Tercero">3°ro</option>
+                <option value="Cuarto">4°to</option>
+                <option value="Quinto">5°to</option>
+                <option value="Sexto">6°to</option>
+           </select>
 
           <label for="grupo">Grupo:</label>
-          <input type="text" id="grupo" name="grupo" required>
+            <select name="grupo" id="grupo" required>
+                <option value="" selected>Selecciona una opción</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+           </select>
 
           <!-- reCAPTCHA -->
           <div class="g-recaptcha" data-sitekey="6Le-_fsqAAAAABPT_xPcyqAfc9TCmAbh52c2Q_M0"></div>
@@ -110,6 +125,30 @@ if (!$torneo) {
     document.getElementById('formInscripcion').addEventListener('submit', function(e) {
         e.preventDefault();
 
+        const fechaActual = new Date();
+        const fechaInicio = new Date('<?php echo $torneo["finicio"]; ?>');
+        const fechaFinal = new Date('<?php echo $torneo["ffinal"]; ?>');
+
+        if (fechaActual < fechaInicio) {
+            Swal.fire({
+                icon: 'warning',
+                title: 'Inscripciones no disponibles',
+                text: 'Las inscripciones para este torneo aún no están abiertas. Estarán disponibles a partir del ' + fechaInicio.toLocaleDateString(),
+                confirmButtonText: 'Aceptar'
+            });
+            return;
+        }
+
+        if (fechaActual > fechaFinal) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Inscripciones cerradas',
+                text: 'El período de inscripción para este torneo ha finalizado.',
+                confirmButtonText: 'Aceptar'
+            });
+            return;
+        }
+
         const form = e.target;
         const data = new FormData(form);
 
@@ -119,16 +158,19 @@ if (!$torneo) {
         })
         .then(response => response.json())
         .then(res => {
-            const mensajeDiv = document.getElementById('mensajeInscripcion');
             if (res.success) {
-                mensajeDiv.style.color = 'green';
-                mensajeDiv.textContent = res.message;
-                form.reset();
-                setTimeout(() => {
+                Swal.fire({
+                    icon: 'success',
+                    title: '¡Inscripción exitosa!',
+                    text: res.message,
+                    confirmButtonText: 'Aceptar',
+                    customClass: { popup: 'swal2-popup' }
+                }).then(() => {
                     document.getElementById('modalInscripcion').style.display = 'none';
-                    mensajeDiv.textContent = '';
-                }, 2000);
+                });
+                form.reset();
             } else {
+                const mensajeDiv = document.getElementById('mensajeInscripcion');
                 mensajeDiv.style.color = 'red';
                 mensajeDiv.textContent = res.message;
             }

@@ -74,8 +74,7 @@
                         <li><a class="dropdown-item" href="mostrar_recursos.php">Tecnológicos</a></li>
                         <li><a class="dropdown-item" href="mostrar_cursos.php">Cursos</a></li>
                     </ul>
-                </li>
-            </ul>
+                </ul>
         </div>
     </div>
 </nav>

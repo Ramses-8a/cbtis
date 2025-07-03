@@ -6,6 +6,8 @@ if (
     empty($_POST['fk_tipo_torneo']) ||
     empty($_POST['descripcion']) ||
     empty($_POST['detalles']) ||
+    empty($_POST['finicio']) ||
+    empty($_POST['ffinal']) ||
     !isset($_FILES['img_proyecto'])
 ) {
     http_response_code(200);
@@ -30,6 +32,8 @@ $nom_torneo = trim($_POST['nom_torneo']);
 $fk_tipo_torneo = trim($_POST['fk_tipo_torneo']);
 $descripcion = trim($_POST['descripcion']);
 $detalles = trim($_POST['detalles']);
+$finicio = trim($_POST['finicio']);
+$ffinal = trim($_POST['ffinal']);
 $estatus = 1;
 
 // Validaciones de imagen principal
@@ -77,14 +81,17 @@ $connect->beginTransaction();
 
 try {
     // Insertar torneo
-    $stmt = $connect->prepare("INSERT INTO torneos (nom_torneo, fk_tipo_torneo, estatus, img, descripcion, detalles)
-                               VALUES (:nom_torneo, :fk_tipo_torneo, :estatus, :img, :descripcion, :detalles)");
+    $stmt = $connect->prepare("INSERT INTO torneos (nom_torneo, fk_tipo_torneo, estatus, img, descripcion, detalles,finicio,ffinal)
+                               VALUES (:nom_torneo, :fk_tipo_torneo, :estatus, :img, :descripcion, :detalles, :finicio, :ffinal)");
     $stmt->bindParam(':nom_torneo', $nom_torneo);
     $stmt->bindParam(':fk_tipo_torneo', $fk_tipo_torneo);
     $stmt->bindParam(':estatus', $estatus, PDO::PARAM_INT);
     $stmt->bindParam(':img', $img_nombre);
     $stmt->bindParam(':descripcion', $descripcion);
     $stmt->bindParam(':detalles', $detalles);
+    $stmt->bindParam(':finicio', $finicio);
+    $stmt->bindParam(':ffinal', $ffinal);
+
     $stmt->execute();
 
     $connect->commit();
