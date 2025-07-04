@@ -1,4 +1,4 @@
-    * {
+* {
       box-sizing: border-box;
     }
 
@@ -61,8 +61,23 @@
     }
 
     .btn:hover {
-      background-color: #9d0707;
-    }
+  background-color: #c82333;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.forgot-password a {
+  color: #dc3545;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
 
     @media (max-width: 400px) {
       .login-container {
