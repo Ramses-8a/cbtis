@@ -5,7 +5,12 @@ include_once('header.php');
     <link rel="stylesheet" href="../css/form_proyecto.css">
     <title>Subir recursos</title>
 </head>
-
+<div class="con_volver">
+            <a href="index.php" class="volver">
+                <img src="../img/volver.webp" alt="Volver">
+            </a>
+            <h3>Recursos</h3>
+</div>
 <form id="formRecurso" enctype="multipart/form-data" class="form-proyectos">
     <div>
         <label for="nom_recurso">Nombre del recurso:</label>
