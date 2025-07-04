@@ -72,12 +72,6 @@ if (!isset($_SESSION['usuario_id'])) {
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-<<<<<<< HEAD
-
-
-                    
-                    <li class="nav-item"><a class="nav-link text-white fw-bold" href="formulario_usuario.php">Crear Usuario</a></li>
-=======
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Usuarios</a>
                         <ul class="dropdown-menu">
@@ -86,7 +80,6 @@ if (!isset($_SESSION['usuario_id'])) {
                         </ul>
                     </li>
                     
->>>>>>> 700fa2270b821e234dd8c867214eadb91afaecdb
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white fw-bold" href="mostrar_proyectos.php" role="button" data-bs-toggle="dropdown">Proyectos</a>
                         <ul class="dropdown-menu">
