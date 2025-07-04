@@ -17,11 +17,8 @@ if (isset($_POST['id'])) {
 
         $connect->commit();
 
-<<<<<<< Coyac
         header('Location: ../../admin/lista_recursos.php?deleted=1');
-=======
         echo json_encode(['status' => 'success', 'message' => 'Recurso eliminado correctamente']);
->>>>>>> main
         exit();
 
     } catch (PDOException $e) {

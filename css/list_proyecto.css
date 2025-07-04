@@ -16,7 +16,7 @@
         margin: 0 auto;
         background: white;
         border-radius: 12px;
-        overflow: hidden;
+        overflow: auto;
         padding: 10px;
         position: relative;
     }
@@ -126,8 +126,40 @@
         border: 2px solid #e9ecef;
         transition: transform 0.3s ease;
     }
-  
-    .btn-editar,
+
+    /* botones */
+.botones-accion-en-linea {
+    display: flex; 
+    align-items: center; 
+}
+
+
+.btn-editar,
+.btn-eliminar {
+    display: inline-block;  
+    padding: 6px; 
+    border-radius: 8px; 
+    margin: 0 4px; 
+    text-decoration: none; 
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.btn-editar:hover,
+.btn-eliminar:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1); 
+}
+
+.btn-editar img,
+.btn-eliminar img {
+    width: 30px; 
+    height: auto; 
+}
+
+/* No necesitamos estilos de fondo específicos para .btn-editar o .btn-eliminar
+   ya que el fondo blanco se aplica al contenedor */
+    /* .btn-editar,
     .btn-eliminar {
         padding: 8px 16px;
         border-radius: 6px;
@@ -165,7 +197,7 @@
         transform: translateY(-2px);
         box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
         text-decoration: none;
-    }
+    } */
 
     /* codigo para hacerlo responsivo */
     .tabla-responsive {
@@ -398,3 +430,26 @@
     color: #cc0000 !important; 
     border: 1px solid #ff0000 !important; 
 }
+
+ /* contenedor para volver */
+.con_volver {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background-color: white;
+}
+
+.con_volver .volver img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.con_volver h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+

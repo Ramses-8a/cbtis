@@ -72,7 +72,14 @@ if (!isset($_SESSION['usuario_id'])) {
 
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Usuarios</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="formulario_usuario.php">Agregar Usuarios</a></li>
+                            <li><a class="dropdown-item" href="lista_usuarios.php">Lista de Usuarios</a></li>
+                        </ul>
+                    </li>
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white fw-bold" href="mostrar_proyectos.php" role="button" data-bs-toggle="dropdown">Proyectos</a>
                         <ul class="dropdown-menu">
@@ -80,12 +87,23 @@ if (!isset($_SESSION['usuario_id'])) {
                             <li><a class="dropdown-item" href="lista_proyectos.php">Lista de Proyecto</a></li>
                         </ul>
                     </li>
-
+                    
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Torneos</a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="formulario_torneos.php">Agregar Torneos</a></li>
                             <li><a class="dropdown-item" href="lista_torneos.php">Lista de Torneos</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Tipos</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="formulario_tipo_lenguaje.php">Tipos de Lenguajes</a></li>
+
+                            <li><a class="dropdown-item" href="formulario_tipo_curso.php">Tipos de Cursos</a></li>
+
+                            <li><a class="dropdown-item" href="formulario_tipo_recurso.php">Tipos de Recursos</a></li>
                         </ul>
                     </li>
 
@@ -94,11 +112,13 @@ if (!isset($_SESSION['usuario_id'])) {
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="formulario_recursos.php">Agregar Recursos</a></li>
                             <li><a class="dropdown-item" href="lista_recursos.php">Lista de Recursos</a></li>
-
+                            
                             <li><a class="dropdown-item" href="formulario_cursos.php">Agregar Cursos</a></li>
                             <li><a class="dropdown-item" href="lista_cursos.php">Lista de Cursos</a></li>
                         </ul>
                     </li>
+                    
+                    
 
                     <li class="nav-item">
                         <a class="nav-link text-white fw-bold" href="../controller/usuario/logout.php" title="Cerrar sesión">

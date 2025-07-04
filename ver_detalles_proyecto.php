@@ -32,7 +32,7 @@ $imagenes = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <div class="con_volver">
         <a href="mostrar_proyectos.php" class="volver">
-            <img src="img/volver.webp" alt="Volver">
+            <img src="img/regresar.png" alt="Volver">
         </a>
         <h3><?=$proyecto['nom_proyecto']?></h3>
     </div>

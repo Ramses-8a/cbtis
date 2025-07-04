@@ -1,9 +1,20 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: #fff;
-  padding: 0;
-  color: #333;
+:root {
+    --secondary-gray: #4b5563;
+    --dark-bg: #111827;
+}
+
+body{
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary-gray) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    
+    color: white;
 }
 
 .torneo-detalle {
@@ -47,6 +58,7 @@ body {
   margin-bottom: 15px;
   font-size: 1rem;
   line-height: 1.6;
+  color: #000;
 }
 
 .torneo-info strong {
@@ -93,30 +105,42 @@ body {
 }
 
 
-    /* boton flotante circular */
-    .btn-flotante {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 60px;
-        height: 60px;
-        background-color: #9d0707;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        font-size: 32px;
-        cursor: pointer;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background 0.3s ease;
-        z-index: 1001;
-    }
+   .btn-flotante {
+    position: fixed;
+    bottom: 30px;
+    right: 60px;
+    background-color: #9d0707;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 15px 30px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    white-space: nowrap;
+    transition: background 0.3s ease;
+    z-index: 1001;
+}
 
-    .btn-flotante:hover {
-        background-color: darkred;
+.btn-flotante:hover {
+    background-color: darkred;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+@media (max-width: 768px) {
+    .btn-flotante {
+        right: 20px;
+        bottom: 20px;
+        padding: 12px 25px;
+        font-size: 16px;
+        border-radius: 25px;
     }
+}
 
     /* estilo del modal */
     .modal {
@@ -169,6 +193,7 @@ body {
         margin: 15px 0 5px;
         font-weight: bold;
         font-size: 14px;
+        color: #000;
     }
 
     .modal-contenido input {
@@ -180,8 +205,17 @@ body {
         outline: none;
     }
 
+    .modal-contenido select {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        outline: none;
+    }
+
     .btn-inscribirse {
-        margin-top: 20px;
+        margin-top: 10px;
         width: 100%;
         padding: 12px;
         background-color: #9d0707;
@@ -213,3 +247,23 @@ body {
     .g-recaptcha{
         margin-top: 10px;
     }
+
+       /* estilo del contenedor para volver */
+.con_volver {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+}
+
+.con_volver .volver img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.con_volver h3 {
+    font-size: 2.5rem;
+    font-weight: bold;
+}

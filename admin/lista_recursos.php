@@ -37,11 +37,13 @@ include_once('header.php');
                 <?= $recurso['estatus'] == 1 ? 'Activo' : 'Inactivo' ?>
                 </td>
         <td>
-            <a class="btn-editar" href="editar_recurso.php?pk_recurso=<?= $recurso['pk_recurso'] ?>">Editar</a>
-            <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $recurso['pk_recurso'] ?>', '<?= $recurso['estatus'] ?>')">
-                <?= $recurso['estatus'] == 1 ? 'Desactivar' : 'Activar' ?>
-            </a>
-        </td>
+                    <div class="botones-accion-en-linea">
+                        <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">
+                        <img src="../img/boton-editar.png" alt=""></a>
+                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')">
+                        <img src="../img/basura-bln.png" alt=""></a>
+                    </div>
+                </td>
         <!-- <td>
             <a class="btn-eliminar" href="#" onclick="confirmDelete(event, '<?= $recurso['pk_recurso'] ?>')">
                 Eliminar <i class="fas fa-trash-alt"></i>

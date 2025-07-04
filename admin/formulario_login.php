@@ -24,6 +24,7 @@
       </div>
 
       <button type="submit" class="btn" id="loginBtn">Entrar</button>
+      <a href="../index.php" class="btn btn-secondary-custom">Regresar a la página principal</a>
     </form>
   </div>
 

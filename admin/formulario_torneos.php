@@ -9,13 +9,13 @@ include_once('header.php');
 <form id="formTorneo" action="../controller/torneo/guardar_torneo.php" method="POST" enctype="multipart/form-data" class="form-proyectos">
     <div>
         <label for="nom_torneo">Nombre del Torneo:</label>
-        <input type="text" id="nom_torneo" name="nom_torneo" required>
+        <input type="text" id="nom_torneo" name="nom_torneo" required placeholder="Escribe el nombre del torneo">
     </div>
 
     <div>
         <label for="tipo_torneo">Tipo de torneo:</label>
          <select name="fk_tipo_torneo" required>
-            <option value="" disabled selected>Selecciona una opcion</option>
+            <option value="" disabled selected>Selecciona el tipo de torneo</option>
             <?php
             include_once '../controller/conexion.php';
             $stmt = $connect->prepare("SELECT pk_tipo_torneo, nom_tipo FROM tipo_torneos WHERE estatus = 1");
@@ -36,12 +36,12 @@ include_once('header.php');
 
     <div>
         <label for="descripcion">Descripción:</label>
-        <input type="text" id="descripcion" name="descripcion" required>
+        <input type="text" id="descripcion" name="descripcion" required placeholder="Escribe la descripción del torneo">
     </div>
 
     <div>
         <label for="detalles">Detalles del Torneo:</label>
-        <input type="text" id="detalles" name="detalles" required>
+        <input type="text" id="detalles" name="detalles" required placeholder="Escribe los detalles del torneo">
     </div>
 
     <div>
