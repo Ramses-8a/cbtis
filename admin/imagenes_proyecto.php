@@ -22,34 +22,7 @@ try {
 <head>
     <meta charset="UTF-8">
     <title>Imágenes del Proyecto</title>
-    <style>
-        .contenedor {
-            padding: 20px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .grid img {
-            width: 100%;
-            border-radius: 8px;
-            box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-        }
-
-        .volver {
-            display: inline-block;
-            margin-bottom: 20px;
-            text-decoration: none;
-            color: #007bff;
-        }
-
-        .volver:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="../css/img_proyecto.css">
 </head>
 <body>
     <div class="con_volver">
