@@ -43,9 +43,9 @@ include_once('header.php');
                 </td>
         <td>
                     <div class="botones-accion-en-linea">
-                        <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">
+                        <a class="btn-editar" href="editar_torneo.php?pk_torneo=<?= $torneo['pk_torneo'] ?>">
                         <img src="../img/boton-editar.png" alt=""></a>
-                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')">
+                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $torneo['pk_torneo'] ?>', '<?= $torneo['estatus'] ?>')">
                         <img src="../img/basura-bln.png" alt=""></a>
                     <a class="btn-editar" href="lista_participantes.php?pk_torneo=<?= $torneo['pk_torneo']?>"><img src="../img/avatar.png" alt=""> Ver participantes (<?= $torneo['total_participantes'] ?>)</a>
                     </div>

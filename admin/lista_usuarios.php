@@ -46,6 +46,7 @@ $usuarios = include('../controller/usuario/mostrar_usuarios.php');
 
 <script>
 $(document).ready(function() {
+    // Función para eliminar usuario con confirmación
     $('.btn-eliminar').on('click', function(e) {
         e.preventDefault();
         const pkUsuario = $(this).data('pk-usuario');

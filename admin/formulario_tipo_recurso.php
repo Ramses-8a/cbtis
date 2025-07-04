@@ -43,10 +43,10 @@ include('../controller/tipo_recursos/mostrar_tipo_recursos.php');
                             <td><?= $tipo_recurso['estatus'] == 1 ? 'Activo' : 'De baja' ?></td>
                             <td>
                     <div class="botones-accion-en-linea">
-                        <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">
-                        <img src="../img/boton-editar.png" alt=""></a>
-                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')">
-                        <img src="../img/basura-bln.png" alt=""></a>
+                        <a class="btn-editar" href="#" data-id="<?= $tipo_recurso['pk_tipo_recurso'] ?>" data-nombre="<?= htmlspecialchars($tipo_recurso['nom_tipo']) ?>">
+                        <img src="../img/boton-editar.png" alt="Editar"></a>
+                    <a class="btn-eliminar" href="#" data-id="<?= $tipo_recurso['pk_tipo_recurso'] ?>" data-estatus="<?= $tipo_recurso['estatus'] ?>">
+                        <img src="../img/basura-bln.png" alt="Cambiar estatus"></a>
                     </div>
                 </td>
                         </tr>
@@ -104,7 +104,7 @@ include('../controller/tipo_recursos/mostrar_tipo_recursos.php');
         });
 
         // Editar tipo de recurso
-        $(document).on('click', '.editar-btn', function(event) {
+        $(document).on('click', '.btn-editar', function(event) {
             event.preventDefault();
             var id_tipo = $(this).data('id');
             var nom_tipo_actual = $(this).data('nombre');
@@ -160,7 +160,7 @@ include('../controller/tipo_recursos/mostrar_tipo_recursos.php');
         });
 
         // Cambiar estatus
-        $(document).on('click', '.cambiar-estatus-btn', function(event) {
+        $(document).on('click', '.btn-eliminar', function(event) {
             event.preventDefault();
             var id_tipo = $(this).data('id');
             var estatus_actual = $(this).data('estatus');

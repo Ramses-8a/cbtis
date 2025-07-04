@@ -42,10 +42,10 @@ include('../controller/tipo_lenguaje/mostrar_tipos.php');
                             <td><?php echo $tipo['estatus'] == 1 ? 'Activo' : 'Inactivo'; ?></td>
                             <td>
                     <div class="botones-accion-en-linea">
-                        <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">
-                        <img src="../img/boton-editar.png" alt=""></a>
-                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')">
-                        <img src="../img/basura-bln.png" alt=""></a>
+                        <a class="btn-editar" href="#" data-id="<?= $tipo['pk_lenguaje'] ?>" data-nombre="<?= htmlspecialchars($tipo['nom_lenguaje']) ?>">
+                        <img src="../img/boton-editar.png" alt="Editar"></a>
+                    <a class="btn-eliminar" href="#" data-id="<?= $tipo['pk_lenguaje'] ?>" data-estatus="<?= $tipo['estatus'] ?>">
+                        <img src="../img/basura-bln.png" alt="Cambiar estatus"></a>
                     </div>
                 </td>
                         </tr>
@@ -219,7 +219,7 @@ $(document).ready(function() {
     });
     
     // Función para cambiar estatus del tipo de lenguaje
-    $('.btn-cambiar-estatus').on('click', function() {
+    $('.btn-eliminar').on('click', function() {
         var id = $(this).data('id');
         var estatusActual = $(this).data('estatus');
         var nuevoEstatus = estatusActual == 1 ? 0 : 1;

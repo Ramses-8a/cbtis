@@ -17,7 +17,7 @@ include_once('header.php');
             <th>Url</th>
             <th>Estatus</th>
             <th>Acciones</th>
-            <th>Eliminar</th>
+            <!-- <th>Eliminar</th> -->
             <th>Ver Imágenes</th> 
         </tr>
 
@@ -47,11 +47,11 @@ include_once('header.php');
                         <img src="../img/basura-bln.png" alt=""></a>
                     </div>
                 </td>
-                <td>
+                <!-- <td>
                     <a class="btn-eliminar" href="#" onclick="confirmDelete(event, '<?= $proyecto['pk_proyecto'] ?>')">
                         Eliminar <i class="fas fa-trash-alt"></i>
                     </a>
-                </td>
+                </td> -->
                 <td>
                     <a class="btn-ver-imagenes" href="imagenes_proyecto.php?id=<?= $proyecto['pk_proyecto'] ?>">
                         <button>Ver Imágenes</button>
