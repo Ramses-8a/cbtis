@@ -4,6 +4,7 @@ include_once('header.php');
 ?> 
 <head>
     <link rel="stylesheet" href="../css/list_proyecto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 <div class="contenedor">
@@ -38,10 +39,12 @@ include_once('header.php');
                 <?= $proyecto['estatus'] == 1 ? 'Activo' : 'Inactivo' ?>
                 </td>
                 <td>
-                    <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Editar</a>
+                    <div class="botones-accion-en-linea">
+                        <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">
+                        <img src="../img/boton-editar.png" alt=""></a>
                     <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')">
-                        <?= $proyecto['estatus'] == 1 ? 'Desactivar' : 'Activar' ?>
-                    </a>
+                        <img src="../img/basura-bln.png" alt=""></a>
+                    </div>
                 </td>
                 <!-- <td>
                     <a class="btn-eliminar" href="#" onclick="confirmDelete(event, '<?= $proyecto['pk_proyecto'] ?>')">

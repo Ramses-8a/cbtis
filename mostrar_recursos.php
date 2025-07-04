@@ -1,6 +1,6 @@
 <?php
 require_once 'controller/conexion.php';
-include_once('header.php');
+require_once 'header.php';
 
 try {
     $sql = "SELECT r.pk_recurso, tr.nom_tipo AS tipo_recurso, r.nom_recurso, r.url, r.estatus, r.img 
@@ -15,8 +15,6 @@ try {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Recursos</title>

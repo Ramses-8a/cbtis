@@ -15,17 +15,17 @@ include_once('header.php');
 <form id="formProyecto" enctype="multipart/form-data" class="form-proyectos">
     <div>
         <label for="nom_proyecto">Nombre del Proyecto:</label>
-        <input type="text" id="nom_proyecto" name="nom_proyecto" required>
+        <input type="text" id="nom_proyecto" name="nom_proyecto" placeholder="Escribe el nombre del proyecto" required>
     </div>
 
     <div>
         <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion" required></textarea>
+        <textarea id="descripcion" name="descripcion" required placeholder="Escribe la descripción del proyecto"></textarea>
     </div>
 
     <div>
         <label for="detalles">Detalles:</label>
-        <textarea id="detalles" name="detalles" required></textarea>
+        <textarea id="detalles" name="detalles" required placeholder="Escribe los detalles del proyecto"></textarea>
     </div>
 
     <div>
@@ -238,26 +238,3 @@ $(document).ready(function() {
 });
 </script>
 
-<style>
-    /* contenedor para volver */
-.con_volver {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 20px;
-  background-color: white;
-}
-
-.con_volver .volver img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  cursor: pointer;
-}
-
-.con_volver h3 {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin: 0;
-}
-</style>
