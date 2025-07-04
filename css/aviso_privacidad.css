@@ -1,0 +1,51 @@
+body {
+    background-color: #f8f9fa; 
+}
+
+
+.iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 120%; 
+    height: 0;
+    overflow: hidden; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1); 
+}
+
+.iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #dee2e6; 
+}
+
+
+.card-title {
+    font-size: 2.5rem; 
+}
+
+
+@media (max-width: 768px) {
+    .card {
+        padding: 20px !important;
+    }
+    .card-title {
+        font-size: 2rem;
+    }
+    .iframe-container {
+        padding-bottom: 150%; 
+    }
+}
+
+@media (max-width: 576px) {
+    .iframe-container {
+        padding-bottom: 180%; 
+    }
+    .btn-lg {
+        font-size: 0.9rem;
+        padding: 10px 20px;
+    }
+}

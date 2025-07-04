@@ -193,7 +193,7 @@
             <a href="#" target="_blank" aria-label="YouTube">
                 <i class="fab fa-youtube"></i>
             </a>
-            <p><a style="text-decoration:none" href="aviso_privacidad.php">Aviso de privacidad</a></p>
+            <p><a style="text-decoration:none" href="aviso_privacidad.php" target="_blank">Aviso de privacidad</a></p>
         </div>
     </footer> 
 
