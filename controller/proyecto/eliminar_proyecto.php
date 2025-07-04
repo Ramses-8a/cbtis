@@ -1,8 +1,9 @@
 <?php
 require_once(__DIR__ . '/../conexion.php');
+header('Content-Type: application/json');
 
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
+if (isset($_POST['id'])) {
+    $id = $_POST['id'];
 
     try {
      
@@ -20,18 +21,34 @@ if (isset($_GET['id'])) {
         $stmt_delete->execute();
 
         $connect->commit();
+<<<<<<< Coyac
 
         header('Location: ../../admin/lista_proyectos.php?deleted=1');
+=======
+        
+        echo json_encode([
+            'status' => 'success',
+            'message' => 'El proyecto ha sido eliminado exitosamente'
+        ]);
+>>>>>>> main
         exit();
 
     } catch (PDOException $e) {
         
         $connect->rollBack();
-        header('Location: ../../admin/lista_proyectos.php?error=' . urlencode($e->getMessage()));
+        http_response_code(500);
+        echo json_encode([
+            'status' => 'error',
+            'message' => 'Error al eliminar el proyecto: ' . $e->getMessage()
+        ]);
         exit();
     }
 } else {
-    header('Location: ../../admin/lista_proyectos.php?error=no_id');
+    http_response_code(400);
+    echo json_encode([
+        'status' => 'error',
+        'message' => 'No se proporcionó el ID del proyecto'
+    ]);
     exit();
 }
 ?>
