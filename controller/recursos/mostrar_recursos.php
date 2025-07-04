@@ -38,7 +38,7 @@ try {
 <body>
 
     <div class="con_volver">
-        <a href="../../recursos.php" class="volver">
+        <a href="../../mostrar_recursos.php" class="volver">
             <img src="../../img/regresar.png" alt="Volver">
         </a>
         <h3><?= htmlspecialchars($recurso['nom_recurso']) ?></h3>
