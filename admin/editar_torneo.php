@@ -61,6 +61,14 @@ if (!isset($_GET['pk_torneo'])) {
         <textarea id="detalles" name="detalles" required><?php echo $torneo['detalles']; ?></textarea>
     </div>
 
+    <div>
+        <label for="finicio">Fecha de inicio:</label>
+        <input type="date" name="finicio" id="finicio" value="<?php echo $torneo['finicio']; ?>" required>
+
+        <label for="ffinal">Fecha limite:</label>
+        <input type="date" name="ffinal" id="ffinal" value="<?php echo $torneo['ffinal']; ?>" required>
+    </div>
+
     <div class="button-container">
         <button class="guardar" type="submit">Actualizar Torneo</button>
         <button class="cancelar" type="submit" onclick="window.location.href='lista_torneos.php'">Cancelar</button>

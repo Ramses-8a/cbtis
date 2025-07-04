@@ -16,7 +16,7 @@ include_once('header.php');
         <th>URL</th>
         <th>Estatus</th>
         <th>Acciones</th>
-        <th>Eliminar</th>
+        <!-- <th>Eliminar</th> -->
     </tr>
     <?php if (empty($recursos)): ?>
     <tr>
@@ -42,11 +42,11 @@ include_once('header.php');
                 <?= $recurso['estatus'] == 1 ? 'Desactivar' : 'Activar' ?>
             </a>
         </td>
-        <td>
+        <!-- <td>
             <a class="btn-eliminar" href="#" onclick="confirmDelete(event, '<?= $recurso['pk_recurso'] ?>')">
                 Eliminar <i class="fas fa-trash-alt"></i>
             </a>
-        </td>
+        </td> -->
     </tr>
     <?php endforeach; ?>
 <?php endif; ?>
