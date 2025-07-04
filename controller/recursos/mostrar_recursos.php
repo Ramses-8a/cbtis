@@ -1,6 +1,6 @@
 <?php
 require_once(__DIR__ . '/../conexion.php');
-
+//a
 try {
     $stmt = $connect->prepare("SELECT r.*, tr.nom_tipo 
                               FROM recursos r 
@@ -21,5 +21,8 @@ try {
         "error" => $e->getMessage()
     ]));
 }
+
 ?>
+
+
 
