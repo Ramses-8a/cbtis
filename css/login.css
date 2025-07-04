@@ -1,6 +1,8 @@
 * {
+
   box-sizing: border-box;
 }
+
 
 body {
   font-family: Arial, sans-serif;
@@ -49,6 +51,7 @@ body {
 }
 
 
+
 .btn {
   margin-top: 1rem;
   padding: 0.7rem 1.5rem;
@@ -62,6 +65,25 @@ body {
   text-decoration: none; 
   display: inline-block; 
   box-sizing: border-box; 
+
+    .btn:hover {
+  background-color: #c82333;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-top: 15px;
+}
+
+.forgot-password a {
+  color: #dc3545;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+
 }
 
 .btn:hover {
