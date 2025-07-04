@@ -17,12 +17,13 @@ include_once('header.php');
             <th>Url</th>
             <th>Estatus</th>
             <th>Acciones</th>
-            <!-- <th>Eliminar</th> -->
+            <th>Eliminar</th>
+            <th>Ver Imágenes</th> 
         </tr>
 
         <?php if (empty($proyectos)): ?>
             <tr>
-                <td colspan="8" style="text-align: center; padding: 20px;">
+                <td colspan="9" style="text-align: center; padding: 20px;">
                     <strong>No hay proyectos disponibles actualmente.</strong><br>
                     Cuando se agreguen proyectos, aparecerán aquí.
                 </td>
@@ -36,7 +37,7 @@ include_once('header.php');
                 <td><?= $proyecto['detalles'] ?></td>
                 <td><a href="<?= $proyecto['url'] ?>"><?= $proyecto['url'] ?></a></td>
                 <td class="estatus <?= $proyecto['estatus'] == 1 ? 'activo' : 'inactivo' ?>">
-                <?= $proyecto['estatus'] == 1 ? 'Activo' : 'Inactivo' ?>
+                    <?= $proyecto['estatus'] == 1 ? 'Activo' : 'Inactivo' ?>
                 </td>
                 <td>
                     <div class="botones-accion-en-linea">
@@ -46,11 +47,16 @@ include_once('header.php');
                         <img src="../img/basura-bln.png" alt=""></a>
                     </div>
                 </td>
-                <!-- <td>
+                <td>
                     <a class="btn-eliminar" href="#" onclick="confirmDelete(event, '<?= $proyecto['pk_proyecto'] ?>')">
                         Eliminar <i class="fas fa-trash-alt"></i>
                     </a>
-                </td> -->
+                </td>
+                <td>
+                    <a class="btn-ver-imagenes" href="imagenes_proyecto.php?id=<?= $proyecto['pk_proyecto'] ?>">
+                        <button>Ver Imágenes</button>
+                    </a>
+                </td>
             </tr>
             <?php endforeach; ?>
         <?php endif; ?>
@@ -58,6 +64,29 @@ include_once('header.php');
 </div>
 
 </body>
+
+
+
+<style>
+    .btn-ver-imagenes button {
+        background-color: #007bff;
+        color: white;
+        padding: 6px 10px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .btn-ver-imagenes button:hover {
+        background-color: #0056b3;
+    }
+
+    table tr td[colspan="9"] {
+        background-color: #f9f9f9;
+        color: #555;
+        font-size: 16px;
+    }
+</style>
 
 
 <script>
@@ -81,7 +110,7 @@ function confirmDelete(event, projectId) {
 }
 
 function confirmAction(event, projectId, currentStatus) {
-    event.preventDefault(); // Previene la acción por defecto del enlace
+    event.preventDefault(); 
 
     let actionText = currentStatus == 1 ? 'Desactivar' : 'Activar';
     let confirmMessage = `¿Estás seguro de ${actionText.toLowerCase()} este proyecto?`;
@@ -97,7 +126,7 @@ function confirmAction(event, projectId, currentStatus) {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            // Si el usuario confirma, redirige a la URL de acción
+            
             window.location.href = `../controller/proyecto/baja_proyecto.php?id=${projectId}`;
         }
     });
