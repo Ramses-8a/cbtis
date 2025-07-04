@@ -41,12 +41,13 @@ include('../controller/tipo_lenguaje/mostrar_tipos.php');
                             <td><?php echo htmlspecialchars($tipo['nom_lenguaje']); ?></td>
                             <td><?php echo $tipo['estatus'] == 1 ? 'Activo' : 'Inactivo'; ?></td>
                             <td>
-                                <button class="btn-editar" data-id="<?php echo $tipo['pk_lenguaje']; ?>" data-nombre="<?php echo htmlspecialchars($tipo['nom_lenguaje']); ?>">Editar</button>
-                                <button class="btn-eliminar" data-id="<?php echo $tipo['pk_lenguaje']; ?>">Eliminar</button>
-                                <button class="btn-editar" data-id="<?php echo $tipo['pk_lenguaje']; ?>" data-estatus="<?php echo $tipo['estatus']; ?>">
-                                    <?php echo $tipo['estatus'] == 1 ? 'Desactivar' : 'Activar'; ?>
-                                </button>
-                            </td>
+                    <div class="botones-accion-en-linea">
+                        <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">
+                        <img src="../img/boton-editar.png" alt=""></a>
+                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')">
+                        <img src="../img/basura-bln.png" alt=""></a>
+                    </div>
+                </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>

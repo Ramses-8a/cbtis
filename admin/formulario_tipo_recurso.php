@@ -42,12 +42,13 @@ include('../controller/tipo_recursos/mostrar_tipo_recursos.php');
                             <td><?= htmlspecialchars($tipo_recurso['nom_tipo']) ?></td>
                             <td><?= $tipo_recurso['estatus'] == 1 ? 'Activo' : 'De baja' ?></td>
                             <td>
-                                <button class="btn-editar" data-id="<?= $tipo_recurso['pk_tipo_recurso'] ?>" data-nombre="<?= htmlspecialchars($tipo_recurso['nom_tipo']) ?>">Editar</button>
-                                <button class="btn-editar" data-id="<?= $tipo_recurso['pk_tipo_recurso'] ?>" data-estatus="<?= $tipo_recurso['estatus'] ?>">
-                                    <?= $tipo_recurso['estatus'] == 1 ? 'Dar de Baja' : 'Dar de Alta' ?>
-                                </button>
-                                <button class="btn-eliminar" data-id="<?= $tipo_recurso['pk_tipo_recurso'] ?>">Eliminar</button>
-                            </td>
+                    <div class="botones-accion-en-linea">
+                        <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">
+                        <img src="../img/boton-editar.png" alt=""></a>
+                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')">
+                        <img src="../img/basura-bln.png" alt=""></a>
+                    </div>
+                </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>

@@ -75,45 +75,35 @@
     cursor: pointer;
 }
 
+    /* botones */
+.botones-accion-en-linea {
+    display: flex; 
+    align-items: center; 
+}
+
+
 .btn-editar,
-    .btn-eliminar {
-        padding: 8px 16px;
-        border-radius: 6px;
-        text-decoration: none;
-        font-size: 12px;
-        font-weight: 500;
-        margin: 0 4px;
-        transition: all 0.3s ease;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        display: inline-block;
-    }
+.btn-eliminar {
+    display: inline-block;  
+    padding: 6px; 
+    border-radius: 8px; 
+    margin: 0 4px; 
+    text-decoration: none; 
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; 
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
 
-    .btn-editar {
-        background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
-        color: white;
-        margin-top: 10px;
-    }
+.btn-editar:hover,
+.btn-eliminar:hover {
+    transform: scale(1.1); 
+    box-shadow: 0 3px 7px rgba(0, 0, 0, 0.1); 
+}
 
-    .btn-editar:hover {
-        background: linear-gradient(135deg, #218838 0%, #1ea080 100%);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
-        text-decoration: none;
-    }
-
-    .btn-eliminar {
-        background: linear-gradient(135deg, #dc3545 0%, #e8590c 100%);
-        color: white;
-        margin-top: 10px;
-    }
-
-    .btn-eliminar:hover {
-        background: linear-gradient(135deg, #c82333 0%, #e8590c 100%);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
-        text-decoration: none;
-    }
+.btn-editar img,
+.btn-eliminar img {
+    width: 30px; 
+    height: auto; 
+}
 
 /* estilo del botón de regresar */
 

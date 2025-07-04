@@ -1,0 +1,52 @@
+            .navbar {
+                background-color: #9d0707 !important;
+            }
+            .nav-link:hover {
+                color: #ffdddd !important;
+            }
+            .navbar-toggler {
+                padding: var(--bs-navbar-toggler-padding-y) var(--bs-navbar-toggler-padding-x);
+                color: #ffffff !important;
+                font-size: var(--bs-navbar-toggler-font-size);
+                line-height: 1;
+                border: var(--bs-border-width) solid var(--bs-navbar-toggler-border-color);
+                border-radius: var(--bs-navbar-toggler-border-radius);
+                transition: var(--bs-navbar-toggler-transition);
+            }
+            .dropdown-menu {
+                background-color: #9d0707;
+                border: none;
+            }
+            .dropdown-item {
+                color: white;
+            }
+            .dropdown-item:hover {
+                background-color: #7a0505;
+                color: #ffff;
+            }
+
+            /* estilo del boton de inicio de sesion*/
+            .nav-item.login-btn {
+                margin-left: 15px; 
+            }
+
+            .nav-item.login-btn .nav-link {
+                border-radius: 5px;
+                padding: 8px 15px; 
+                transition: background-color 0.3s ease, color 0.3s ease;
+            }
+
+            .nav-item.login-btn .nav-link:hover {
+                color: #ffffff !important; 
+            }
+
+            /* adaptacion para pantallas pequeñas */
+            @media (max-width: 991.98px) { 
+                .nav-item.login-btn {
+                    margin-left: 0; 
+                    margin-top: 10px; 
+                }
+                 .nav-item.login-btn .nav-link {
+                    text-align: center;
+                }
+            }
