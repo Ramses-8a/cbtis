@@ -17,22 +17,22 @@ include_once('header.php');
 <form id="formCrearUsuario" class="form-proyectos">
     <div>
         <label for="usuario">Nombre de usuario:</label>
-        <input type="text" id="usuario" name="usuario" required>
+        <input type="text" id="usuario" name="usuario" required placeholder="Escribe el nombre completo del usuario">
     </div>
 
     <div>
         <label for="correo">Correo electrónico:</label>
-        <input type="email" id="correo" name="correo" required>
+        <input type="email" id="correo" name="correo" required placeholder="ejemplo@gmail.com">
     </div>
 
     <div>
         <label for="password">Contraseña:</label>
-        <input type="password" id="password" name="password" required>
+        <input type="password" id="password" name="password" required placeholder="Escribe la contraseña">
     </div>
 
     <div>
         <label for="password_veri">Confirmar contraseña:</label>
-        <input type="password" id="password_veri" name="password_veri" required>
+        <input type="password" id="password_veri" name="password_veri" required placeholder="Escribe la contraseña">
     </div>
 
     <div class="button-container">
