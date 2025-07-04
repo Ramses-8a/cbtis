@@ -54,7 +54,7 @@ include_once '../controller/conexion.php';
 
     <div>
         <label for="link">Link del Curso:</label>
-        <input type="url" id="link" name="link" required>
+        <input type="url" id="link" name="link" required placeholder="https://ejemplo.com/curso">
     </div>
     <div>
         <label for="descripcion">Descripción:</label>

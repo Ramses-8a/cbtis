@@ -29,8 +29,8 @@ include_once('header.php');
     </div>
 
     <div>
-        <label for="url">Url:</label>
-       <input type="text" id="url" name="url" required>
+        <label for="url">URL del Proyecto:</label>
+        <input type="url" id="url" name="url" required placeholder="https://ejemplo.com/proyecto">
     </div>
 
     <div>

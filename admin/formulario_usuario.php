@@ -1,7 +1,6 @@
 <?php
 include_once('header.php');
 ?>
-<<<<<<< HEAD
 
 <head>
     <link rel="stylesheet" href="../css/form_proyecto.css">
@@ -120,7 +119,7 @@ include_once('header.php');
         margin: 0;
     }
 </style>
-=======
+<!-- 
 <head>
      <link rel="stylesheet" href="../css/form_proyecto.css">
     <title>Usuarios</title>
@@ -160,4 +159,4 @@ include_once('header.php');
 </form>                     
 </body>
 </html>
->>>>>>> 700fa2270b821e234dd8c867214eadb91afaecdb
+>>>>>>> 700fa2270b821e234dd8c867214eadb91afaecdb -->

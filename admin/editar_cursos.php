@@ -98,7 +98,7 @@ $curso = $curso ?? null;
 
     <div>
         <label for="link">URL del curso:</label>
-        <input type="text" id="link" name="link" value="<?= $curso['link'] ?? '' ?>" required>
+        <input type="url" id="link" name="link" value="<?= $curso['link'] ?? '' ?>" required placeholder="https://ejemplo.com/curso">
     </div>
 
     <div>
