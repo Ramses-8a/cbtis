@@ -1,5 +1,5 @@
 <?php
-include_once 'header.php'; // Asegúrate de que este header incluya Bootstrap y Font Awesome
+include_once 'header.php'; 
 ?>
 <!DOCTYPE html>
 <html lang="es">

@@ -1,3 +1,5 @@
+/* ochoa por favor ya no me borres nada */
+
 * {
 
   box-sizing: border-box;
@@ -65,8 +67,9 @@ body {
   text-decoration: none; 
   display: inline-block; 
   box-sizing: border-box; 
-
-    .btn:hover {
+}
+  
+.btn:hover {
   background-color: #c82333;
 }
 
