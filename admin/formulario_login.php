@@ -28,7 +28,7 @@
       <a href="../index.php" class="btn btn-secondary-custom">Regresar a la página principal</a>
 
       <div class="forgot-password">
-        <a href="recuperar_password.php">¿Has olvidado tu contraseña? Recupérala aquí</a>
+        <a href="recuperar_password.php">¿Has olvidado la contraseña?</a>
       </div>
 
     </form>

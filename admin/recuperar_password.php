@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="../css/login.css">
   <link rel="shortcut icon" href="../img/logo_sf.png">
-  <title>Recuperar Contraseña</title>
+  <title>Enviar Correo de Prueba</title>
   <style>
     .back-link {
       position: absolute;
@@ -33,39 +33,77 @@
   <div class="login-container">
     <img src="../img/logo_cbtis.png" alt="DGETI Logo">
     
-    <form id="recoveryForm" action="../controller/usuario/recuperar_password.php" method="POST">
+    <form id="emailForm" action="../controller/mail/send_mail.php" method="POST">
       <div class="form-group">
-        <label for="correo">Correo electrónico</label>
-        <input type="email" id="correo" name="correo" required />
+         <label for="correo">Ingresa tu correo electrónico</label>
+        <input type="email" id="email" name="email" class="form-control" required placeholder="ejemplo@correo.com">
       </div>
 
-      <button type="submit" class="btn" id="recoveryBtn">Enviar instrucciones</button>
+      <button type="submit" class="btn" id="sendBtn">Enviar correo de recuperacion</button>
     </form>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
-    document.getElementById('recoveryForm').addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      const formData = new FormData(this);
-
-      fetch(this.action, {
-          method: 'POST',
-          body: formData
-        })
-        .then(response => response.json())
-        .then(data => {
-          if (data.status === 'success') {
-            alert('Se han enviado las instrucciones a tu correo electrónico.');
-            window.location.href = 'formulario_login.php';
-          } else {
-            alert(data.message);
+    $(document).ready(function() {
+      $('#emailForm').on('submit', function(event) {
+        event.preventDefault();
+        var submitBtn = $('#sendBtn');
+        submitBtn.prop('disabled', true).text('Enviando...');
+        var formData = new FormData(this);
+        $.ajax({
+          url: $(this).attr('action'),
+          type: 'POST',
+          data: formData,
+          processData: false,
+          contentType: false,
+          success: function(data) {
+            if (typeof data === 'string') {
+              try { data = JSON.parse(data); } catch (e) { data = {}; }
+            }
+            if (data.status === 'success') {
+              $('.login-container').hide();
+              Swal.fire({
+                icon: 'success',
+                title: '¡Correo enviado!',
+                text: 'Si el correo es válido, recibirás un mensaje en tu bandeja de entrada.',
+                confirmButtonText: 'Aceptar'
+              }).then(() => {
+                window.location.href = 'formulario_login.php';
+              });
+            } else {
+              $('.login-container').hide();
+              Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: data.message || 'Ocurrió un error desconocido',
+                confirmButtonText: 'Aceptar'
+              }).then(() => {
+                setTimeout(function() {
+                  $('.login-container').show();
+                }, 200);
+              });
+            }
+          },
+          error: function() {
+            $('.login-container').hide();
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: 'Ocurrió un error al intentar enviar el correo. Por favor, verifica la configuración del correo.',
+              confirmButtonText: 'Aceptar'
+            }).then(() => {
+              setTimeout(function() {
+                $('.login-container').show();
+              }, 200);
+            });
+          },
+          complete: function() {
+            submitBtn.prop('disabled', false).text('Enviar correo de prueba');
           }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alert('Ocurrió un error al intentar recuperar la contraseña.');
         });
+      });
     });
   </script>
 </body>
