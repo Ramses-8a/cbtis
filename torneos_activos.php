@@ -3,7 +3,7 @@ require_once 'controller/conexion.php';
 require_once 'header.php';
 
 $tipo = $_GET['tipo'] ?? '';
-
+//
 if ($tipo) {
     $sql = "SELECT t.pk_torneo, t.nom_torneo, t.descripcion, t.detalles, t.img, tt.nom_tipo
             FROM torneos t
