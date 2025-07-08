@@ -41,9 +41,9 @@ include_once('header.php');
                 </td>
                 <td>
                     <div class="botones-accion-en-linea">
-                        <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">
+                        <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>" title="Editar" >
                         <img src="../img/boton-editar.png" alt=""></a>
-                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')">
+                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')" title="Editar" title="Dar de baja">
                         <img src="../img/basura-bln.png" alt=""></a>
                     </div>
                 </td>
@@ -52,11 +52,10 @@ include_once('header.php');
                         Eliminar <i class="fas fa-trash-alt"></i>
                     </a>
                 </td> -->
-                <td>
-                    <a class="btn-ver-imagenes" href="imagenes_proyecto.php?id=<?= $proyecto['pk_proyecto'] ?>">
-                        <button>Ver Imágenes</button>
-                    </a>
+               <td>
+                    <a class="btn-ver-imagenes" href="imagenes_proyecto.php?id=<?= $proyecto['pk_proyecto'] ?>">Ver Imágenes</a>
                 </td>
+
             </tr>
             <?php endforeach; ?>
         <?php endif; ?>
@@ -64,29 +63,6 @@ include_once('header.php');
 </div>
 
 </body>
-
-
-
-<style>
-    .btn-ver-imagenes button {
-        background-color: #007bff;
-        color: white;
-        padding: 6px 10px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    .btn-ver-imagenes button:hover {
-        background-color: #0056b3;
-    }
-
-    table tr td[colspan="9"] {
-        background-color: #f9f9f9;
-        color: #555;
-        font-size: 16px;
-    }
-</style>
 
 
 <script>
@@ -217,10 +193,3 @@ window.onload = function() {
     }
 };
 </script>
-
-<style>table tr td[colspan="8"] {
-    background-color: #f9f9f9;
-    color: #555;
-    font-size: 16px;
-}
-</style>

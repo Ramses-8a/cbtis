@@ -26,7 +26,7 @@ include_once('header.php');
         <table class="participants-table">
             <thead>
                 <tr>
-                    <th>ID</th>
+                    <!-- <th>ID</th> -->
                     <th>Nombre</th>
                     <th>Grado</th>
                     <th>Grupo</th>
@@ -44,7 +44,7 @@ include_once('header.php');
                     <?php $id = 1; ?>
                     <?php foreach ($alumnos as $alumno): ?>
                         <tr>
-                            <td><?= $id ?></td>
+                            <!-- <td><?= $id ?></td> -->
                             <td><?= htmlspecialchars($alumno['nombre']) ?></td>
                             <td><?= htmlspecialchars($alumno['grado']) ?></td>
                             <td><?= htmlspecialchars($alumno['grupo']) ?></td>

@@ -28,10 +28,10 @@ $usuarios = include('../controller/usuario/mostrar_usuarios.php');
                 <td><?= $usuario['estatus'] == 1 ? 'Activo' : 'Inactivo' ?></td>
                 <td>
                     <div class="botones-accion-en-linea">
-                        <a href="editar_usuario.php?pk_usuario=<?= $usuario['pk_usuario'] ?>" class="btn-editar">
+                        <a href="editar_usuario.php?pk_usuario=<?= $usuario['pk_usuario'] ?>" class="btn-editar" title="Editar"> 
                             <img src="../img/boton-editar.png" alt="Editar">
                         </a>
-                        <a href="#" class="btn-eliminar" data-pk-usuario="<?= $usuario['pk_usuario'] ?>">
+                        <a href="#" class="btn-eliminar" data-pk-usuario="<?= $usuario['pk_usuario'] ?>" title="Dar de baja">
                             <img src="../img/basura-bln.png" alt="Eliminar">
                         </a>
                     </div>

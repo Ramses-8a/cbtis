@@ -453,3 +453,35 @@
   margin: 0;
 }
 
+
+/* css de lista proyecto */
+
+table tr td[colspan="8"] {
+    background-color: #f9f9f9;
+    color: #555;
+    font-size: 16px;
+}
+
+ .btn-ver-imagenes {
+    background-color: #00b894;
+    color: white;
+    padding: 8px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;       
+    width: auto !important;     
+    white-space: nowrap;         
+    text-align: center;          
+}
+
+
+.btn-ver-imagenes:hover {
+    background-color: #00a382;
+}
+
+    table tr td[colspan="9"] {
+        background-color: #f9f9f9;
+        color: #555;
+        font-size: 16px;
+    }
