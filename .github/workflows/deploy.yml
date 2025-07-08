@@ -2,8 +2,7 @@ name: Despliegue por FTP
 
 on:
   push:
-    branches:
-      - main  # Cambia por la rama que uses
+    branches: [ main ]
 
 jobs:
   ftp-deploy:
@@ -11,6 +10,8 @@ jobs:
     steps:
       - name: Clona el repositorio
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 2  # Optimiza la descarga
 
       - name: Subir archivos por FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -18,5 +19,11 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /
+          server-dir: "/"  # ¡Ajusta esta ruta!
+          local-dir: "./"  # Asegura que sube todo el contenido
+          exclude: |
+            .git/*
+            .github/*
+            *.md
           dangerous-clean-slate: true
+          git-ftp-args: "--invert-paths --no-verify"  # Fuerza subida de todos los archivos
