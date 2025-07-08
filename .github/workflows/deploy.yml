@@ -1,0 +1,21 @@
+name: Despliegue por FTP
+
+on:
+  push:
+    branches:
+      - main  # Cambia por la rama que uses
+
+jobs:
+  ftp-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clona el repositorio
+        uses: actions/checkout@v3
+
+      - name: Subir archivos por FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          server-dir: /
