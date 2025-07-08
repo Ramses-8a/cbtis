@@ -37,7 +37,7 @@ try {
         if (isset($recurso['estatus']) && $recurso['estatus'] == 1):
             $recursosActivos = true;
     ?>
-        <a href="controller/recursos/mostrar_recursos.php?pk_recurso=<?= $recurso['pk_recurso'] ?>" class="card">
+        <a href="lista_rec.php?pk_recurso=<?= $recurso['pk_recurso'] ?>" class="card">
             <?php if (!empty($recurso['img'])): ?>
                 <img src="uploads/<?= htmlspecialchars($recurso['img']) ?>" alt="Imagen recurso">
             <?php else: ?>
