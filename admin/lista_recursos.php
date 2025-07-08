@@ -1,5 +1,5 @@
 <?php
-include('../controller/recursos/mostrar_recursos.php');
+include('../controller/recursos/contar_recursos.php');
 include_once('header.php'); 
 ?>
 <head>
