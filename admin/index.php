@@ -73,7 +73,7 @@ foreach ($torneos as $torneo) {
                 </div>
                 <div class="stat-info">
                     <?php
-                    $recursos = include(__DIR__ . '/../controller/recursos/mostrar_recursos.php');
+                    $recursos = include(__DIR__ . '/../controller/recursos/contar_recursos.php');
                     $cursos = include(__DIR__ . '/../controller/cursos/mostrar_cursos.php');
 
                     $recursos_activos_count = 0;
