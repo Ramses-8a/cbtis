@@ -29,7 +29,7 @@ try {
         <a href="lista_proyectos.php" class="volver">
             <img src="../img/volver.webp" alt="Volver">
         </a>
-        <h3>Proyectos</h3>
+        <h3>Imagenes Adicionales</h3>
     </div>
 
     <div class="contenedor">

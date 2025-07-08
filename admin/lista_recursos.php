@@ -38,9 +38,9 @@ include_once('header.php');
                 </td>
         <td>
                     <div class="botones-accion-en-linea">
-                        <a class="btn-editar" href="editar_recurso.php?pk_recurso=<?= $recurso['pk_recurso'] ?>">
+                        <a class="btn-editar" href="editar_recurso.php?pk_recurso=<?= $recurso['pk_recurso'] ?>" title="Editar">
                         <img src="../img/boton-editar.png" alt=""></a>
-                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $recurso['pk_recurso'] ?>', '<?= $recurso['estatus'] ?>')">
+                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $recurso['pk_recurso'] ?>', '<?= $recurso['estatus'] ?>')" title="Dar de baja">
                         <img src="../img/basura-bln.png" alt=""></a>
                     </div>
                 </td>

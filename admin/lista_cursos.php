@@ -65,9 +65,9 @@ include_once('header.php');
                 </td>
                 <td>
                     <div class="botones-accion-en-linea">
-                        <a class="btn-editar" href="editar_cursos.php?pk_curso=<?= $curso['pk_curso'] ?>">
+                        <a class="btn-editar" href="editar_cursos.php?pk_curso=<?= $curso['pk_curso'] ?>" title="Editar" >
                         <img src="../img/boton-editar.png" alt=""></a>
-                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $curso['pk_curso'] ?>', '<?= $curso['estatus'] ?>')">
+                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $curso['pk_curso'] ?>', '<?= $curso['estatus'] ?>')"  title="Dar de baja">
                         <img src="../img/basura-bln.png" alt=""></a>
                     </div>
                 </td>
