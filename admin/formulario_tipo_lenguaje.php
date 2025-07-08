@@ -41,12 +41,13 @@ include('../controller/tipo_lenguaje/mostrar_tipos.php');
                             <td><?php echo htmlspecialchars($tipo['nom_lenguaje']); ?></td>
                             <td><?php echo $tipo['estatus'] == 1 ? 'Activo' : 'Inactivo'; ?></td>
                             <td>
-                                <button class="btn-editar" data-id="<?php echo $tipo['pk_lenguaje']; ?>" data-nombre="<?php echo htmlspecialchars($tipo['nom_lenguaje']); ?>">Editar</button>
-                                <button class="btn-eliminar" data-id="<?php echo $tipo['pk_lenguaje']; ?>">Eliminar</button>
-                                <button class="btn-editar" data-id="<?php echo $tipo['pk_lenguaje']; ?>" data-estatus="<?php echo $tipo['estatus']; ?>">
-                                    <?php echo $tipo['estatus'] == 1 ? 'Desactivar' : 'Activar'; ?>
-                                </button>
-                            </td>
+                    <div class="botones-accion-en-linea">
+                        <a class="btn-editar" href="#" data-id="<?= $tipo['pk_lenguaje'] ?>" data-nombre="<?= htmlspecialchars($tipo['nom_lenguaje']) ?>">
+                        <img src="../img/boton-editar.png" alt="Editar"></a>
+                    <a class="btn-eliminar" href="#" data-id="<?= $tipo['pk_lenguaje'] ?>" data-estatus="<?= $tipo['estatus'] ?>">
+                        <img src="../img/basura-bln.png" alt="Cambiar estatus"></a>
+                    </div>
+                </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
@@ -218,7 +219,7 @@ $(document).ready(function() {
     });
     
     // Función para cambiar estatus del tipo de lenguaje
-    $('.btn-cambiar-estatus').on('click', function() {
+    $('.btn-eliminar').on('click', function() {
         var id = $(this).data('id');
         var estatusActual = $(this).data('estatus');
         var nuevoEstatus = estatusActual == 1 ? 0 : 1;

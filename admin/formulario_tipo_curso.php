@@ -40,12 +40,13 @@ include('../controller/tipo_curso/mostrar_tipo.php');
                             <td><?php echo htmlspecialchars($tipo['nom_tipo']); ?></td>
                             <td><?php echo $tipo['estatus'] == 1 ? 'Activo' : 'Inactivo'; ?></td>
                             <td>
-                                <button class="btn-editar" data-id="<?php echo $tipo['pk_tipo_curso']; ?>" data-nombre="<?php echo htmlspecialchars($tipo['nom_tipo']); ?>">Editar</button>
-                                <button class="btn-eliminar" data-id="<?php echo $tipo['pk_tipo_curso']; ?>" data-nombre="<?php echo htmlspecialchars($tipo['nom_tipo']); ?>">Eliminar</button>
-                                <button class="btn-editar" data-id="<?php echo $tipo['pk_tipo_curso']; ?>" data-nombre="<?php echo htmlspecialchars($tipo['nom_tipo']); ?>" data-estatus="<?php echo $tipo['estatus']; ?>">
-                                    <?php echo $tipo['estatus'] == 1 ? 'Desactivar' : 'Activar'; ?>
-                                </button>
-                            </td>
+                    <div class="botones-accion-en-linea">
+                        <a class="btn-editar" href="#" data-id="<?= $tipo['pk_tipo_curso'] ?>" data-nombre="<?= htmlspecialchars($tipo['nom_tipo']) ?>">
+                        <img src="../img/boton-editar.png" alt="Editar"></a>
+                    <a class="btn-eliminar" href="#" data-id="<?= $tipo['pk_tipo_curso'] ?>" data-nombre="<?= htmlspecialchars($tipo['nom_tipo']) ?>" data-estatus="<?= $tipo['estatus'] ?>">
+                        <img src="../img/basura-bln.png" alt="Cambiar estatus"></a>
+                    </div>
+                </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
@@ -103,7 +104,7 @@ $(document).ready(function() {
     });
     
     // Event listener para el botón cambiar estatus
-    $(document).on('click', '.cambiar-estatus-btn', function() {
+    $(document).on('click', '.btn-eliminar', function() {
         var id = $(this).data('id');
         var nombre = $(this).data('nombre');
         var estatusActual = $(this).data('estatus');
@@ -160,7 +161,7 @@ $(document).ready(function() {
     });
     
     // Event listener para el botón editar
-    $(document).on('click', '.editar-btn', function() {
+    $(document).on('click', '.btn-editar', function() {
         var id = $(this).data('id');
         var nombre = $(this).data('nombre');
         

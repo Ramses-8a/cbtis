@@ -23,7 +23,7 @@ if ($tipo) {
     $stmt = $connect->prepare($sql);
     $stmt->execute();
 }
-
+ 
 
 $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>

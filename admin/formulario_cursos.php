@@ -11,13 +11,13 @@ include_once '../controller/conexion.php';
     
     <div>
         <label for="nom_curso">Nombre del Curso:</label>
-        <input type="text" id="nom_curso" name="nom_curso" required>
+        <input type="text" id="nom_curso" name="nom_curso" required placeholder="Escribe el nombre del curso">
     </div>
 
     <div>
         <label for="fk_tipo_curso">Tipo de Curso:</label>
         <select name="fk_tipo_curso" required>
-            <option value="" disabled selected>Selecciona una opción</option>
+            <option value="" disabled selected>Selecciona el tipo de curso</option>
             <?php
             $stmt = $connect->prepare("SELECT pk_tipo_curso, nom_tipo FROM tipo_cursos WHERE estatus = 1");
             $stmt->execute();
@@ -29,14 +29,14 @@ include_once '../controller/conexion.php';
         </select>
     </div>
 
-    <div>
+    <!-- <div>
             <a href="formulario_tipo_curso.php" class="boton-agregar">Agregar Nuevo Tipo</a>
-    </div>
+    </div> -->
 
     <div>
         <label for="fk_lenguaje">Lenguaje:</label>
         <select name="fk_lenguaje" required>
-            <option value="" disabled selected>Selecciona un lenguaje</option>
+            <option value="" disabled selected>Selecciona el tipo de lenguaje</option>
             <?php
             $stmt = $connect->prepare("SELECT pk_lenguaje, nom_lenguaje FROM lenguajes");
             $stmt->execute();
@@ -48,17 +48,17 @@ include_once '../controller/conexion.php';
         </select>
     </div>
 
-    <div>
+    <!-- <div>
             <a href="formulario_tipo_lenguaje.php" class="boton-agregar">Agregar Nuevo Tipo</a>
-    </div>
+    </div> -->
 
     <div>
         <label for="link">Link del Curso:</label>
-        <input type="url" id="link" name="link" required>
+        <input type="url" id="link" name="link" required placeholder="https://ejemplo.com/curso">
     </div>
     <div>
         <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion" required></textarea>
+        <textarea id="descripcion" name="descripcion" required placeholder="Escribe la descripción del curso"></textarea>
     </div>
 
 
@@ -74,13 +74,12 @@ include_once '../controller/conexion.php';
     </div>
 </form>
 
-<!-- Incluye jQuery y SweetAlert2 -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 $(document).ready(function() {
-    // Previsualizar imagen
+    
     $('#img_curso').on('change', function() {
         const file = this.files[0];
         const preview = $('#preview_img').empty();
@@ -101,7 +100,7 @@ $(document).ready(function() {
         }
     });
 
-    // Envío con AJAX
+   
     $('#formCurso').on('submit', function(e) {
         e.preventDefault();
 

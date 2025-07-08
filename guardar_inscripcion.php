@@ -10,14 +10,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $grupo = trim($_POST['grupo'] ?? '');
     $recaptchaResponse = $_POST['g-recaptcha-response'] ?? null;
 
-    // Verifica si el reCAPTCHA fue completado
+
     if (empty($recaptchaResponse)) {
         echo json_encode(['success' => false, 'message' => 'Completa el reCAPTCHA.']);
         exit;
     }
 
-    // Validar reCAPTCHA con Google
-    $secret = "6Le-_fsqAAAAANM8ubJV1_EQ27UWbY45Ysm8_Uim"; // clave secreta
+    $secret = "6Le-_fsqAAAAANM8ubJV1_EQ27UWbY45Ysm8_Uim";
     $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$recaptchaResponse");
     $captchaData = json_decode($response, true);
 

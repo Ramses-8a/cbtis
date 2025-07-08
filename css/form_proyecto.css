@@ -19,7 +19,7 @@
         margin-top: 10px;
     }
 
-    .guardar, .cancelar {
+    .guardar {
         background: #dc3545;
         color: #ffffff;
         border: none;
@@ -32,6 +32,20 @@
         cursor: pointer;
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(220, 53, 69, 0.2);
+    }
+
+    .cancelar {
+        background: black;
+        color: #ffffff;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 8px;
+        font-size: 18px;
+        font-weight: 100;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
     }
 
     .guardar-cambios {
@@ -152,6 +166,86 @@
         input[type="file"]:hover {
             background: #f8f9fa;
             border-color: #b02a37;
+        }
+
+         input[type="date"]{
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #333;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        input[type="date"]:hover {
+            outline: none;
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+            background: #fff;
+        }
+
+         input[type="email"]{
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #333;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        input[type="email"]:hover {
+            outline: none;
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+            background: #fff;
+        }
+
+        input[type="text"]{
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #333;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        input[type="text"]:hover {
+            outline: none;
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+            background: #fff;
+        }
+
+         input[type="password"]{
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 6px;
+            font-size: 16px;
+            color: #333;
+            background: #ffffff;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        input[type="password"]:hover {
+            outline: none;
+            border-color: #dc3545;
+            box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+            background: #fff;
         }
 
         input[type="url"]{
@@ -480,3 +574,25 @@
     .boton-agregar:hover {
         background-color: #dc3545;
     }
+
+        /* contenedor para volver */
+.con_volver {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15px 20px;
+  background-color: white;
+}
+
+.con_volver .volver img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.con_volver h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+}

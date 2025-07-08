@@ -1,3 +1,22 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --secondary-gray: #4b5563;
+    --dark-bg: #111827;
+}
+
+body{
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary-gray) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    
+    color: white;
+}
+
 .proyecto-container {
     max-width: 900px;      /* Limita el ancho máximo */
     width: 100%;           /* Que use todo el ancho disponible hasta el máximo */
@@ -40,6 +59,8 @@
     flex-direction: column;
     justify-content: space-between;
     padding-top: 10px;
+    
+    color: black;
 }
 
 .boton {
@@ -76,22 +97,20 @@
 
 /* contenedor para volver */
 .con_volver {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 20px;
-  background-color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
 }
 
 .con_volver .volver img {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  cursor: pointer;
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    cursor: pointer;
 }
 
 .con_volver h3 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
 }

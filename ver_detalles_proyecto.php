@@ -32,7 +32,7 @@ $imagenes = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
 <body>
     <div class="con_volver">
         <a href="mostrar_proyectos.php" class="volver">
-            <img src="img/volver.webp" alt="Volver">
+            <img src="img/regresar.png" alt="Volver">
         </a>
         <h3><?=$proyecto['nom_proyecto']?></h3>
     </div>
@@ -63,7 +63,7 @@ $imagenes = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
                 <p class="descripcion-proyecto">
                     <?= $proyecto['detalles'] ?>
                 </p>
-                <a href="<?php echo $proyecto['url']; ?>" class="boton">Visitar</a>
+                <a href="<?php echo $proyecto['url']; ?>" class="boton" target="_blank">Visitar</a>
             </div>
         </div>
     </main>

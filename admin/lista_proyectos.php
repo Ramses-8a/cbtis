@@ -4,6 +4,7 @@ include_once('header.php');
 ?> 
 <head>
     <link rel="stylesheet" href="../css/list_proyecto.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 <div class="contenedor">
@@ -17,11 +18,12 @@ include_once('header.php');
             <th>Estatus</th>
             <th>Acciones</th>
             <!-- <th>Eliminar</th> -->
+            <th>Ver Imágenes</th> 
         </tr>
 
         <?php if (empty($proyectos)): ?>
             <tr>
-                <td colspan="8" style="text-align: center; padding: 20px;">
+                <td colspan="9" style="text-align: center; padding: 20px;">
                     <strong>No hay proyectos disponibles actualmente.</strong><br>
                     Cuando se agreguen proyectos, aparecerán aquí.
                 </td>
@@ -35,19 +37,25 @@ include_once('header.php');
                 <td><?= $proyecto['detalles'] ?></td>
                 <td><a href="<?= $proyecto['url'] ?>"><?= $proyecto['url'] ?></a></td>
                 <td class="estatus <?= $proyecto['estatus'] == 1 ? 'activo' : 'inactivo' ?>">
-                <?= $proyecto['estatus'] == 1 ? 'Activo' : 'Inactivo' ?>
+                    <?= $proyecto['estatus'] == 1 ? 'Activo' : 'Inactivo' ?>
                 </td>
                 <td>
-                    <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>">Editar</a>
-                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')">
-                        <?= $proyecto['estatus'] == 1 ? 'Desactivar' : 'Activar' ?>
-                    </a>
+                    <div class="botones-accion-en-linea">
+                        <a class="btn-editar" href="editar_proyecto.php?pk_proyecto=<?= $proyecto['pk_proyecto'] ?>" title="Editar" >
+                        <img src="../img/boton-editar.png" alt=""></a>
+                    <a class="btn-eliminar" href="#" onclick="confirmAction(event, '<?= $proyecto['pk_proyecto'] ?>', '<?= $proyecto['estatus'] ?>')" title="Editar" title="Dar de baja">
+                        <img src="../img/basura-bln.png" alt=""></a>
+                    </div>
                 </td>
                 <!-- <td>
                     <a class="btn-eliminar" href="#" onclick="confirmDelete(event, '<?= $proyecto['pk_proyecto'] ?>')">
                         Eliminar <i class="fas fa-trash-alt"></i>
                     </a>
                 </td> -->
+               <td>
+                    <a class="btn-ver-imagenes" href="imagenes_proyecto.php?id=<?= $proyecto['pk_proyecto'] ?>">Ver Imágenes</a>
+                </td>
+
             </tr>
             <?php endforeach; ?>
         <?php endif; ?>
@@ -78,7 +86,7 @@ function confirmDelete(event, projectId) {
 }
 
 function confirmAction(event, projectId, currentStatus) {
-    event.preventDefault(); // Previene la acción por defecto del enlace
+    event.preventDefault(); 
 
     let actionText = currentStatus == 1 ? 'Desactivar' : 'Activar';
     let confirmMessage = `¿Estás seguro de ${actionText.toLowerCase()} este proyecto?`;
@@ -94,7 +102,7 @@ function confirmAction(event, projectId, currentStatus) {
         cancelButtonText: 'Cancelar'
     }).then((result) => {
         if (result.isConfirmed) {
-            // Si el usuario confirma, redirige a la URL de acción
+            
             window.location.href = `../controller/proyecto/baja_proyecto.php?id=${projectId}`;
         }
     });
@@ -185,10 +193,3 @@ window.onload = function() {
     }
 };
 </script>
-
-<style>table tr td[colspan="8"] {
-    background-color: #f9f9f9;
-    color: #555;
-    font-size: 16px;
-}
-</style>

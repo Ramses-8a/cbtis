@@ -21,7 +21,7 @@ $torneo = $stmt->fetch(PDO::FETCH_ASSOC);
 if (!$torneo) {
     echo "Torneo no encontrado.";
     exit;
-}
+} 
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +37,7 @@ if (!$torneo) {
 <body>
     <div class="con_volver">
         <a href="torneos_activos.php" class="volver">
-            <img src="img/volver.webp" alt="Volver">
+            <img src="img/regresar.png" alt="Volver">
         </a>
         <h3>Torneos</h3>
     </div>
@@ -65,7 +65,7 @@ if (!$torneo) {
 
 
     <!-- Botón para abrir modal -->
-    <div class="btn-flotante" id="btnAbrirModal">+</div>
+    <div class="btn-flotante" id="btnAbrirModal">Inscribete</div>
 
     <!-- Modal inscripción -->
     <div class="modal" id="modalInscripcion" style="display:none; position:fixed; z-index:1000; left:0; top:0; width:100%; height:100%; background-color: rgba(0,0,0,0.5); justify-content:center; align-items:center;">
@@ -75,12 +75,12 @@ if (!$torneo) {
         <form id="formInscripcion">
           <input type="hidden" name="pk_torneo" value="<?= htmlspecialchars($torneo['pk_torneo']) ?>">
           <label for="nombre">Nombre completo:</label>
-          <input type="text" id="nombre" name="nombre" required>
+          <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre aquí">
 
           <label for="grado">Grado:</label>
           <!-- <input type="text" id="grado" name="grado" required> -->
            <select name="grado" id="grado" required>
-                <option value="" selected>Selecciona una opción</option>
+                <option value="" selected>Selecciona tu grado</option>
                 <option value="Segundo">2°do</option>
                 <option value="Tercero">3°ro</option>
                 <option value="Cuarto">4°to</option>
@@ -90,7 +90,7 @@ if (!$torneo) {
 
           <label for="grupo">Grupo:</label>
             <select name="grupo" id="grupo" required>
-                <option value="" selected>Selecciona una opción</option>
+                <option value="" selected>Selecciona tu grupo</option>
                 <option value="B">B</option>
                 <option value="C">C</option>
            </select>
@@ -186,26 +186,3 @@ if (!$torneo) {
 </body>
 </html>
 
-<style>
-    /* estilo del contenedor para volver */
-.con_volver {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 15px 20px;
-  background-color: white;
-}
-
-.con_volver .volver img {
-  width: 30px;
-  height: 28px;
-  object-fit: contain;
-  cursor: pointer;
-}
-
-.con_volver h3 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  margin: 0;
-}
-</style>

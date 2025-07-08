@@ -19,12 +19,12 @@ $recurso = $recurso ?? null;
     <input type="hidden" id="pk_recurso" name="pk_recurso" value="<?= $recurso['pk_recurso'] ?? '' ?>">
     <div>
         <label for="nom_recurso">Nombre del recurso:</label>
-        <input type="text" id="nom_recurso" name="nom_recurso" value="<?= $recurso['nom_recurso'] ?? '' ?>" required>
+        <input type="text" id="nom_recurso" name="nom_recurso" value="<?= $recurso['nom_recurso'] ?? '' ?>" required placeholder="Escribe el nombre del recurso">
     </div>
 
     <div>
         <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion" required><?= $recurso['descripcion'] ?? '' ?></textarea>
+        <textarea id="descripcion" name="descripcion" required placeholder="Escribe la descripción del recurso"><?= $recurso['descripcion'] ?? '' ?></textarea>
     </div>
 
     <div>
@@ -44,7 +44,7 @@ $recurso = $recurso ?? null;
 
     <div>
         <label for="url">URL:</label>
-        <input type="text" id="url" name="url" value="<?= $recurso['url'] ?? '' ?>" required>
+        <input type="url" id="url" name="url" value="<?= $recurso['url'] ?? '' ?>" required placeholder="https://ejemplo.com/recurso">
     </div>
 
     <div>

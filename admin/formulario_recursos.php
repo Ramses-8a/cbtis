@@ -5,16 +5,21 @@ include_once('header.php');
     <link rel="stylesheet" href="../css/form_proyecto.css">
     <title>Subir recursos</title>
 </head>
-
+<div class="con_volver">
+            <a href="index.php" class="volver">
+                <img src="../img/volver.webp" alt="Volver">
+            </a>
+            <h3>Recursos</h3>
+</div>
 <form id="formRecurso" enctype="multipart/form-data" class="form-proyectos">
     <div>
         <label for="nom_recurso">Nombre del recurso:</label>
-        <input type="text" id="nom_recurso" name="nom_recurso" required>
+        <input type="text" id="nom_recurso" name="nom_recurso" required placeholder="Escribe el nombre del recurso">
     </div>
 
     <div>
         <label for="descripcion">Descripción:</label>
-        <textarea id="descripcion" name="descripcion" required></textarea>
+        <textarea id="descripcion" name="descripcion" required placeholder="Escribe la descripción del recurso"></textarea>
     </div>
 
     <div>
@@ -44,8 +49,7 @@ include_once('header.php');
 
     <div>
         <label for="url">URL:</label>
-        <!-- Cambié type a url para validación básica en el navegador -->
-        <input type="text" id="url" name="url" required>
+        <input type="url" id="url" name="url" required placeholder="https://ejemplo.com/recurso">
     </div>
 
     <div>

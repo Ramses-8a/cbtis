@@ -1,6 +1,6 @@
 <?php
 require_once 'controller/conexion.php';
-include_once('header.php');
+require_once 'header.php';
 
 try {
     $sql = "SELECT r.pk_recurso, tr.nom_tipo AS tipo_recurso, r.nom_recurso, r.url, r.estatus, r.img 
@@ -15,8 +15,6 @@ try {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Recursos</title>
@@ -39,7 +37,7 @@ try {
         if (isset($recurso['estatus']) && $recurso['estatus'] == 1):
             $recursosActivos = true;
     ?>
-        <a href="<?= htmlspecialchars($recurso['url']) ?>" class="card" target="_blank">
+        <a href="lista_rec.php?pk_recurso=<?= $recurso['pk_recurso'] ?>" class="card">
             <?php if (!empty($recurso['img'])): ?>
                 <img src="uploads/<?= htmlspecialchars($recurso['img']) ?>" alt="Imagen recurso">
             <?php else: ?>
