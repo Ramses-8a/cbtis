@@ -27,7 +27,7 @@ if (!isset($_FILES['img_proyecto'])) {
 // Validate field lengths
 $field_lengths = [
     'nom_proyecto' => 100,
-    'descripcion' => 255,
+    'descripcion' => 1000,
     'detalles' => 1000,
     'url' => 255
 ];
