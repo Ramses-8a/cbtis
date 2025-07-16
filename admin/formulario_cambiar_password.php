@@ -113,11 +113,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["password"]) && isset(
                 <input type="hidden" name="token" id="token" value="<?php echo htmlspecialchars($token); ?>">
                 <div style="margin-bottom:1rem;">
                     <label for="password">Nueva contraseña</label>
-                    <input type="password" name="password" id="password" class="form-control" required placeholder="Nueva contraseña" minlength="6">
+                    <input type="password" name="password" id="password" required placeholder="Nueva contraseña" minlength="6">
                 </div>
                 <div style="margin-bottom:1rem;">
                     <label for="confirm_password">Confirmar contraseña</label>
-                    <input type="password" name="confirm_password" id="confirm_password" class="form-control" required placeholder="Confirmar contraseña" minlength="6">
+                    <input type="password" name="confirm_password" id="confirm_password"  required placeholder="Confirmar contraseña" minlength="6">
                 </div>
                 <button type="submit" class="btn">Cambiar contraseña</button>
             </form>
