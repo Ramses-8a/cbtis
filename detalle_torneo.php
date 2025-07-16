@@ -96,11 +96,11 @@ if (!$torneo) {
            </select>
 
           <!-- reCAPTCHA -->
-          <div class="g-recaptcha" data-sitekey="6Le-_fsqAAAAABPT_xPcyqAfc9TCmAbh52c2Q_M0"></div>
+          <!-- <div class="g-recaptcha" data-sitekey="6Le-_fsqAAAAABPT_xPcyqAfc9TCmAbh52c2Q_M0"></div>
 
           <button type="submit" class="btn-inscribirse">Inscribirse</button>
         </form>
-        <div id="mensajeInscripcion" style="margin-top:10px; font-weight:600;"></div>
+        <div id="mensajeInscripcion" style="margin-top:10px; font-weight:600;"></div> -->
       </div>
     </div>
 
