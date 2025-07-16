@@ -26,6 +26,7 @@ function enviarCorreo($to, $token) {
 
         // Contenido
         $mail->isHTML(true);
+        $mail->CharSet = 'UTF-8';
         $mail->Subject = 'Recuperar contraseña';
         $host = $_SERVER['HTTP_HOST'];
         $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https://' : 'http://';
