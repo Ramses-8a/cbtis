@@ -44,7 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
 
     try {
-        $stmt = $connect->prepare("UPDATE cursos SET nom_curso = ?, descripcion = ?, fk_tipo_curso = ?, fk_lenguaje = ?, link = ?, img = ? WHERE pk_curso = ?");
+        $stmt = $connect->prepare("UPDATE cursos SET nom_curso = ?, descripcion = ?, fk_tipo_curso = ?,
+         fk_lenguaje = ?, link = ?, img = ? WHERE pk_curso = ?");
         $stmt->bindParam(1, $nom_curso);
         $stmt->bindParam(2, $descripcion);
         $stmt->bindParam(3, $fk_tipo_curso);
