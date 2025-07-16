@@ -57,8 +57,7 @@ if (!$curso) {
                 <?php endif; ?>
             <?php endif; ?>
 
-            <p><strong>Curso:</strong> <?= $curso['nom_curso'] ?></p>
-            <p><?= $curso['descripcion'] ?></p>
+            <p><strong>Descripción:</strong><?=$curso['descripcion'] ?></p>
             <p><strong>Tipo de Curso:</strong> <?= $curso['nom_tipo'] ?></p>
             <p><strong>Lenguaje:</strong> <?= $curso['nom_lenguaje'] ?></p>
             <p><strong>Enlace:</strong> <a href="<?= $curso['link'] ?>" target="_blank"><?= $curso['link'] ?></a></p>
