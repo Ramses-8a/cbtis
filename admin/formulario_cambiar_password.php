@@ -64,6 +64,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["password"]) && isset(
     <title>Cambiar contraseña</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/login.css">
+    <link rel="shortcut icon" href="../img/logo_sf.png">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         .login-container {
