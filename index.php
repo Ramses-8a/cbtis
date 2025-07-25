@@ -21,7 +21,7 @@
                 <div class="typing-animation code-font display-6 mb-4">
                     Especialidad en Programación
                 </div>
-                <p class="lead mb-4">Formando los desarrolladores del futuro con tecnología de vanguardia</p>
+                <!-- <p class="lead mb-4">Formando los desarrolladores del futuro con tecnología de vanguardia</p> -->
                 <div class="d-flex flex-wrap justify-content-center gap-3">
                     <a href="index.php#explorar" class="interactive-btn">
                         <i class="fas fa-rocket me-2"></i>Explorar Especialidad
