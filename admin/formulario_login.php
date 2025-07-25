@@ -6,6 +6,7 @@
   <link rel="stylesheet" href="../css/login.css">
   <link rel="shortcut icon" href="../img/logo_sf.png">
   <title>Inicio de Sesión</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body>
 
@@ -15,12 +16,12 @@
     <form id="loginForm" action="../controller/usuario/auth.php" method="POST">
       <div class="form-group">
         <label for="correo">Correo</label>
-        <input type="text" id="correo" name="correo" />
+        <input type="email" id="correo" name="correo" required/>
       </div>
 
       <div class="form-group">
         <label for="password">Contraseña</label>
-        <input type="password" id="password" name="password" />
+        <input type="password" id="password" name="password" required/>
       </div>
 
       <button type="submit" class="btn" id="loginBtn">Entrar</button>
@@ -49,12 +50,36 @@
           if (data.status === 'success') {
             window.location.href = '../admin/index.php';
           } else {
-            alert(data.message);
+            Swal.fire({
+              icon: 'error',
+              title: 'Error',
+              text: data.message,
+              willOpen: () => {
+                document.querySelector('.login-container').style.display = 'none';
+              },
+              didClose: () => {
+                setTimeout(() => {
+                  document.querySelector('.login-container').style.display = 'block';
+                }, 200);
+              }
+            });
           }
         })
         .catch(error => {
           console.error('Error:', error);
-          alert('Ocurrió un error al intentar iniciar sesión.');
+          Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Ocurrió un error al intentar iniciar sesión.',
+            willOpen: () => {
+              document.querySelector('.login-container').style.display = 'none';
+            },
+            didClose: () => {
+              setTimeout(() => {
+                document.querySelector('.login-container').style.display = 'block';
+              }, 200);
+            }
+          });
         });
     });
   </script>

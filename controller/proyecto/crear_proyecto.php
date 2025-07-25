@@ -89,9 +89,10 @@ try {
 $connect->beginTransaction();
 
 try {
-    // Insert main project
-    $stmt = $connect->prepare("INSERT INTO proyectos (nom_proyecto, descripcion, detalles, estatus, img_proyecto, url)
-                             VALUES (:nom_proyecto, :descripcion, :detalles, :estatus, :img_proyecto, :url)");
+
+    $stmt = $connect->prepare("INSERT INTO proyectos (nom_proyecto, descripcion, detalles, 
+            estatus, img_proyecto, url)
+            VALUES (:nom_proyecto, :descripcion, :detalles, :estatus, :img_proyecto, :url)");
 
     $stmt->bindParam(':nom_proyecto', $nom_proyecto);
     $stmt->bindParam(':descripcion', $descripcion);

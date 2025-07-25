@@ -30,10 +30,10 @@ try {
     if (isset($_FILES['img_curso']) && $_FILES['img_curso']['error'] === UPLOAD_ERR_OK) {
         $img = $_FILES['img_curso'];
         $ext = strtolower(pathinfo($img['name'], PATHINFO_EXTENSION));
-        $allowed = ['jpg', 'jpeg', 'png', 'gif'];
+        $allowed = ['jpg', 'jpeg', 'png', 'gif','webp'];
 
         if (!in_array($ext, $allowed)) {
-            throw new Exception('Tipo de archivo no permitido. Solo jpg, jpeg, png y gif.');
+            throw new Exception('Tipo de archivo no permitido. Solo jpg, jpeg, png, webp y gif.');
         }
 
         $nombreImagen = uniqid() . '.' . $ext;

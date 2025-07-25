@@ -7,11 +7,9 @@ try {
     $sql->execute();
     $proyectos = $sql->fetchAll(PDO::FETCH_ASSOC);
 
-    // Siempre retorna un arreglo (puede estar vacío)
     return $proyectos;
 
 } catch (PDOException $e) {
-    // Si hay error real de conexión o consulta, sí mostramos mensaje de error
     http_response_code(500);
     echo json_encode([
         "status" => "error",
