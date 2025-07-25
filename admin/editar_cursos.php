@@ -17,7 +17,7 @@ $curso = $curso ?? null;
         .image-preview-container {
             position: relative;
             display: inline-block;
-            margin-right: 10px; /* Add some space to the right of the image */
+            margin-right: 10px;
             border: 1px solid #ddd; /* Add a subtle border around the image */
             border-radius: 4px;
             overflow: hidden; /* Ensure the image doesn't overflow the border-radius */
