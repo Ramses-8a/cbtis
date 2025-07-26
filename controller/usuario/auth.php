@@ -6,7 +6,7 @@ session_start();
 $correo = $_POST['correo'] ?? '';
 $password = $_POST['password'] ?? '';
 
-$sql = $connect->prepare("SELECT * FROM usuarios WHERE correo = :correo");
+$sql = $connect->prepare("SELECT *, fk_tipo_usuario FROM usuarios WHERE correo = :correo and estatus = 1");
 $sql->bindParam(':correo', $correo);
 $sql->execute();
 
@@ -16,6 +16,7 @@ if ($usuario && password_verify($password, $usuario['password'])) {
     // Guardar info en sesión
     $_SESSION['usuario_id'] = $usuario['pk_usuario'];
     $_SESSION['usuario'] = $usuario['usuario'];
+    $_SESSION['fk_tipo_usuario'] = $usuario['fk_tipo_usuario'];
     
     echo json_encode([
         "status" => "success",
