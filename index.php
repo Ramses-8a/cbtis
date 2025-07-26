@@ -137,7 +137,7 @@
                     <div class="code-content">
                         <span style="color: #64748b;">// Backend Technologies</span><br>
                         <span style="color: #f59e0b;">const</span> <span style="color: #06b6d4;">backend</span> = {<br>
-                        &nbsp;&nbsp;<span style="color: #f3f4f6;">languages:</span> [<span style="color: #fbbf24;">'Python'</span>, <span style="color: #fbbf24;">'Java'</span>, <span style="color: #fbbf24;">'C#'</span>],<span style="color: #fbbf24;">'C++'</span>],<span style="color: #fbbf24;">'PHP'</span>]<br>
+                        &nbsp;&nbsp;<span style="color: #f3f4f6;">languages:</span> [<span style="color: #fbbf24;">'Python'</span>, <span style="color: #fbbf24;">'Java'</span>, <span style="color: #fbbf24;">'C#'</span>,<span style="color: #fbbf24;">'C++'</span>,<span style="color: #fbbf24;">'PHP'</span>]<br>
                         &nbsp;&nbsp;<span style="color: #f3f4f6;">frameworks:</span> [<span style="color: #fbbf24;">'Django'</span>, <span style="color: #fbbf24;">'Spring'</span>, <span style="color: #fbbf24;">'.NET'</span>],<br>
                         &nbsp;&nbsp;<span style="color: #f3f4f6;">databases:</span> [<span style="color: #fbbf24;">'MySQL'</span>, <span style="color: #fbbf24;">'MongoDB'</span>, <span style="color: #fbbf24;">'PostgreSQL'</span>]<br>
                         };

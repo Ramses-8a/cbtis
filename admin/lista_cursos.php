@@ -35,7 +35,7 @@ include_once('header.php');
             <tr>
               <th>
                     <?php if (!empty($curso['img'])): ?>
-                        <img src="../uploads/<?= $curso['img'] ?>" alt="Custom Image" style="width: 100px; height: auto;">
+                        <img src="../<?= $curso['img'] ?>" alt="Custom Image" style="width: 100px; height: 75px; object-fit: cover;">
                     <?php else: ?>
                         <?php
                         $youtube_link = $curso['link'];
@@ -49,7 +49,7 @@ include_once('header.php');
                         }
                         ?>
                         <?php if (!empty($thumbnail_url)): ?>
-                            <img src="<?= $thumbnail_url ?>" alt="YouTube Thumbnail" style="width: 100px; height: auto;">
+                            <img src="<?= $thumbnail_url ?>" alt="YouTube Thumbnail" style="width: 100px; height: 75px; object-fit: cover;">
                         <?php else: ?>
                             No Image
                         <?php endif; ?>
