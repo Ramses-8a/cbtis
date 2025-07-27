@@ -124,8 +124,8 @@
                     <div class="code-content">
                         <span style="color: #64748b;">// Frontend Technologies</span><br>
                         <span style="color: #f59e0b;">const</span> <span style="color: #06b6d4;">frontend</span> = {<br>
-                        &nbsp;&nbsp;<span style="color: #f3f4f6;">languages:</span> [<span style="color: #fbbf24;">'HTML'</span>, <span style="color: #fbbf24;">'CSS'</span>, <span style="color: #fbbf24;">'JavaScript'</span>],<br>
-                        &nbsp;&nbsp;<span style="color: #f3f4f6;">frameworks:</span> [<span style="color: #fbbf24;">'React'</span>, <span style="color: #fbbf24;">'Vue'</span>, <span style="color: #fbbf24;">'Angular'</span>],<br>
+                        &nbsp;&nbsp;<span style="color: #f3f4f6;">languages:</span> [<span style="color: #fbbf24;">'HTML'</span>, <span style="color: #fbbf24;">'CSS'</span>, <span style="color: #fbbf24;">'JavaScript'</span>]<br>
+                        &nbsp;&nbsp;<span style="color: #f3f4f6;">frameworks:</span> [<span style="color: #fbbf24;">'React'</span>, <span style="color: #fbbf24;">'Vue'</span>, <span style="color: #fbbf24;">'Angular'</span>]<br>
                         &nbsp;&nbsp;<span style="color: #f3f4f6;">tools:</span> [<span style="color: #fbbf24;">'Webpack'</span>, <span style="color: #fbbf24;">'Vite'</span>, <span style="color: #fbbf24;">'Tailwind'</span>]<br>
                         };
                     </div>
@@ -138,7 +138,7 @@
                         <span style="color: #64748b;">// Backend Technologies</span><br>
                         <span style="color: #f59e0b;">const</span> <span style="color: #06b6d4;">backend</span> = {<br>
                         &nbsp;&nbsp;<span style="color: #f3f4f6;">languages:</span> [<span style="color: #fbbf24;">'Python'</span>, <span style="color: #fbbf24;">'Java'</span>, <span style="color: #fbbf24;">'C#'</span>,<span style="color: #fbbf24;">'C++'</span>,<span style="color: #fbbf24;">'PHP'</span>]<br>
-                        &nbsp;&nbsp;<span style="color: #f3f4f6;">frameworks:</span> [<span style="color: #fbbf24;">'Django'</span>, <span style="color: #fbbf24;">'Spring'</span>, <span style="color: #fbbf24;">'.NET'</span>],<br>
+                        &nbsp;&nbsp;<span style="color: #f3f4f6;">frameworks:</span> [<span style="color: #fbbf24;">'Django'</span>, <span style="color: #fbbf24;">'Spring'</span>, <span style="color: #fbbf24;">'.NET'</span>]<br>
                         &nbsp;&nbsp;<span style="color: #f3f4f6;">databases:</span> [<span style="color: #fbbf24;">'MySQL'</span>, <span style="color: #fbbf24;">'MongoDB'</span>, <span style="color: #fbbf24;">'PostgreSQL'</span>]<br>
                         };
                     </div>
@@ -151,7 +151,7 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <h2 class="display-5 fw-bold text-white mb-4">¿Listo para programar tu futuro?</h2>
-                <p class="lead text-light mb-4">Únete a la próxima generación de desarrolladores en CBTis</p>
+                <p class="lead text-light mb-4">Únete a la próxima generación de programadores en CBTis</p>
                 <div class="d-flex flex-wrap justify-content-center gap-3">
                     <a href="#" class="interactive-btn">
                         <i class="fas fa-play me-2"></i>Ver Demo de Proyectos

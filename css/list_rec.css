@@ -1,0 +1,84 @@
+:root {
+    --secondary-gray: #4b5563;
+    --dark-bg: #111827;
+}
+
+/* Fondo degradado simple */
+body {
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--secondary-gray) 100%);
+    background-attachment: fixed;
+    color: white;
+    min-height: 100vh;
+}
+
+        .container {
+            max-width: 700px;
+            margin: 80px auto 40px; 
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            padding: 30px;
+            text-align: center;
+        }
+
+        .container h1 {
+            color: #c40000;
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .recurso-img img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 8px;
+            object-fit: contain;
+            margin-bottom: 20px;
+        }
+
+        .detalle {
+            font-size: 16px;
+            margin-bottom: 12px;
+            color: #111827;
+        }
+
+        .detalle span {
+            font-weight: 600;
+            color: #2c3e50;
+        }
+
+        .boton {
+            display: inline-block;
+            margin-top: 25px;
+            background-color: #b60000;
+            color: white;
+            padding: 10px 22px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+        }
+
+        .boton:hover {
+            background-color: #930000;
+        }
+         /* estilo del botón de regresar */
+
+.con_volver {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 15px 20px;
+}
+
+.con_volver .volver img {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    cursor: pointer;
+}
+
+.con_volver h3 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0;
+}

@@ -6,6 +6,12 @@ include_once('header.php');
     <link rel="stylesheet" href="../css/list_proyecto.css">
 </head>
 <body>
+    <div class="con_volver">
+        <a href="index.php" class="volver">
+            <img src="../img/volver.webp" alt="Volver">
+        </a>
+        <h3>Recursos Registrados</h3>
+    </div>
    <div class="contenedor">
      <table>
      <tr>

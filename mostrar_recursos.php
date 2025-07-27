@@ -27,7 +27,7 @@ try {
         <a href="index.php" class="volver">
             <img src="img/regresar.png" alt="Volver">
         </a>
-        <h3>Recursos</h3>
+        <h3>Recursos Tecnológicos</h3>
     </div>
 
     <main class="proyectos">
@@ -46,7 +46,7 @@ try {
                 </div>
             <?php endif; ?>
             <p><strong><?= htmlspecialchars($recurso['nom_recurso']) ?></strong></p>
-            <p><?= htmlspecialchars($recurso['tipo_recurso']) ?></p>
+            <p><?=htmlspecialchars($recurso['tipo_recurso']) ?></p>
         </a>
     <?php 
         endif;

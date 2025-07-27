@@ -34,9 +34,14 @@ if (!isset($_SESSION['fk_tipo_usuario']) || $_SESSION['fk_tipo_usuario'] != 1) {
 </head>
 
 <body>
+    <div class="con_volver">
+        <a href="lista_proyectos.php" class="volver">
+            <img src="../img/volver.webp" alt="Volver">
+        </a>
+        <h3>Editar Usuario</h3>
+        </div>
     <div class="container">
-        <h2>Editar Usuario</h2>
-        <form id="formEditarUsuario" action="../controller/usuario/actualizar_usuario.php" method="POST">
+        <form class="form-editar" id="formEditarUsuario" action="../controller/usuario/actualizar_usuario.php" method="POST">
             <div class="form-group">
                 <label for="usuario">Usuario:</label>
                 <input type="text" id="usuario" name="usuario" value="<?= htmlspecialchars($usuario['usuario']) ?>" required>
@@ -48,15 +53,18 @@ if (!isset($_SESSION['fk_tipo_usuario']) || $_SESSION['fk_tipo_usuario'] != 1) {
             </div>
 
             <div class="form-group">
-                <label for="nueva_password">Nueva Contraseña(Opcional):</label>
-                <input type="password" id="nueva_password" name="nueva_password">
+                <label for="nueva_password">Nueva Contraseña:</label>
+                <input type="password" id="nueva_password" name="nueva_password" placeholder="Opcional">
             </div>
             <div class="form-group">
-                <label for="confirmar_password">Confirmar Nueva Contraseña(Opcional):</label>
-                <input type="password" id="confirmar_password" name="confirmar_password">
+                <label for="confirmar_password">Confirmar Nueva Contraseña:</label>
+                <input type="password" id="confirmar_password" name="confirmar_password" placeholder="Opcional">
             </div>
+            <div class="button-container">
             <input type="hidden" name="pk_usuario" value="<?= htmlspecialchars($usuario['pk_usuario']) ?>">
-            <button type="submit">Guardar Cambios</button>
+            <button type="submit" class="guardar">Guardar Cambios</button>
+        <button class="cancelar" type="submit" onclick="window.location.href='lista_usuarios.php'">Cancelar</button>
+    </div>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
