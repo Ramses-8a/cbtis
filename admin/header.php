@@ -73,6 +73,8 @@ if (!isset($_SESSION['usuario_id'])) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
 
+                
+                    <?php if ($_SESSION['fk_tipo_usuario'] == 1): ?>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white fw-bold" href="#" role="button" data-bs-toggle="dropdown">Usuarios</a>
                         <ul class="dropdown-menu">
@@ -80,6 +82,7 @@ if (!isset($_SESSION['usuario_id'])) {
                             <li><a class="dropdown-item" href="lista_usuarios.php">Lista de Usuarios</a></li>
                         </ul>
                     </li>
+                    <?php endif; ?>
                     
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle text-white fw-bold" href="mostrar_proyectos.php" role="button" data-bs-toggle="dropdown">Proyectos</a>

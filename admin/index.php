@@ -357,57 +357,27 @@ foreach ($torneos as $torneo) {
                                                         let deleteUrl = '';
 
                                                         if (itemType === 'recurso') {
-                                                            deleteUrl = '../controller/recursos/eliminar_recurso.php';
+                                                            deleteUrl = '../controller/recursos/baja_recurso.php';
                                                         } else if (itemType === 'curso') {
-                                                            deleteUrl = '../controller/cursos/eliminar_curso.php';
+                                                            deleteUrl = '../controller/cursos/baja_curso.php';
                                                         }
 
                                                         if (deleteUrl) {
                                                             Swal.fire({
                                                                 title: '¿Estás seguro?',
-                                                                text: "¡No podrás revertir esto!",
+                                                                text: "¿Deseas cambiar el estado de este elemento?",
                                                                 icon: 'warning',
                                                                 showCancelButton: true,
                                                                 confirmButtonColor: '#3085d6',
                                                                 cancelButtonColor: '#d33',
-                                                                confirmButtonText: 'Sí, eliminarlo!',
+                                                                confirmButtonText: 'Sí, cambiar estado!',
                                                                 cancelButtonText: 'Cancelar'
                                                             }).then((result) => {
                                                                 if (result.isConfirmed) {
-                                                                    fetch(deleteUrl, {
-                                                                        method: 'POST',
-                                                                        headers: {
-                                                                            'Content-Type': 'application/x-www-form-urlencoded',
-                                                                        },
-                                                                        body: `id=${itemId}`,
-                                                                    })
-                                                                    .then(response => response.json())
-                                                                    .then(data => {
-                                                                        if (data.status === 'success') {
-                                                                            Swal.fire(
-                                                                                '¡Eliminado!',
-                                                                                'El elemento ha sido eliminado.',
-                                                                                'success'
-                                                                            ).then(() => {
-                                                                                location.reload();
-                                                                            });
-                                                                        } else {
-                                                                            Swal.fire(
-                                                                                'Error',
-                                                                                data.message || 'Hubo un error al eliminar el elemento.',
-                                                                                'error'
-                                                                            );
-                                                                        }
-                                                                    })
-                                                                    .catch(error => {
-                                                                        console.error('Error:', error);
-                                                                        Swal.fire(
-                                                                            'Error',
-                                                                            'Hubo un error al procesar la solicitud.',
-                                                                            'error'
-                                                                        );
-                                                                    });
+                                                                    // Redirigir a la URL de cambio de estado con el ID como parámetro
+                                                                    window.location.href = `${deleteUrl}?id=${itemId}`;
                                                                 }
+                                                            });
                                                             });
                                                         }
                                                     });
@@ -459,20 +429,20 @@ foreach ($torneos as $torneo) {
 
                     const itemId = this.dataset.id;
                     const itemType = this.dataset.type;
-                    let deleteUrl = '';
+                    let statusUrl = '';
 
                     switch (itemType) {
                         case 'proyecto':
-                            deleteUrl = '../controller/proyecto/eliminar_proyecto.php';
+                            statusUrl = '../controller/proyecto/baja_proyecto.php';
                             break;
                         case 'recurso':
-                            deleteUrl = '../controller/recursos/eliminar_recurso.php';
+                            statusUrl = '../controller/recursos/baja_recurso.php';
                             break;
                         case 'curso':
-                            deleteUrl = '../controller/cursos/eliminar_curso.php';
+                            statusUrl = '../controller/cursos/baja_curso.php';
                             break;
                         case 'torneo':
-                            deleteUrl = '../controller/torneo/eliminar_torneo.php';
+                            statusUrl = '../controller/torneo/baja_torneo.php';
                             break;
                         default:
                             Swal.fire('Error', 'Tipo de elemento desconocido.', 'error');
@@ -481,48 +451,17 @@ foreach ($torneos as $torneo) {
 
                     Swal.fire({
                         title: '¿Estás seguro?',
-                        text: "¡No podrás revertir esto!",
+                        text: "¿Deseas cambiar el estado de este elemento?",
                         icon: 'warning',
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: 'Sí, eliminarlo!',
+                        confirmButtonText: 'Sí, cambiar estado!',
                         cancelButtonText: 'Cancelar'
                     }).then((result) => {
                         if (result.isConfirmed) {
-                            fetch(deleteUrl, {
-                                    method: 'POST',
-                                    headers: {
-                                        'Content-Type': 'application/x-www-form-urlencoded',
-                                    },
-                                    body: `id=${itemId}`,
-                                })
-                                .then(response => response.json())
-                                .then(data => {
-                                    if (data.status === 'success') {
-                                        Swal.fire(
-                                            '¡Eliminado!',
-                                            'El elemento ha sido eliminado.',
-                                            'success'
-                                        ).then(() => {
-                                            location.reload();
-                                        });
-                                    } else {
-                                        Swal.fire(
-                                            'Error',
-                                            data.message || 'Hubo un error al eliminar el elemento.',
-                                            'error'
-                                        );
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error('Error:', error);
-                                    Swal.fire(
-                                        'Error',
-                                        'Hubo un error de conexión.',
-                                        'error'
-                                    );
-                                });
+                            // Redirigir al script de cambio de estatus
+                            window.location.href = `${statusUrl}?id=${itemId}`;
                         }
                     });
                 });

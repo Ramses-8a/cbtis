@@ -24,24 +24,24 @@ if (isset($_GET['id'])) {
             $stmt_update->bindParam(':id', $id, PDO::PARAM_INT);
 
             if ($stmt_update->execute()) {
-                // Redirigir con mensaje de éxito
-                header('Location: ../../admin/lista_torneos.php?status_changed=1&message=' . urlencode($mensaje));
+                // Redirigir a la página anterior
+                header('Location: ' . $_SERVER['HTTP_REFERER'] . '?status_changed=1&message=' . urlencode($mensaje));
                 exit();
             } else {
-                header('Location: ../../admin/lista_torneos.php?error=update_failed');
+                header('Location: ' . $_SERVER['HTTP_REFERER'] . '?error=update_failed');
                 exit();
             }
         } else {
-            header('Location: ../../admin/lista_torneos.php?error=not_found');
+            header('Location: ' . $_SERVER['HTTP_REFERER'] . '?error=not_found');
             exit();
         }
 
     } catch (PDOException $e) {
-        header('Location: ../../admin/lista_torneos.php?error=' . urlencode($e->getMessage()));
+        header('Location: ' . $_SERVER['HTTP_REFERER'] . '?error=' . urlencode($e->getMessage()));
         exit();
     }
 } else {
-    header('Location: ../../admin/lista_torneos.php?error=no_id');
+    header('Location: ' . $_SERVER['HTTP_REFERER'] . '?error=no_id');
     exit();
 }
 ?>
