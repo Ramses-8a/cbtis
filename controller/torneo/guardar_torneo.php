@@ -19,7 +19,7 @@ if (
 }
 
 // Validación de longitud
-if (strlen($_POST['nom_torneo']) > 100 || strlen($_POST['descripcion']) > 255 || strlen($_POST['detalles']) > 1000) {
+if (strlen($_POST['nom_torneo']) > 100 || strlen($_POST['descripcion']) > 500 || strlen($_POST['detalles']) > 1000) {
     http_response_code(200);
     echo json_encode([
         "status" => "error",

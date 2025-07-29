@@ -36,12 +36,12 @@ include_once('header.php');
 
     <div>
         <label for="descripcion">Descripción:</label>
-        <input type="text" id="descripcion" name="descripcion" required placeholder="Escribe la descripción del torneo">
+        <textarea id="descripcion" name="descripcion" required placeholder="Escribe la descripción del torneo" rows="5" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"></textarea>
     </div>
 
     <div>
         <label for="detalles">Detalles del Torneo:</label>
-        <input type="text" id="detalles" name="detalles" required placeholder="Escribe los detalles del torneo">
+        <textarea id="detalles" name="detalles" required placeholder="Escribe los detalles del torneo" rows="5" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box;"></textarea>
     </div>
 
     <div>

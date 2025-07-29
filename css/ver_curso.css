@@ -37,7 +37,7 @@ main img {
 iframe {
     width: 100%;
     max-width: 100%;
-    height: 400px;
+    height: 500px;
     border: none;
     border-radius: 12px;
     margin-bottom: 20px;
@@ -58,9 +58,13 @@ iframe {
 }
 
 .info-curso strong {
-    display: inline-block;
-    width: 130px;
+    display: inline;
     font-weight: 600;
+    color: #000;
+    margin-right: 5px;
+}
+
+.red-label {
     color: #b60000;
 }
 
