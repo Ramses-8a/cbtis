@@ -53,7 +53,7 @@ include_once('header.php');
     </div>
 
     <div class="button-container">
-        <button class="guardar" type="submit">Crear Torneos</button>
+        <button class="guardar" type="submit">Crear Torneo</button>
         <button class="cancelar" type="button" onclick="window.location.href='index.php'">Cancelar</button>
     </div>
 </form>

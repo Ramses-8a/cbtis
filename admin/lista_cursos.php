@@ -9,6 +9,12 @@ include_once('header.php');
     <link rel="stylesheet" href="../css/list_proyecto.css">
 </head>
 <body>
+    <div class="con_volver">
+        <a href="index.php" class="volver">
+            <img src="../img/volver.webp" alt="Volver">
+        </a>
+        <h3>Cursos Registrados</h3>
+    </div>
 <div class="contenedor">
     <table>
         <tr>
@@ -34,8 +40,9 @@ include_once('header.php');
             <?php foreach ($cursos as $curso): ?>
             <tr>
               <th>
+
                     <?php if (!empty($curso['img'])): ?>
-                        <img src="../<?= $curso['img'] ?>" alt="Custom Image" style="width: 100px; height: 75px; object-fit: cover;">
+                        <img src="../<?= $curso['img'] ?>" alt="Custom Image" width="50px">
                     <?php else: ?>
                         <?php
                         $youtube_link = $curso['link'];
@@ -49,7 +56,7 @@ include_once('header.php');
                         }
                         ?>
                         <?php if (!empty($thumbnail_url)): ?>
-                            <img src="<?= $thumbnail_url ?>" alt="YouTube Thumbnail" style="width: 100px; height: 75px; object-fit: cover;">
+                            <img src="<?= $thumbnail_url ?>" alt="YouTube Thumbnail" width="50px">
                         <?php else: ?>
                             No Image
                         <?php endif; ?>

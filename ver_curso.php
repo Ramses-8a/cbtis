@@ -34,7 +34,7 @@ if (!$curso) {
         <a href="mostrar_cursos.php" class="volver">
             <img src="img/regresar.png" alt="Volver">
         </a>
-        <h3><?=$curso['nom_curso']?></h3>
+        <h4><?=$curso['nom_curso']?></h4>
     </div>
 
     <main>
@@ -57,10 +57,13 @@ if (!$curso) {
                 <?php endif; ?>
             <?php endif; ?>
 
-            <p><strong>Descripción:</strong><?=$curso['descripcion'] ?></p>
-            <p><strong>Tipo de Curso:</strong> <?= $curso['nom_tipo'] ?></p>
-            <p><strong>Lenguaje:</strong> <?= $curso['nom_lenguaje'] ?></p>
-            <p><strong>Enlace:</strong> <a href="<?= $curso['link'] ?>" target="_blank"><?= $curso['link'] ?></a></p>
+            <div class="info-curso">
+                <p><strong>Descripción:</strong> Descubre qué es PHP.</p>
+                <p><strong>Tipo de Curso:</strong> Lenguaje</p>
+                <p><strong>Lenguaje:</strong> PHP</p>
+            </div>
+
+            <a href="<?= $curso['link'] ?>" target="_blank" class="boton">Visitar curso</a>  
         </div>
     </main>
 </body>

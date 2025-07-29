@@ -7,6 +7,12 @@ include_once('header.php');
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
+    <div class="con_volver">
+        <a href="index.php" class="volver">
+            <img src="../img/volver.webp" alt="Volver">
+        </a>
+        <h3>Proyectos Registrados</h3>
+    </div>
 <div class="contenedor">
     <table>
         <tr>

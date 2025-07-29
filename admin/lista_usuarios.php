@@ -44,7 +44,9 @@ $usuarios = include('../controller/usuario/mostrar_usuarios.php');
                 <tr>
                     <td><?= htmlspecialchars($usuario['usuario']) ?></td>
                     <td><?= htmlspecialchars($usuario['correo']) ?></td>
-                    <td><?= $usuario['estatus'] == 1 ? 'Activo' : 'Inactivo' ?></td>
+                     <td class="estatus <?= $usuario['estatus'] == 1 ? 'activo' : 'inactivo' ?>">
+                <?= $usuario['estatus'] == 1 ? 'Activo' : 'Inactivo' ?>
+                </td>
                     <td>
                         <div class="botones-accion-en-linea">
                             <a href="editar_usuario.php?pk_usuario=<?= $usuario['pk_usuario'] ?>" class="btn-editar" title="Editar">
@@ -55,7 +57,7 @@ $usuarios = include('../controller/usuario/mostrar_usuarios.php');
                                     <img src="../img/basura-bln.png" alt="Eliminar">
                                 </a>
                             <?php else: ?>
-                                <span class="btn-deshabilitado" title="No puedes desactivar tu propia cuenta">
+                                <span class="btn-deshabilitado" title="No puedes eliminar tu usuario mientras estás activo. ">
                                     <img src="../img/basura-bln.png" alt="Eliminar deshabilitado">
                                 </span>
                             <?php endif; ?>

@@ -19,11 +19,12 @@
             <img src="img/regresar.png" alt="Volver">
         </a>
         <h3>Proyectos</h3>
+        <div class="contenedor-buscador">
+          <input type="text" id="buscador-proyectos" placeholder="Buscar proyecto.." class="buscador">
+        </div>
+        
     </div>
        
-<div class="contenedor-buscador">
-  <input type="text" id="buscador-proyectos" placeholder="Buscar proyecto.." class="buscador">
-</div>
 
 <main class="proyectos">
     <?php 

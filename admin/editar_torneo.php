@@ -44,7 +44,7 @@ if (!isset($_GET['pk_torneo'])) {
 
     <div class="img-proyecto">
         <label for="img">Imagen:</label>
-        <input type="file" id="img" name="img">
+        <input type="file" id="img" name="img"><br><br>
         <?php if(!empty($torneo['img'])): ?>
             <img src="../uploads/<?php echo $torneo['img']; ?>" width="100">
             <input type="hidden" name="current_img" value="<?php echo $torneo['img']; ?>">

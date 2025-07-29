@@ -42,6 +42,27 @@ iframe {
     border-radius: 12px;
     margin-bottom: 20px;
 }
+.info-curso {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+    color: #111827;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.info-curso p {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.info-curso strong {
+    display: inline-block;
+    width: 130px;
+    font-weight: 600;
+    color: #b60000;
+}
 
 p {
     text-align: left;
@@ -60,7 +81,24 @@ a {
 }
 
 a:hover {
-    text-decoration: underline;
+    text-decoration: none;
+}
+
+.boton {
+display: inline-block;
+margin-left: 80%;
+margin-top: 25px;
+background-color: #b60000;
+color: white;
+padding: 10px 22px;
+border-radius: 25px;
+text-decoration: none;
+font-weight: 600;
+transition: background 0.3s ease;
+}
+
+.boton:hover {
+background-color: #930000;
 }
 
 /* Responsive para móviles */

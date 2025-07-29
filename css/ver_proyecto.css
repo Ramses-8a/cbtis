@@ -48,8 +48,8 @@ body{
 }
 
 .imagen-proyecto {
-    width: 150px;
-    height: 100px;
+    width: 204px;
+    height: 128px;
     border-radius: 6px;
     object-fit: cover;
 }
