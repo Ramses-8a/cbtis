@@ -51,6 +51,7 @@
                     <?php endif; ?>
                 <?php endif; ?>
                 <p><strong><?= $curso['nom_curso'] ?></strong></p>
+                <p><?= $curso['nom_tipo'] ?></p>
             </a>
             <?php 
             endif;

@@ -13,7 +13,7 @@ require_once 'controller/recursos/mostrar_recursos.php';
 </head>
 <body>
 <div class="con_volver">
-        <a href="index.php" class="volver">
+        <a href="mostrar_recursos.php" class="volver">
             <img src="img/regresar.png" alt="Volver">
         </a>
         <h3>Volver</h3>

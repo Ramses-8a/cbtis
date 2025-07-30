@@ -53,8 +53,8 @@ if (!$torneo) {
         <?php endif; ?>
 
         <div class="torneo-info">
-            <p><strong>Tipo:</strong> <?= htmlspecialchars($torneo['nom_tipo']) ?></p>
-            <p><strong>Descripción:</strong> <?= nl2br(htmlspecialchars($torneo['descripcion'])) ?></p>
+            <!-- <p><strong>Tipo:</strong> <?= htmlspecialchars($torneo['nom_tipo']) ?></p> -->
+            <p><?= nl2br(htmlspecialchars($torneo['descripcion'])) ?></p>
             <p><strong>Detalles:</strong> <?= nl2br(htmlspecialchars($torneo['detalles'])) ?></p>
             <p><strong>Fecha de inicio de inscripciones:</strong> <?= date('d/m/Y', strtotime($torneo['finicio'])) ?></p>
             <p><strong>Fecha límite de inscripciones:</strong> <?= date('d/m/Y', strtotime($torneo['ffinal'])) ?></p>
@@ -75,7 +75,7 @@ if (!$torneo) {
         <form id="formInscripcion">
           <input type="hidden" name="pk_torneo" value="<?= htmlspecialchars($torneo['pk_torneo']) ?>">
           <label for="nombre">Nombre completo:</label>
-          <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre aquí">
+          <input type="text" id="nombre" name="nombre" required placeholder="Escribe tu nombre completo aquí">
 
           <label for="grado">Grado:</label>
           <!-- <input type="text" id="grado" name="grado" required> -->
