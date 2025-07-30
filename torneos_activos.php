@@ -44,9 +44,9 @@ $torneos = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </a>
     <h3>Torneos</h3>
 </div><?php if ($tipo): ?>
-    <h1 style="text-align: center; margin-top: 30px;">Lista de Torneos de <?= htmlspecialchars(ucfirst($tipo)) ?></h1>
+    <!-- <h1 style="text-align: center; margin-top: 30px;">Lista de Torneos de <?= htmlspecialchars(ucfirst($tipo)) ?></h1> -->
 <?php else: ?>
-    <h1 style="text-align: center; margin-top: 30px;">Lista de Todos los Torneos</h1>
+    <!-- <h1 style="text-align: center; margin-top: 30px;">Lista de Todos los Torneos</h1> -->
 <?php endif; ?>
 
 <div class="proyectos">

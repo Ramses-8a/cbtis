@@ -29,7 +29,7 @@ body {
 
 /* Estilo de los cuadros (contenedores) */
 .card {
-    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    background: linear-gradient(145deg, #ffffff, #ffffff);
     width: 100%;
     max-width: 280px;
     height: 280px;
@@ -53,8 +53,8 @@ body {
 }
 
 .card img {
-    width: 120px;
-    height: 120px;
+    width: 200px;
+    height: 200px;
     object-fit: contain;
     margin-bottom: 15px;
 }

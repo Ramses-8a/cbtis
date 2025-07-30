@@ -3,7 +3,7 @@ include('../controller/torneo/mostrar_torneos.php');
 include_once('header.php');
 ?>
 <head>
-    <link rel="stylesheet" href="../css/list_proyecto.css">
+    <link rel="stylesheet" href="../css/list_torneo.css">
     </style>
 </head>
 <div class="con_volver">

@@ -58,8 +58,7 @@ if (!$curso) {
             <?php endif; ?>
 
             <div class="info-curso">
-                <p><strong class="red-label">Descripción:</strong> <?= htmlspecialchars($curso['descripcion']) ?></p>
-                <p><strong class="red-label">Tipo de Curso:</strong> <?= htmlspecialchars($curso['nom_tipo']) ?></p>
+                <p><?= htmlspecialchars($curso['descripcion'])?></p>
                 <p><strong class="red-label">Lenguaje:</strong> <?= htmlspecialchars($curso['nom_lenguaje']) ?></p>
             </div>
 
