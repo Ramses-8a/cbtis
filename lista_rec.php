@@ -31,8 +31,8 @@ require_once 'controller/recursos/mostrar_recursos.php';
     </div>
 
     <!-- <div class="detalle"><span>Nombre:</span>htmlspecialchars($recurso['nom_recurso']) ?></div> -->
-    <div class="detalle"><?= nl2br(htmlspecialchars($recurso['descripcion'])) ?></div>
-    <!-- <div class="detalle"><span>Tipo:</span>  htmlspecialchars($recurso['nom_tipo']) ?></div> -->
+    <div class="detalle"><strong>Descripcion:</strong> <?= nl2br(htmlspecialchars($recurso['descripcion'])) ?></div>
+    <div class="detalle"><strong>Tipo:</strong> <?= htmlspecialchars($recurso['nom_tipo']) ?></div>
 
     <?php if (!empty($recurso['url'])): ?>
         <a href="<?= htmlspecialchars($recurso['url']) ?>" class="boton" target="_blank" rel="noopener noreferrer">Visitar</a>

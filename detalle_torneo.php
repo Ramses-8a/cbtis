@@ -36,7 +36,7 @@ if (!$torneo) {
 </head>
 <body>
     <div class="con_volver">
-        <a href="torneos_activos.php" class="volver">
+        <a href="javascript:history.back()" class="volver">
             <img src="img/regresar.png" alt="Volver">
         </a>
         <h3>Torneos</h3>

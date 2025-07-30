@@ -57,15 +57,16 @@ $imagenes = $stmt_imgs->fetchAll(PDO::FETCH_ASSOC);
             </div>
 
             <div class="contenido-proyecto">
-                <p class="descripcion-proyecto">
+                <p class="descripcion-proyecto"><strong>Descripción:</strong>
                     <?= $proyecto['descripcion'] ?>
                 </p>
-                <p class="descripcion-proyecto">
+                <p class="descripcion-proyecto"><strong>Detalles:</strong>
                     <?= $proyecto['detalles'] ?>
                 </p>
                 <a href="<?php echo $proyecto['url']; ?>" class="boton" target="_blank">Visitar</a>
             </div>
         </div>
+        <br>
     </main>
 </body>
 </html>

@@ -67,5 +67,5 @@ if (!$curso) {
         </div>
     </main>
 </body>
-
+<br>
 </html>

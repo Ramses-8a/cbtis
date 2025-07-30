@@ -46,7 +46,7 @@ try {
                 </div>
             <?php endif; ?>
             <p><strong><?= htmlspecialchars($recurso['nom_recurso']) ?></strong></p>
-            <p><?=htmlspecialchars($recurso['tipo_recurso']) ?></p>
+            <!-- <p><?=htmlspecialchars($recurso['tipo_recurso']) ?></p> -->
         </a>
     <?php 
         endif;
