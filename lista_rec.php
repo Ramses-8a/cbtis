@@ -29,15 +29,15 @@ require_once 'controller/recursos/mostrar_recursos.php';
             <p>Sin imagen disponible</p>
         <?php endif; ?>
     </div>
-
+<center>
     <!-- <div class="detalle"><span>Nombre:</span>htmlspecialchars($recurso['nom_recurso']) ?></div> -->
-    <div class="detalle"><strong>Descripcion:</strong> <?= nl2br(htmlspecialchars($recurso['descripcion'])) ?></div>
-    <div class="detalle"><strong>Tipo:</strong> <?= htmlspecialchars($recurso['nom_tipo']) ?></div>
+    <div class="detalle"><strong></strong> <?= nl2br(htmlspecialchars($recurso['descripcion'])) ?></div>
+    <!-- <div class="detalle"><strong>Tipo:</strong> <?= htmlspecialchars($recurso['nom_tipo']) ?></div> -->
 
+</center>
     <?php if (!empty($recurso['url'])): ?>
         <a href="<?= htmlspecialchars($recurso['url']) ?>" class="boton" target="_blank" rel="noopener noreferrer">Visitar</a>
     <?php endif; ?>
-
 </div>
 
 </body>
