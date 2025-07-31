@@ -8,22 +8,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombre = trim($_POST['nombre'] ?? '');
     $grado = trim($_POST['grado'] ?? '');
     $grupo = trim($_POST['grupo'] ?? '');
-    $recaptchaResponse = $_POST['g-recaptcha-response'] ?? null;
+    // $recaptchaResponse = $_POST['g-recaptcha-response'] ?? null;
 
 
-    if (empty($recaptchaResponse)) {
-        echo json_encode(['success' => false, 'message' => 'Completa el reCAPTCHA.']);
-        exit;
-    }
+    // if (empty($recaptchaResponse)) {
+    //     echo json_encode(['success' => false, 'message' => 'Completa el reCAPTCHA.']);
+    //     exit;
+    // }
 
-    $secret = "6Le-_fsqAAAAANM8ubJV1_EQ27UWbY45Ysm8_Uim";
-    $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$recaptchaResponse");
-    $captchaData = json_decode($response, true);
+    // $secret = "6Le-_fsqAAAAANM8ubJV1_EQ27UWbY45Ysm8_Uim";
+    // $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=$secret&response=$recaptchaResponse");
+    // $captchaData = json_decode($response, true);
 
-    if (!$captchaData['success']) {
-        echo json_encode(['success' => false, 'message' => 'Captcha inválido.']);
-        exit;
-    }
+    // if (!$captchaData['success']) {
+    //     echo json_encode(['success' => false, 'message' => 'Captcha inválido.']);
+    //     exit;
+    // }
 
     if (!$pk_torneo || empty($nombre) || empty($grado) || empty($grupo)) {
         echo json_encode(['success' => false, 'message' => 'Faltan datos requeridos.']);
