@@ -89,7 +89,7 @@
         </div>
     </section>
 
-    <section class="container">
+    <!-- <section class="container">
         <div class="stats-container">
             <div class="row">
                 <div class="col-lg-3 col-md-6 stat-item">
@@ -110,7 +110,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
     <section id="proyectos" class="container my-5">
         <div class="text-center mb-5">
